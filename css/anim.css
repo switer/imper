@@ -1,0 +1,81 @@
+.anim-scale{
+    -webkit-transform-style: preserve-3d;
+    /*让整个行使用x-轴旋转、7秒中的动画、无限次播放以及线性 */
+    -webkit-animation-name: scale;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear; 
+}
+.anim-xSpin{
+    -webkit-transform-style: preserve-3d;
+    /*让整个行使用x-轴旋转、7秒中的动画、无限次播放以及线性 */
+    -webkit-animation-name: x-spin;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear; 
+}
+.anim-ySpin{
+    -webkit-transform-style: preserve-3d;
+    /*让整个行使用x-轴旋转、7秒中的动画、无限次播放以及线性 */
+    -webkit-animation-name: y-spin;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear; 
+}
+.anim-rightRotate{
+    -webkit-transform-style: preserve-3d;
+    /*让整个行使用x-轴旋转、7秒中的动画、无限次播放以及线性 */
+    -webkit-animation-name: rightRotate;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear; 
+}
+.anim-leftRotate{
+    -webkit-transform-style: preserve-3d;
+    /*让整个行使用x-轴旋转、7秒中的动画、无限次播放以及线性 */
+    -webkit-animation-name: rightRotate;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear; 
+}
+@-webkit-keyframes scale{
+    /* 宽会是双倍，而高度保持不变 */ 
+    0%{ -webkit-transform: scale(1, 1);}
+    50%{
+        -webkit-transform: scale(1.4, 1.4); 
+    }
+    100%{
+        -webkit-transform: scale(1, 1); 
+    }
+}
+
+@-webkit-keyframes leftRotate{
+    0%{ -webkit-transform: rotate(0deg);}
+    50%{
+        -webkit-transform: rotate(-180deg);
+    }
+    100%{
+        -webkit-transform: rotate(-360deg);
+    }
+}
+
+@-webkit-keyframes rightRotate{
+    0%{ -webkit-transform: rotate(0deg);}
+50%{
+    -webkit-transform: rotate(180deg);
+}
+100%{
+    -webkit-transform: rotate(360deg);
+}
+}
+
+@-webkit-keyframes x-spin {
+    0% { -webkit-transform: rotateX(0deg); } 
+50% { -webkit-transform: rotateX(180deg); }
+100% { -webkit-transform: rotateX(360deg); } 
+}
+@-webkit-keyframes y-spin { 
+    0% { -webkit-transform: rotateY(0deg); } 
+50% { -webkit-transform: rotateY(180deg); }
+100% { -webkit-transform: rotateY(360deg); } 
+}

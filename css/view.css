@@ -1,0 +1,92 @@
+#view{
+    position: fixed;
+    width: 100%;
+    /*height: 20px;*/
+    /*left: 0;*/
+    bottom: 0px;
+    z-index: 100;
+    /*background-image: url(../img/wood.jpg);*/
+    /*border-top-left-radius: 20px;*/
+    /*border-top-right-radius: 20px;*/
+    border-top: 1px solid black;
+    padding-top: 10px;
+    background: rgba(0,0,0,0.1);
+}
+.frame{
+    position: relative;
+    /*float: left;*/
+    /*margin-left: 25px;*/
+    /*height: 120px;*/
+    /*width: 160px;*/
+    background-color: white;
+}
+.frameCon {
+    position: relative;
+    -webkit-transform-origin:bottom center;
+    -webkit-box-shadow: 0 0 0 1px black;
+    /*-webkit-box-shadow: 0 0 8px 1px rgba(0,0,0, 0.4);*/
+    /*border: 1px solid black;*/
+    margin-right: 8px;
+    z-index: 1;
+}
+.frameCon:hover {cursor: pointer;z-index: 99;-webkit-transform:scale(2) translate(0px, -5%);box-shadow: 0 0 8px 1px rgba(0,0,0, 0.3);}
+.frame-panel {background-size: 99.99% 100%;background-position:center;}
+#frame-list{
+    position: relative;
+    width: 880px;
+    margin: auto;
+    margin-bottom: 25px;
+    display: -webkit-box;
+
+}
+.hidden-frames{
+    position: absolute;
+    top: 20px;
+}
+.frameCon.focus:hover {-webkit-box-shadow:0 0 10px 4px cornflowerblue;}
+.focus{
+    -webkit-box-shadow:0px 0px 0px 1px black, 0 0 10px 4px cornflowerblue;
+}
+.text{
+    margin: auto;
+    overflow: hidden;
+    /*-webkit-transform: scale(0.2);*/
+    /*transform: scale(0.2);*/
+}
+.textCon{
+    overflow: hidden;
+}
+/*.scale:hover {
+    -webkit-transform-origin:bottom right!important;
+    -webkit-transform: scale(1) translate(0px, -40%);
+    -webkit-box-shadow:0px 0px 20px cornflowerblue;
+}*/
+.scale {
+    /*top:-40px;*/
+    z-index: 200;
+    /*margin-left: -55px;*/
+    /*-webkit-transform: scale(0.65);*/
+    -webkit-transform-origin:top left;
+    /*-moz-transform: scale(0.65);*/
+    /*transform: scale(0.65);*/
+}
+.view-menu {
+    width: 100px;
+    height: auto;
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    padding: 20px 0;
+    z-index : 999;
+}
+
+.view-menu .menu-item {
+    height: 30px;
+    padding-left: 15px;
+    line-height: 30px;
+    cursor: pointer;
+}
+.view-menu .menu-item:hover{
+    background-color: cornflowerblue;
+}
+.right-menu-sel {box-shadow: 0 0 10px 2px rgba(0, 220, 0, 0.9), 0 0 0 1px black;}
