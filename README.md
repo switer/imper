@@ -1,4 +1,0 @@
-imper
-=====
-
-An impress editor
