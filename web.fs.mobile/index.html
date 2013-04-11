@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Web File System</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="MobileOptimized" content="320"/>
+	<meta name="format-detection" content="telephone=no">
+	<!-- Functional Programing Power By Underscore -->
+	<script type="text/javascript" src="./src/lib/underscore.js"></script>
+	<script type="text/javascript" src="./src/lib/zepto.js"></script>
+	<!-- Webfs UI Style -->
+	<link rel="stylesheet" type="text/css" href="./src/theme/ui.css">
+	<!-- SUI Style -->
+	<link rel="stylesheet" type="text/css" href="./src/sui/sui.css">
+</head>
+<body>
+<!-- FIle System Container -->
+<div id="fileView" class="fs-view fs-theme-android"></div>
+<!-- Bottom Menu Bar -->
+<div id="fileBar" class="fs-bar">
+	<a id="addFolder" data-feed='true' class="fs-bar-btn" href="javascript:;">创建目录</a>
+	<a id="showDeleteIcon" data-feed='true' class="fs-bar-icon" href="javascript:;"></a>
+	<a id="addFile" data-feed='true' class="fs-bar-btn" href="javascript:;" >新建文件</a>
+</div>
+<!-- Add Folder PopBox -->
+<div class="sui-popbox sui-disp-none" data-vertical='center' data-position='fixed' data-transition=true data-cancel=true id="folderInpBox">
+	<div class="sui-popbox-mask sui-popbox-mask-slight"></div>
+	<div class="sui-popbox-box sui-popbox-white">
+		<div class="sui-popbox-content">
+			<div class="sui-inp-box sui-mg-top ">
+				<input class="sui-inp" type="text" id="folderInp" placeholder="输入目录名" />
+			</div>
+			<input class="sui-btn sui-w-full sui-mg-top sui-btn-primary" id="folderInpBtn" type="button" value="确定">
+		</div>
+	</div>
+</div>
+<!-- Add File PopBox -->
+<div class="sui-popbox sui-disp-none" data-noscroll='true' data-vertical='center' data-position='fixed' data-transition=true data-cancel=true id="fileInpBox">
+	<div class="sui-popbox-mask sui-popbox-mask-slight"></div>
+	<div class="sui-popbox-box sui-popbox-white">
+		<div class="sui-popbox-content">
+			<div class="sui-inp-group sui-mg-top">
+				<div class="sui-inp-box">
+					<input class="sui-inp" type="text" id="fileNameInp"  placeholder="输入文件名" />
+				</div>
+				<div class="sui-inp-box">
+					<input class="sui-inp" type="text" id="fileSufInp" placeholder="输入文件类型" />
+				</div>
+				<div class="sui-inp-box">
+					<input class="sui-inp" type="text" id="fileContentInp" placeholder="输入文件内容" />
+				</div>
+			</div>
+			<input class="sui-btn sui-w-full sui-mg-top sui-btn-primary" id="fileInpBtn" type="button" value="确定">
+		</div>
+	</div>
+</div>
+<!-- Global Notify PopBox -->
+<div class="sui-popbox sui-disp-none" data-vertical='center' data-position='fixed' data-transition=true data-cancel=true id="notifyBox">
+	<div class="sui-popbox-mask sui-popbox-mask-transparent"></div>
+	<div class="sui-popbox-box sui-popbox-black">
+		<div class="sui-popbox-content">
+			<center id="notifyMsg" class="sui-mg-top"></center>
+		</div>
+	</div>
+</div>
+<!-- cordova for mobile is used by phonegap -->
+<script type="text/javascript" src="cordova-2.3.0.js"></script>
+<!-- UI Plugin sui is used by Android SDK H5 -->
+<script type="text/javascript" src="./src/sui/sui.js"></script>
+<!-- Webfs UI Component -->
+<script type="text/javascript" src="./src/wfui.js"></script>
+<!-- Modular By RequireJS -->
+<script data-main="./src/bootstrap" src="./src/lib/require.js"></script>
+</body>
+</html>
