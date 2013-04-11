@@ -214,7 +214,7 @@ Core.registerModule("canvas",function(sb){
                 left        : "-125px",
                 top         : "0px"
             })
-            .attr('title', '当前幻灯片的过度动画')
+            .attr('title', '幻灯片的过渡动画/左键点击修改')
             .on('click', function () {
 
             })
@@ -394,6 +394,7 @@ Core.registerModule("canvas",function(sb){
                         value : value
                     }
                 })
+                window.ChooseBox.hide(choosebox);
             });
             $(document.body).append(choosebox);
             sb.move(choosebox, choosebox);
@@ -426,13 +427,13 @@ Core.registerModule("canvas",function(sb){
                         value : value
                     }
                 })
+                window.ChooseBox.hide(chooseThemebox);
             });
             $(document.body).append(chooseThemebox);
             sb.move(chooseThemebox, chooseThemebox);
             global._chooseThemebox = chooseThemebox;
             //窗口关闭前的保存文件操作
             window.onbeforeunload = function () {
-                // global.saveTempFile();
                 return '要离开正在编辑的内容？'
             }
         },
@@ -1868,6 +1869,7 @@ Core.registerModule("canvas",function(sb){
                 }
             };
             container.style.WebkitTransformOrigin = 'center center';
+            // $(container).attr('title', '左键点击选中/右键打开菜单')
             var frag = document.createDocumentFragment();
             
             for (var item in parts) {
@@ -1895,7 +1897,7 @@ Core.registerModule("canvas",function(sb){
             $(move_n).addClass("element-container-apart-move con-move-n");
 
             //旋转控件
-            $(rotateCon).addClass('con-rotate').append(rotateLeft).append(rotateRight);
+            $(rotateCon).addClass('con-rotate').append(rotateLeft).append(rotateRight).attr('title', '拖拽旋转');
             $(rotateLeft).addClass('con-rotate-elem con-rotate-left');
             $(rotateRight).addClass('con-rotate-elem con-rotate-right');
 

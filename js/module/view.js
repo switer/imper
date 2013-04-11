@@ -513,7 +513,7 @@ Core.registerModule("view",function(sb){
                 textAlign : 'center',
                 fontSize : '14px'
             }).addClass('frame-label');
-            $(frameCon).append(frame).append(frameLabel);
+            $(frameCon).append(frame).append(frameLabel).attr('title', '右键打开操作菜单');
             frame.appendChild(framePanel);
             frame.className = "frame scale";
             framePanel.className = "frame-panel";
