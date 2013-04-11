@@ -1,0 +1,309 @@
+.anim-move-top{
+    -webkit-transform-style: preserve-3d;
+    /*让整个行使用x-轴旋转、7秒中的动画、无限次播放以及线性 */
+    -webkit-animation-name: anim-move-top;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear; 
+}
+.anim-move-bottom{
+    -webkit-transform-style: preserve-3d;
+    /*让整个行使用x-轴旋转、7秒中的动画、无限次播放以及线性 */
+    -webkit-animation-name: anim-move-bottom;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear; 
+}
+.anim-move-top-left{
+    -webkit-transform-style: preserve-3d;
+    /*让整个行使用x-轴旋转、7秒中的动画、无限次播放以及线性 */
+    -webkit-animation-name: anim-move-top-left;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear; 
+    -moz-transform-style: preserve-3d;
+    /*让整个行使用x-轴旋转、7秒中的动画、无限次播放以及线性 */
+    -moz-animation-name: anim-move-top-left;
+    -moz-animation-duration: 0.5s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: linear; 
+}
+.anim-move-top-right{
+    -webkit-transform-style: preserve-3d;
+    /*让整个行使用x-轴旋转、7秒中的动画、无限次播放以及线性 */
+    -webkit-animation-name: anim-move-top-right;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear; 
+}
+.anim-move-bottom-left{
+    -webkit-transform-style: preserve-3d;
+    /*让整个行使用x-轴旋转、7秒中的动画、无限次播放以及线性 */
+    -webkit-animation-name: anim-move-bottom-left;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear; 
+}
+.anim-move-bottom-right{
+    -webkit-transform-style: preserve-3d;
+    /*让整个行使用x-轴旋转、7秒中的动画、无限次播放以及线性 */
+    -webkit-animation-name: anim-move-bottom-right;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear; 
+}
+.anim-scale{
+    -webkit-transform-style: preserve-3d;
+    /*让整个行使用x-轴旋转、7秒中的动画、无限次播放以及线性 */
+    -webkit-animation-name: scale;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear; 
+}
+.anim-xSpin{
+    -webkit-transform-style: preserve-3d;
+    /*让整个行使用x-轴旋转、7秒中的动画、无限次播放以及线性 */
+    -webkit-animation-name: x-spin;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear; 
+}
+.anim-ySpin{
+    -webkit-transform-style: preserve-3d;
+    /*让整个行使用x-轴旋转、7秒中的动画、无限次播放以及线性 */
+    -webkit-animation-name: y-spin;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear; 
+}
+.anim-rightRotate{
+    -webkit-transform-style: preserve-3d;
+    /*让整个行使用x-轴旋转、7秒中的动画、无限次播放以及线性 */
+    -webkit-animation-name: rightRotate;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear; 
+}
+.anim-leftRotate{
+    -webkit-transform-style: preserve-3d;
+    /*让整个行使用x-轴旋转、7秒中的动画、无限次播放以及线性 */
+    -webkit-animation-name: rightRotate;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear; 
+}
+.anim-move-left{
+    -webkit-transform-style: preserve-3d;
+    /*让整个行使用x-轴旋转、7秒中的动画、无限次播放以及线性 */
+    -webkit-animation-name: anim-move-left;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear; 
+}
+
+
+.anim-move-right{
+    -webkit-transform-style: preserve-3d;
+    /*让整个行使用x-轴旋转、7秒中的动画、无限次播放以及线性 */
+    -webkit-animation-name: anim-move-right;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear; 
+}
+@-webkit-keyframes anim-move-right
+{
+    0%{
+    -webkit-transform: translate(500px, 0px); 
+
+} 
+100%{
+    -webkit-transform: translate(0px, 0px); 
+}
+}
+@-webkit-keyframes anim-move-left
+{
+    0%{
+    -webkit-transform: translate(-500px, 0px); 
+
+} 
+100%{
+    -webkit-transform: translate(0px, 0px); 
+}
+}
+@-moz-keyframes anim-move-left
+{
+    0%{
+    -moz-transform: translate(-500px, 0px); 
+
+} 
+100%{
+    -moz-transform: translate(0px, 0px); 
+}
+}
+@-webkit-keyframes anim-move-top
+{
+    0%{
+    -webkit-transform: translate(0px, -500px); 
+
+} 
+100%{
+    -webkit-transform: translate(0px, 0px); 
+}
+}
+@-webkit-keyframes anim-move-bottom
+{
+    0%{
+    -webkit-transform: translate(0px, 500px); 
+
+} 
+100%{
+    -webkit-transform: translate(0px, 0px); 
+}
+}
+
+@-webkit-keyframes anim-move-top-left
+{
+    0%{
+    -webkit-transform: translate(-500px, -500px); 
+
+} 
+100%{
+    -webkit-transform: translate(0px, 0px); 
+}
+}
+@-webkit-keyframes anim-move-top-right
+{
+    0%{
+    -webkit-transform: translate(500px, -500px); 
+
+} 
+100%{
+    -webkit-transform: translate(0px, 0px); 
+}
+}
+@-webkit-keyframes anim-move-bottom-left
+{
+    0%{
+    -webkit-transform: translate(-500px, 500px); 
+
+} 
+100%{
+    -webkit-transform: translate(0px, 0px); 
+}
+}
+@-webkit-keyframes anim-move-bottom-right
+{
+    0%{
+    -webkit-transform: translate(500px, 500px); 
+
+} 
+100%{
+    -webkit-transform: translate(0px, 0px); 
+}
+}
+@-webkit-keyframes scale{
+    /* 宽会是双倍，而高度保持不变 */ 
+    0%{ -webkit-transform: scale(1, 1); 
+    -moz-transform: scale(1, 1);}
+50%{
+    -webkit-transform: scale(1.4, 1.4); 
+    -moz-transform: scale(1.4, 1.4);
+}
+100%{
+    -webkit-transform: scale(1, 1); 
+    -moz-transform: scale(1, 1);
+}
+}
+
+@-webkit-keyframes leftRotate{
+    0%{ -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);}
+25%{
+    -webkit-transform: rotate(240deg);
+    -moz-transform: rotate(240deg);
+}
+75%{
+    -webkit-transform: rotate(120deg);
+    -moz-transform: rotate(120deg);
+}
+100%{
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+}
+
+}
+
+@-webkit-keyframes rightRotate{
+    0%{ -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);}
+25%{
+    -webkit-transform: rotate(120deg);
+    -moz-transform: rotate(120deg);
+}
+75%{
+    -webkit-transform: rotate(240deg);
+    -moz-transform: rotate(240deg);
+}
+100%{
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+}
+}
+
+@-webkit-keyframes x-spin {
+    0% { -webkit-transform: rotateX(0deg); } 
+50% { -webkit-transform: rotateX(180deg); }
+100% { -webkit-transform: rotateX(360deg); } 
+}
+@-webkit-keyframes y-spin { 
+    0% { -webkit-transform: rotateY(0deg); } 
+50% { -webkit-transform: rotateY(180deg); }
+100% { -webkit-transform: rotateY(360deg); } 
+}
+@-webkit-keyframes left-right { 
+    0% { -webkit-transform: translate(0,0); } 
+    50% { -webkit-transform: translate(20px,0); }
+    100% { -webkit-transform: translate(0,0); } 
+}
+@-webkit-keyframes up-down { 
+    0% { -webkit-transform: translate(0,0); } 
+    50% { -webkit-transform: translate(0,20px); }
+    100% { -webkit-transform: translate(0,0); } 
+}
+/*逆时针*/
+@-webkit-keyframes ccw-round { 
+    0% { -webkit-transform: translate(0,0); } 
+    25% { -webkit-transform: translate(0,20px); } 
+    50% { -webkit-transform: translate(20px,20px); }
+    75% { -webkit-transform: translate(20px,0); } 
+    100% { -webkit-transform: translate(0,0); } 
+}
+/*顺时针*/
+@-webkit-keyframes cw-round { 
+    0% { -webkit-transform: translate(0,0); } 
+    25% { -webkit-transform: translate(20px,0); } 
+    50% { -webkit-transform: translate(20px,20px); }
+    75% { -webkit-transform: translate(0,20px); } 
+    100% { -webkit-transform: translate(0,0); } 
+}
+
+/*顺时针*/
+@-webkit-keyframes swing { 
+    0%{ -webkit-transform: rotate(0deg);}
+    50%{
+        -webkit-transform: rotate(60deg);
+    }
+    100%{
+        -webkit-transform: rotate(0deg);
+    }
+}
+/*顺时针*/
+@-webkit-keyframes ccw-swing { 
+    0%{ -webkit-transform: rotate(0deg);}
+    50%{
+        -webkit-transform: rotate(-60deg);
+    }
+    100%{
+        -webkit-transform: rotate(0deg);
+    }
+}

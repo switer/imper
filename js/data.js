@@ -1,0 +1,62 @@
+var DATA = {
+    "slider7":{
+        "anim":"anim-move-right",
+        "element":{}
+    },
+    "slider6":{
+        "anim":"anim-move-right",
+        "element":{}
+    },
+    "slider5":{
+        "anim":"anim-move-right",
+        "element":{}
+    },
+    "slider4":{
+        "anim":"anim-move-right",
+        "element":{
+            "data3":{
+                "type":"IMG",
+                "cAttr":"position: absolute; left: 0px; top: 0px; height: 500px; width: 800px; z-index: 1; ",
+                "eAttr":"height:100%;width:100%;",
+                "zIndex":1,
+                "value":"blob:http%3A%2F%2Flocalhost%3A8088/08fd8321-e522-44f3-823a-39fbd26f3c7f"
+            }
+        }
+    },
+    "slider3":{
+        "anim":"anim-move-right",
+        "element":{
+            "data4":{
+                "type":"IMG",
+                "cAttr":"position: absolute; left: 0px; top: 0px; height: 600px; width: 800px; z-index: 1; ",
+                "eAttr":"height:100%;width:100%;",
+                "zIndex":1,
+                "value":"blob:http%3A%2F%2Flocalhost%3A8088/bcd21916-46a1-4a63-a28d-91c6bd598fca"
+            }
+        }
+    },
+    "slider1":{
+        "anim":"anim-move-right",
+        "element":{
+            "data1":{
+                "type":"IMG",
+                "cAttr":"position: absolute; left: 0px; top: 0px; height: 600px; width: 800px; z-index: 1; ",
+                "eAttr":"height:100%;width:100%;",
+                "zIndex":1,
+                "value":"blob:http%3A%2F%2Flocalhost%3A8088/a709c002-2d5d-46e0-9ebb-21260bb05b32"
+            }
+        }
+    },
+    "slider2":{
+        "anim":"anim-move-right",
+        "element":{
+            "data2":{
+                "type":"IMG",
+                "cAttr":"position: absolute; left: 0px; top: 0px; height: 500px; width: 800px; z-index: 1; ",
+                "eAttr":"height:100%;width:100%;",
+                "zIndex":1,
+                "value":"blob:http%3A%2F%2Flocalhost%3A8088/a5bfaa18-c0c4-4ae1-8d1e-c95ac225b9e3"
+            }
+        }
+    }
+};

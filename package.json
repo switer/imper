@@ -1,0 +1,20 @@
+{
+  "name": "slider",
+  "version": "0.1.0",
+  "description": "slider front end website",
+  "main": "index.html",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/switer/slider.git"
+  },
+  "keywords": [
+    "html5",
+    "slider"
+  ],
+  "author": "switer",
+  "license": "BSD",
+  "gitHead": "098f316b02a9873b628cb4e841568206e7ddcc64",
+  "readmeFilename": "README.md"
+}

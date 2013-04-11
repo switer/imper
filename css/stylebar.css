@@ -1,0 +1,268 @@
+.middle-input{
+
+    width: 180px;
+
+}
+#stylebar{
+    width:70px;
+    height: 400px;
+    position: absolute;
+    -webkit-box-shadow:0px 0px 5px black;
+    -moz-box-shadow:0px 0px 5px black;
+    box-shadow:0px 0px 5px black;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    right: 0px;
+    top:100px; 
+    z-index: 800;
+}
+/*#stylebar:hover{
+
+    -webkit-transform:translateX(-60px);
+    -webkit-animation-name: move-out;
+    -webkit-animation-duration: 0.2s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear; 
+
+    -moz-transform:translateX(-60px);
+    -moz-animation-name: move-out;
+    -moz-animation-duration: 0.2s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: linear; 
+}*/
+#execCommand-detail{
+    display: none;
+    position: absolute;
+    padding: 5px 0px;
+    z-index: 999;
+    width:  auto;
+    padding: 10px;
+}
+
+#stylebar .show_execCommandDetail{
+    background-image: url(../img/text-edit.png);
+}
+#execCommand-detail .resize{
+
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: se-resize;
+}
+#execCommand-detail .move{
+    width: 20px;
+    height: 20px;
+    background-image: url("../img/move.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: move;
+    position: absolute;
+    top: -10px;
+    left: -15px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-size: 20px;
+    background-color: white;
+}
+.execCommand-item{
+
+    float: left;
+    /*margin-left: 5px;*/
+
+}
+.execC-but{
+    width: 40px;
+    height: 40px;
+    /*border-radius: 8px;*/
+    /*border: none;*/
+    outline: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    /*-webkit-box-shadow:0px 0px 4px blue;*/
+    display: block;
+    background-size: 25px;background-repeat: no-repeat;background-position: center;
+
+}
+select.execC-but {-webkit-appearance:button;width: auto!important;}
+.execC-but:hover{
+    /*-webkit-box-shadow:0px 0px 8px black;*/
+}
+.font-bold .execC-but{
+
+    background-image: url("../img/bold.png");
+
+}
+.font-background .execC-but{
+
+    background-image: url("../img/font_background.png");
+
+}
+.font-underline .execC-but{
+    background-image: url("../img/underlined.png");
+}
+.font-italic .execC-but{
+    background-image: url("../img/italic.png");
+}
+.font-link .execC-but{
+    background-image: url("../img/link.png");
+}
+.font-color .execC-but{
+    background-image: url("../img/font_color.png");
+}
+
+.font-strike .execC-but{
+    background-image: url("../img/strike_through.png");
+
+}
+.font-leftAlign .execC-but{ background-image: url("../img/paragraph_align_left.png");}
+.font-centerAlign .execC-but{ background-image: url("../img/paragraph_align_center.png");}
+.font-rightAlign .execC-but{ background-image: url("../img/paragraph_align_right.png");}
+.font-undo .execC-but{ background-image: url("../img/undo.png");}
+.font-redo .execC-but{ background-image: url("../img/redo.png");}
+.font-eraser .execC-but{ background-image: url("../img/eraser.png");}
+.font-list .execC-but{background-image: url("../img/num_list.png");}
+.font-unOrderList .execC-but{background-image: url("../img/unorder_list.png");}
+.font-indent .execC-but{background-image: url("../img/indent.png");}
+.font-outdent .execC-but{background-image: url("../img/outdent.png");}
+.font-fullAlign .execC-but{background-image: url("../img/align_justify.png");}
+
+.execCommand-item select{
+    width: 80px;
+    height: 40px;
+}
+#setlink{
+    display: none;
+    position: absolute;
+    padding: 5px 5px;
+    z-index: 999;
+}
+.style-button{
+    position: relative;
+    width: 45px;
+    height: 45px;
+    -webkit-border-radius:10px;
+    -webkit-box-shadow:2px 2px 2px #BBB;
+    -moz-border-radius:5px;
+    -moz-box-shadow:2px 2px 2px #BBB;
+    border-radius:5px;
+    box-shadow:2px 2px 2px #BBB;
+    margin: auto;
+    margin-top: 10px;
+    cursor: pointer;
+    display: block;
+    background-position: -4px -4px;
+}
+.style-button:hover{
+
+    -webkit-box-shadow:0px 0px 10px black;
+    -moz-box-shadow:0px 0px 10px black;
+    box-shadow:0px 0px 10px black;
+
+}
+.colorSelector{
+    display: none;
+    position: absolute;
+    width: 190px;
+    height: 170px;
+    top: 50px;
+    right: 0px;
+    background-color: #FAFAFA;
+    border-radius: 2px;
+    border: 1px solid #CCC;
+    z-index: 999;
+}
+.general_list{
+    width: 170px;
+    margin: 10px 10px;
+    height:14px;
+}
+.color_list{
+    width: 170px;
+    margin: 10px 10px;
+    height:70px;
+}
+.standard_list{
+
+    width: 170px;
+    margin: 10px 10px;
+    height:14px;
+
+}
+.colorSelector a{
+    display: block;
+    width: 14px;
+    height: 14px;
+    float: left;
+    margin-right: 3px;
+    cursor: pointer;
+
+}
+.colorSelector a:hover{
+    box-shadow:inset 0px 0px 2px 1px white;
+}
+.imageProcess{
+    background-image: url(../img/ps.png);
+}
+.screen-box {display: -webkit-box;position: absolute;width: auto;z-index: 999;padding: 10px;cursor: move;}
+.screen-scale {width: 80px;height: 50px;vertical-align: middle;text-align: center;line-height: 50px;font-size: 24px;margin: 10px;
+background-color: cornflowerblue;color: white;text-shadow:0 0 2px black;}
+.screen-scale:hover {box-shadow: 0 0 6px 1px black;cursor: pointer;}
+
+
+
+.choose-box {display: -webkit-box;position: absolute;width: auto;z-index: 998;padding: 10px;cursor: move;}
+.choose-item {width: auto;height: 25px;vertical-align: middle;text-align: center;line-height: 25px;font-size: 14px;margin: 10px;
+background-color: cornflowerblue;color: white;text-shadow:0 0 3px black;padding: 0 5px;}
+.choose-item:hover {box-shadow: 0 0 6px 1px black;cursor: pointer;}
+
+
+
+.image-select-box {
+    position: absolute;width: auto;height: auto;padding: 10px;z-index: 999;display: -webkit-box;cursor: move;
+}
+.image-select-box .image-file-box {
+        background: url(../img/folder-image.png) no-repeat center;background-size:60px 40px;width: 70px;margin-right: 10px;height: 50px;
+}
+.image-select-box .close-menu {top: -10px;right: -10px;}
+.image-select-box .image-file-select {display: block;width: 100%;height: 50px;opacity: 0.01;cursor: pointer;}
+.image-select-box .image-preview {
+    cursor: pointer;background-image: url(../img/pic.png);width: 50px;height: 50px;border-radius: 5px;
+    background-size: 50px 50px;margin-right: 10px;
+}
+.image-select-box .image-empty {
+    cursor: pointer;background-image: url(../img/empty.png);width: 50px;height: 50px;border-radius: 5px;
+    background-size: 50px 50px;}
+/*代码输入框的设置按钮*/
+.code-setting {background: url(../img/setting.png) center;background-size: 40px 40px;
+    position: absolute;top:-25px;left: -25px;height: 40px;width: 40px;opacity: 1;z-index: 100;
+    border-radius: 50%;
+}
+.code-setting:hover {-webkit-box-shadow:0 0 5px 1px black;cursor: pointer;}
+@-webkit-keyframes move-out
+{
+    0%{
+    -webkit-transform: translateX(0); 
+
+} 
+50%{
+    -webkit-transform: translateX(-50); 
+}
+100%{
+    -webkit-transform: translateX(-60); 
+}
+}
+
+@-moz-keyframes move-out
+{
+    from{
+    -moz-transform: translateX(0); 
+    -webkit-transform: translateX(0); 
+
+} 
+to{
+    -moz-transform: translateX(-60px); 
+    -webkit-transform: translateX(-60px); 
+}
+}

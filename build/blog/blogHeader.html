@@ -1,0 +1,66 @@
+<!DOCTYPE html><html><head>
+<title>Slider player---by CoSu</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="MobileOptimized" content="320"/>
+<meta name="format-detection" content="telephone=no">
+<script type="text/javascript">
+    (function(){
+        Object.prototype.findIndex = function(attName){
+            var i = 0;
+            for(var o in this){
+                if(this.hasOwnProperty(o)){
+                    i++;
+                    if(attName==o) return i;
+                }
+            }
+            return -1;
+        };
+        Object.prototype.get = function(index){
+            var i = 0;
+            for(var o in this){
+                if(this.hasOwnProperty(o)){
+                    i++;
+                    if(index==i) return o;
+                }   
+            }
+            return null;
+        };
+        Object.prototype.length = function(){
+            var i = 0;
+            for(var o in this){
+                if(this.hasOwnProperty(o)){
+                    i++;
+                }   
+            }
+            return i;
+        };
+    }());
+</script>
+<style type="text/css">
+    body{padding: 0;margin: 0;overflow: auto;}
+    #slider-preview{position: relative;-webkit-box-shadow: 0px 0px 24px #CCC;overflow: hidden;margin: auto;}
+    #code{width: 80px!important;border-radius: 0!important;}
+    .slider{position: relative;height: 100%;width: 100%;}
+    #operation {display: -webkit-box;opacity: 0.1;position: fixed;bottom: 0;right: 0;z-index: 999;}
+    #operation:hover {opacity: 1;}
+    #operation div:first-child {border-top-left-radius: 5px;border-bottom-left-radius: 5px;}
+    #operation div:last-child {border-top-right--radius: 5px;border-bottom-right-radius: 5px;}
+    .btn{cursor: pointer;font-size: 20px;font-weight: 900;height: 30px;width:auto;text-align: center;background-color: cornflowerblue;color: white;line-height: 30px;padding: 5px;}
+    .btn:hover{background-color: steelblue}
+    .increase {}
+    .reduce {}
+    .moveUp {}
+    .moveDown {}
+</style>
+</head>
+<body>
+<div id='operation'>
+    <div class="moveUp btn">向上</div>
+    <div class="moveDown btn">向下</div>
+    <div id="code" class="btn"></div>
+    <div class="increase btn">放大</div>
+    <div id="scale" class="btn">100%</div>
+    <div class='reduce btn'>缩小</div></div>
+<div id="slider-preview">
+</div>
