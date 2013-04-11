@@ -9,4 +9,4 @@ An impress editor
 
 ### Live Demo
 
-[Imper Demo](http://switer.github.io/examples/demo.html#/step-1)
+[Imper Demo](http://switer.github.io/examples/imper.html#/step-1)
