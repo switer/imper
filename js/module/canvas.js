@@ -1,19 +1,10 @@
 Core.registerModule("canvas",function(sb){
     var anim_name = {
-        'none'              : '无效果',
-        "anim-move-left"    :"从左闪入",
-        "anim-move-right"   :"从右闪入",
-        "anim-move-top"     :"从上闪入",
-        "anim-move-bottom"  :"从下闪入",
-        "anim-move-top-left":"从左上闪入",
-        "anim-move-top-right"   :"从右上闪入",
-        "anim-move-bottom-left" :"从左下闪入",
-        "anim-move-bottom-right":"从右下闪入",
+        'none'              : '幻灯片',
         "anim-scale":"放大",
         "anim-ySpin":"左右翻转",
         "anim-xSpin":"上下翻转",
-        "anim-rightRotate":"顺时针旋转",
-        "anim-leftRotate"   :"逆时针旋转"
+        "anim-rightRotate":"旋转"
         },
         SCREEN_SIZE_MAP = {
             '16:9'  : {x:960,y:540},
@@ -810,7 +801,7 @@ Core.registerModule("canvas",function(sb){
             global._createThumb(sliders.getFirstElement(), function (thumb) {
                 var sliderJson = global._createSliderJSONData(),
                     count = 0,
-                    slideType = 'slide',
+                    slideType = 'impress',
                     datas;
                 datas = {
                     cntConf : {

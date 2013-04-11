@@ -284,9 +284,9 @@ define('webfs/ui',
 					} else {
 						try {
 							// window.open(getCwd(container).toURL()+ '/' + $parent.data('path'),'view:file', 'resize=yes,scrollbar=yes,status=yes')
-							window.open(getCwd(container).toURL()+ '/' + $parent.data('path'),'view:file')
+							window.open(getCwd(container).toURL()+ '/' + $parent.data('path'),'_blank')
 						} catch (e) {
-							window.open(getCwd(container).toURL()+ '/' + $parent.data('path'),'view:file')
+							window.open(getCwd(container).toURL()+ '/' + $parent.data('path'),'_blank')
 						}
 						
 					}
