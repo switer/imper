@@ -136,6 +136,9 @@
                 <div class="execCommand-item font-color" title="改变字体颜色">
                     <a href="javascript:;" class="execC-but"></a>
                 </div>
+                <div class="execCommand-item font-background" title="改变字体背景颜色">
+                    <a href="javascript:;" class="execC-but"></a>
+                </div>
                 <div class="execCommand-item font-italic" title="斜体">
                     <a href="javascript:;" class="execC-but" onclick="document.execCommand('italic',false);"></a>
                 </div>
@@ -148,8 +151,8 @@
                 <div class="execCommand-item font-strike" title="删除线">
                     <a href="javascript:;" class="execC-but" onclick="document.execCommand('strikeThrough',false);"></a>
                 </div>
-                <div class="execCommand-item font-background" title="改变字体背景颜色">
-                    <a href="javascript:;" class="execC-but"></a>
+                <div class="execCommand-item font-eraser" title="擦除格式">
+                    <a href="javascript:;" class="execC-but" onclick="document.execCommand('removeFormat',false);"></a>
                 </div>
                 <div class="execCommand-item font-link" title="添加链接">
                     <a href="javascript:;" class="execC-but" ></a>
@@ -169,9 +172,7 @@
                 <div class="execCommand-item font-redo" title="重做" >
                     <a href="javascript:;" class="execC-but" onclick="document.execCommand('redo',false);"></a>
                 </div> 
-                <div class="execCommand-item font-eraser" title="擦除格式">
-                    <a href="javascript:;" class="execC-but" onclick="document.execCommand('removeFormat',false);"></a>
-                </div>
+                
                 <div class="execCommand-item font-list" title="有序列表">
                     <a href="javascript:;" class="execC-but" onclick="document.execCommand('insertOrderedList',true);"></a>
                 </div> 
