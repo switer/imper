@@ -810,7 +810,7 @@ Core.registerModule("canvas",function(sb){
             global._createThumb(sliders.getFirstElement(), function (thumb) {
                 var sliderJson = global._createSliderJSONData(),
                     count = 0,
-                    slideType = 'impress',
+                    slideType = 'slide',
                     datas;
                 datas = {
                     cntConf : {
