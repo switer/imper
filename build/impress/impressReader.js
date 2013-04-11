@@ -29,21 +29,21 @@ var paintingBoards = {},
             'scale' : {
                         "class" : 'slide',
                         "datas" : {
-                            'scale' : 4
+                            'scale' : 3
                         }
             },
             'rotate-x' : {
                         "class" : '', 
                         "datas" : {
-                            'rotate-x' : 90,
-                            'scale' : 5,
+                            'rotate-x' : -20,
+                            'scale' : 2,
                             'z' : -150
                         }
             },
             'rotate-y' : {
                         "class" : '', 
                         "datas" : {
-                            'rotate-y' : -90,
+                            'rotate-y' : 20,
                             'scale' : 2,
                             'z' : -100
                         }
@@ -52,7 +52,7 @@ var paintingBoards = {},
                         "class" : '', 
                         "datas" : {
                             'rotate' : 300,
-                            'scale' : 1,
+                            'scale' : 3,
                             'z' : -200
                         }
             }
@@ -85,7 +85,11 @@ var paintingBoards = {},
     }
     var module = {
         init:function(){
-            var sqrtNum = getSqrt(DATA);
+            var sqrtNum = getSqrt(DATA),
+                _sHeight = 0,
+                _sWidth = 0,
+                _maxHeight = 0;
+
             for(var s in DATA){
                 if(DATA.hasOwnProperty(s)){
                     var slider = document.createElement("DIV"),
@@ -96,15 +100,41 @@ var paintingBoards = {},
                     slider.appendChild(panel);
                     panel.setAttribute('style', DATA[s].panelAttr);
                     sliders[s] = slider;
+                    var scale = 1;
+                    if (anim && animations[anim] && animations[anim].datas.scale) {
+                        scale = parseFloat(animations[anim].datas.scale)
+                    }
 
+                    var curColum = index % sqrtNum;
+                        curRow = parseInt(index / sqrtNum);
+
+
+                    if (curColum === 0) {
+                        _sWidth = 0;
+                        _maxHeight = ( parseInt(conf.height) * scale  + 100);
+                    }
+                    if (curRow >= 1 && curColum === 0) {
+                        _sHeight += _maxHeight;
+                    }
+                    if (( parseInt(conf.height) * scale  + 100) > _maxHeight) {
+                        _maxHeight = ( parseInt(conf.height) * scale  + 100);
+                    }
+                    
+
+
+                    // _sHeight = parseInt(index / sqrtNum) * ( parseInt(conf.height)  + 100)
+
+                    console.log(animations[anim].datas, scale, _sWidth, _sHeight, _maxHeight)
                     $(slider)
                             .css({
                                 'height' : conf.height,
                                 'width'  : conf.width
                             })
-                            .data('x', (index % sqrtNum) * ( parseInt(conf.width)  + 100))
-                            .data('y', parseInt(index / sqrtNum) * ( parseInt(conf.height)  + 100))
+                            .data('x', _sWidth)
+                            .data('y', _sHeight)
                             .addClass('step')
+
+                    _sWidth += ( parseInt(conf.width) ) * scale + 100;
 
                     anim && animations[anim] && setAttr(slider, animations[anim]);
 
