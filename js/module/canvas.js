@@ -15,6 +15,7 @@ Core.registerModule("canvas",function(sb){
             '2:1'   : {x:1000,y:500},
             '1:1'   : {x:640,y:640}
         },
+        DEFAULT_SLIDE_TYPE = 'impress',
         DEFAULT_SCREEN = '4:3',
         canvasX = 1200,
         canvasY = 600;
@@ -204,23 +205,59 @@ Core.registerModule("canvas",function(sb){
             editor = sliders[currentSlider];
             
             showAnim = document.createElement("div");
-            $(showAnim).addClass("showAnim").html(anim_name[$(editor).data("anim")])
+            var $slideType = $(document.createElement("div"));
+
+            $(showAnim).addClass("showAnim").addClass("blue-block").html(anim_name[$(editor).data("anim")])
             .css({
-                position    : "absolute",
-                display     : "block",
                 width       : "120px",
-                // height      : "40px",
                 zIndex      : "2",
                 left        : "-125px",
                 top         : "0px"
             })
             .attr('title', '幻灯片的过渡动画/左键点击修改')
-            .on('click', function () {
-
+            // 
+            var sliderTypeChoosebox = window.ChooseBox.create([
+                    {key : 'impress',      value : 'impress'},
+                    {key : 'slide',       value : 'slide'}
+                ]);
+            window.ChooseBox.hide(sliderTypeChoosebox);
+            window.ChooseBox.listen(sliderTypeChoosebox, function (value) {
+                window.ChooseBox.hide(sliderTypeChoosebox);
+                $slideType.removeClass('on').html(value);
+                global._slideType = value;
+            });
+            $(sliderTypeChoosebox).find('.close-menu').hide();
+            
+            $(document.body).append(sliderTypeChoosebox);
+            global._slideType = DEFAULT_SLIDE_TYPE;
+            $slideType.addClass("slideType").addClass("blue-block").html(DEFAULT_SLIDE_TYPE)
+            .css({
+                backgroundColor : '#CCC',
+                width       : "120px",
+                zIndex      : "2",
+                left        : "-125px",
+                top         : "50px"
             })
-            sb.move(showAnim, showAnim, {top : true});
+            .attr('title', '幻灯片的播放类型/左键点击修改')
+            .on('click', function (e) {
+                if (window.ChooseBox.isHide(sliderTypeChoosebox)) {
+                    $(this).addClass('on');
+                    window.ChooseBox.show(sliderTypeChoosebox);
+                    $(sliderTypeChoosebox).css({
+                        top : e.clientY + 'px',
+                        left : e.clientX + 'px'
+                    });
+                } else {
+                    $(this).removeClass('on');
+                    window.ChooseBox.hide(sliderTypeChoosebox);
+                }
+    
+            });
 
-            editorContainer.appendChild(showAnim);
+            sb.move(showAnim, showAnim, {top : true});
+            sb.move($slideType[0], $slideType[0], {top : true});
+
+            $(editorContainer).append(showAnim).append($slideType);
             sb.bind(window, "keydown",this.keyOperate);
             window.addEventListener("resize", function(){
                 sb.notify({
@@ -802,7 +839,7 @@ Core.registerModule("canvas",function(sb){
             global._createThumb(sliders.getFirstElement(), function (thumb) {
                 var sliderJson = global._createSliderJSONData(),
                     count = 0,
-                    slideType = 'impress',
+                    slideType = global._slideType || DEFAULT_SLIDE_TYPE,
                     datas;
                 datas = {
                     cntConf : {

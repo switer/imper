@@ -35,14 +35,15 @@ var paintingBoards = {},
             'rotate-x' : {
                         "class" : '', 
                         "datas" : {
-                            'rotate' : 90,
-                            'scale' : 5
+                            'rotate-x' : 90,
+                            'scale' : 5,
+                            'z' : -150
                         }
             },
             'rotate-y' : {
                         "class" : '', 
                         "datas" : {
-                            'rotate-x' : -40,
+                            'rotate-y' : -90,
                             'scale' : 2,
                             'z' : -100
                         }

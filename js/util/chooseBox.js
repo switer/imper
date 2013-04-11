@@ -12,7 +12,7 @@
 
 		closeMenu.className = 'close-menu';
 		board.className = 'panel1 choose-box';
-		$(closeMenu).attr('style', 'top:-10px;right:-10px').on('click', function (e) {sb.hide(board);})
+		$(closeMenu).attr('style', 'top:-10px;right:-10px').on('click', function (e) {sb.hide(board);global._closeCallback && global._closeCallback();})
 		$(board).attr('style', 'left: 90px;top:50px');
 		for (var i = 0; i < scales.length;i ++) {
 			scaleElem = document.createElement('div');
@@ -47,5 +47,8 @@
 	sb.toggle = function (elem) {
 		if ( sb.isHide(elem) ) sb.show(elem);
 		else sb.hide(elem);
+	}
+	sb.onClose = function (callback) {
+		global._closeCallback = callback;
 	}
 }(window)
