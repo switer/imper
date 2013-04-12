@@ -64,10 +64,10 @@ var paintingBoards = {},
         conf = datas.cntConf;
 
     function getSqrt(map) {
-        var len = 0;
-        for(var key in map){
-            if(map.hasOwnProperty(key)) len ++;
-        }
+        var len = getLength(map);
+        // for(var key in map){
+        //     if(map.hasOwnProperty(key)) len ++;
+        // }
         var sqrtNum = Math.sqrt(len);
         if (sqrtNum % 1 > 0) sqrtNum = parseInt(sqrtNum) + 1; 
         console.log(len, sqrtNum);
@@ -83,12 +83,23 @@ var paintingBoards = {},
             }
         }
     }
+    function getLength(map) {
+        var len = 0;
+        for(var key in map){
+            if(map.hasOwnProperty(key)) len ++;
+        }
+        return len;
+    }
     var module = {
         init:function(){
             var sqrtNum = getSqrt(DATA),
                 _sHeight = 0,
                 _sWidth = 0,
-                _maxHeight = 0;
+                _maxHeight = 0,
+                _maxHeightArr = [],
+                _impressWidth = 0,
+                _impressHeight = 0,
+                _dataLength = getLength(DATA);
 
             for(var s in DATA){
                 if(DATA.hasOwnProperty(s)){
@@ -108,21 +119,23 @@ var paintingBoards = {},
                     var curColum = index % sqrtNum;
                         curRow = parseInt(index / sqrtNum);
 
+                    index ++;
 
                     if (curColum === 0) {
+
                         _sWidth = 0;
-                        _maxHeight = ( parseInt(conf.height) * scale  + 100);
-                    }
-                    if (curRow >= 1 && curColum === 0) {
                         _sHeight += _maxHeight;
+                        _maxHeight = 0;
+
+                        // _maxHeight = ( parseInt(conf.height) * scale  + 100);
                     }
+                    
+                    
+
                     if (( parseInt(conf.height) * scale  + 100) > _maxHeight) {
                         _maxHeight = ( parseInt(conf.height) * scale  + 100);
                     }
                     
-
-
-                    // _sHeight = parseInt(index / sqrtNum) * ( parseInt(conf.height)  + 100)
 
                     console.log(animations[anim].datas, scale, _sWidth, _sHeight, _maxHeight)
                     $(slider)
@@ -130,15 +143,22 @@ var paintingBoards = {},
                                 'height' : conf.height,
                                 'width'  : conf.width
                             })
-                            .data('x', _sWidth)
-                            .data('y', _sHeight)
+                            .data('x', _sWidth + parseInt(conf.width) * scale/2)
+                            .data('y', _sHeight + parseInt(conf.height) * scale/2)
                             .addClass('step')
 
                     _sWidth += ( parseInt(conf.width) ) * scale + 100;
 
+                    //in every row's last colum get the with and height
+                    if (curColum === (sqrtNum - 1 ) || index >= _dataLength) {
+                        //impress max  width
+                        if (_sWidth > _impressWidth) _impressWidth = _sWidth;
+                        _impressHeight += _maxHeight;
+                    }
+
                     anim && animations[anim] && setAttr(slider, animations[anim]);
 
-                    index ++;
+                    
                     for (var e in elements) {
                         if(elements.hasOwnProperty(e)){
                             var data = elements[e],elem;
@@ -193,6 +213,10 @@ var paintingBoards = {},
                     impressContainer.appendChild(slider);
                 }
             }
+            console.log('--------------', _impressWidth, _impressHeight)
+            var $overView = $('<div></div>').addClass('step').data('x', _impressWidth / 2).data('y', _impressHeight / 2).data('scale',10);
+            $overView[0].id = 'overview';
+            $(impressContainer).append($overView);
             impress().init();
         },
         //cm需要resize来refresh
