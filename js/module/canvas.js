@@ -2,8 +2,8 @@ Core.registerModule("canvas",function(sb){
     var anim_name = {
         'none'              : '幻灯片',
         "anim-scale":"放大",
-        "anim-ySpin":"上下翻转",
-        "anim-xSpin":"左右翻转",
+        "anim-ySpin":"右翻转",
+        "anim-xSpin":"左翻转",
         "anim-rightRotate":"旋转"
         },
         SCREEN_SIZE_MAP = {

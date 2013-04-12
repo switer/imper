@@ -35,7 +35,7 @@ var paintingBoards = {},
             'rotate-x' : {
                         "class" : '', 
                         "datas" : {
-                            'rotate-x' : -20,
+                            'rotate' : -60,
                             'scale' : 2,
                             'z' : -150
                         }
@@ -43,7 +43,7 @@ var paintingBoards = {},
             'rotate-y' : {
                         "class" : '', 
                         "datas" : {
-                            'rotate-y' : 20,
+                            'rotate' : 60,
                             'scale' : 2,
                             'z' : -100
                         }
@@ -51,7 +51,7 @@ var paintingBoards = {},
             'rotate' : {
                         "class" : '', 
                         "datas" : {
-                            'rotate' : 300,
+                            'rotate' : 180,
                             'scale' : 3,
                             'z' : -200
                         }
