@@ -311,7 +311,8 @@ Core.registerModule("canvas",function(sb){
                 "codeboxSetting" : this.codeboxSetting,
                 "changeCodeType" : this.changeCodeType,
                 "codeboxThemeSetting" : this.codeboxThemeSetting,
-                "autoSaveTimer" : this.autoSaveTimer
+                "autoSaveTimer" : this.autoSaveTimer,
+                "playSlider" :  this.playSlider
             });
             for (i = 0; item =  eomItems[i]; i++) {
                 item.onclick = function(e){
@@ -473,6 +474,29 @@ Core.registerModule("canvas",function(sb){
             window.onbeforeunload = function () {
                 return '要离开正在编辑的内容？'
             }
+            $('#previewContainer').find('.close-menu').on('click', function () {
+                global._playFrame && $(global._playFrame).remove();
+                $('#previewContainer').addClass('dp-none');
+                $('#appContainer').removeClass('dp-none');
+            })
+        },
+        playSlider : function () {
+            global._createSaveData(function (playHtml) {
+                var $previewContainer = $('#previewContainer'),
+                    iframe = document.createElement('iframe'),
+                    $appContainer = $('#appContainer');
+                    iframe.src= 'about:_blank';
+                    iframe.id = 'preview-frame';
+                    $(iframe).on('load', function () {
+                        var doc = iframe.contentWindow.document;
+                        doc.write(playHtml);
+                        iframe.contentWindow.focus();
+                    })
+                    global._playFrame = iframe;
+                    $previewContainer.append(iframe).removeClass('dp-none');
+                    $appContainer.addClass('dp-none');
+
+            })
         },
         autoSaveTimer : function () {
             console.log('setTimer');
