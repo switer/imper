@@ -480,6 +480,7 @@ Core.registerModule("canvas",function(sb){
                 $('#appContainer').removeClass('dp-none');
             })
         },
+        //预览
         playSlider : function () {
             global._createSaveData(function (playHtml) {
                 var $previewContainer = $('#previewContainer'),
@@ -498,6 +499,7 @@ Core.registerModule("canvas",function(sb){
 
             })
         },
+        // 定时保存
         autoSaveTimer : function () {
             console.log('setTimer');
             //一个定时器定时保存文件
