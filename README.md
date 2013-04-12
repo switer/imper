@@ -1,5 +1,9 @@
-slider
-======
+An impress editor
 
-slider-online edit [app page](http://switer.github.com/slider)
+### Imper Editor
 
+[Imper Editor](http://switer.github.io/imper/)
+
+### Live Demo
+
+[Imper Demo](http://switer.github.io/examples/imper.html#/step-1)
