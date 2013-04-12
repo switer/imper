@@ -1515,10 +1515,12 @@ Core.registerModule("canvas",function(sb){
                 else if (key === 'WebkitTransform') {
                     container.style[key] = 'rotate(' + value + 'deg)';
                 }
+
                 if (key === 'fontSize' && elementSet[target].data.tagName === 'CODE') {
                     elementSet[target].file.refresh();
                 }
                 if (key !== 'opacity' && key !== 'WebkitTransform') container.style[key] = value;
+                if (key === 'borderWidth' && !container.style.borderStyle) container.style.borderStyle = 'solid';
             }else{
                 var compatibleAtt = {
                     backgroundColor:true,
