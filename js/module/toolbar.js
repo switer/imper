@@ -55,13 +55,13 @@ Core.registerModule("toolbar",function(sb){
                 document.execCommand("createLink", false, linkValue.value);
                 $('#setlink').css('display ', 'none');
             }, false);
-            link_but.addEventListener("mouseover", function(e){
+            link_but.addEventListener("click", function(e){
                 sb.notify({
                     type:'showLink',
                     data:e
                 });
             }, false);
-            fontColor_but.addEventListener("mouseover", function(e){
+            fontColor_but.addEventListener("click", function(e){
                 sb.notify({
                     type:'showColor',
                     data:{
@@ -70,7 +70,7 @@ Core.registerModule("toolbar",function(sb){
                     }
                 });
             }, false);
-            fontBackground_but.addEventListener("mouseover", function(e){
+            fontBackground_but.addEventListener("click", function(e){
                 sb.notify({
                     type:'showColor',
                     data:{
@@ -79,6 +79,9 @@ Core.registerModule("toolbar",function(sb){
                     }
                 });
             }, false);
+            // $(linkValue).on('mouseover', function () {
+            //     $(this).focus();
+            // })
             // showEcdBut.addEventListener("click", function(e){
             //     sb.notify({
             //         type:'showEcd',

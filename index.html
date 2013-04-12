@@ -142,6 +142,19 @@
                 <div class="execCommand-item font-background" title="改变字体背景颜色">
                     <a href="javascript:;" class="execC-but"></a>
                 </div>
+                <div class="execCommand-item font-formatblock" title="段落">
+                    <select class="execC-but" onchange="if(this.value!=-1) document.execCommand('formatBlock',false,this.value);">
+                        <option value="-1">段落</option>
+                        <option value="h1">标题1</option>
+                        <option value="h2">标题2</option>
+                        <option value="h3">标题3</option>
+                        <option value="h4">标题4</option>
+                        <option value="h5">标题5</option>
+                        <option value="h6">标题6</option>
+                        <option value="p">正文</option>
+                        <option value="pre">pre</option>
+                    </select>
+                </div>
                 <div class="execCommand-item font-italic" title="斜体">
                     <a href="javascript:;" class="execC-but" onclick="document.execCommand('italic',false);"></a>
                 </div>
@@ -275,19 +288,19 @@
                         </div>
                         <div class="setting-right">
                             <div class="setting-title">圆角与线段</div>
-                            <div class="setting-element" data-unit="%" data-factor="1" data-input="range"  data-type="borderTopLeftRadius" data-event="setStyleAttr">
+                            <div class="setting-element" data-unit="px" data-factor="1" data-input="range"  data-type="borderTopLeftRadius" data-event="setStyleAttr">
                                 <label  class="item-name normal">左上圆角</label>
                                 <input type="range"  class="value-input"/>
                             </div>
-                            <div class="setting-element" data-unit="%" data-factor="1" data-input="range" data-type="borderTopRightRadius" data-event="setStyleAttr">
+                            <div class="setting-element" data-unit="px" data-factor="1" data-input="range" data-type="borderTopRightRadius" data-event="setStyleAttr">
                                 <label  class="item-name normal">右上圆角</label>
                                 <input type="range"  class="value-input"/>
                             </div>
-                            <div class="setting-element" data-unit="%" data-factor="1" data-input="range"  data-type="borderBottomLeftRadius" data-event="setStyleAttr">
+                            <div class="setting-element" data-unit="px" data-factor="1" data-input="range"  data-type="borderBottomLeftRadius" data-event="setStyleAttr">
                                 <label  class="item-name normal">左下圆角</label>
                                 <input type="range"  class="value-input"/>
                             </div>
-                            <div class="setting-element" data-unit="%" data-factor="1" data-input="range" data-type="borderBottomRightRadius" data-event="setStyleAttr">
+                            <div class="setting-element" data-unit="px" data-factor="1" data-input="range" data-type="borderBottomRightRadius" data-event="setStyleAttr">
                                 <label  class="item-name normal">右下圆角</label>
                                 <input type="range"  class="value-input"/>
                             </div>
