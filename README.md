@@ -1,7 +1,7 @@
 imper
 =====
 
-An impress editor
+An impress slider editor
 
 ### Imper Editor
 
