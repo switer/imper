@@ -9,4 +9,6 @@ An impress slider editor with GUI for creating impress.js slider
 
 ### Live Demo
 
-[Imper impress Demo](http://switer.github.io/examples/imper.html#/step-1)  [Imper google html5 slides Demo](http://switer.github.io/examples/html5slides.htm)
+[Imper impress Demo](http://switer.github.io/examples/imper.html#/step-1) 
+
+[Imper google html5 slides Demo](http://switer.github.io/examples/html5slides.htm)
