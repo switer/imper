@@ -1,7 +1,7 @@
 imper
 =====
 
-An impress slider editor with GUI for creating impress.js slider
+An impress slider editor with GUI website for creating impress.js slider
 
 ### Imper Editor
 
