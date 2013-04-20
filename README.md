@@ -1,7 +1,8 @@
 imper
 =====
 
-An impress slider editor with GUI website for creating impress.js slider
+An impress presentation/slider editor website for creating impress.js slider 
+(impress.js is inspired by the idea behind prezi.com)
 
 ### Imper Editor
 
