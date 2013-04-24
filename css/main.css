@@ -117,6 +117,8 @@ input{
 .w-auto {width: auto;}
 .on {box-shadow: inset 0 0 10px 2px cornflowerblue!important;}
 .op-full {opacity: 1;}
+.flb-box {display: -webkit-box;}
+.flb-p1 {-webkit-flex:1;}
 /*.cursor-mb{cursor: url(../img/paintingboard/maobi.png), auto;}
 .cursor-init{cursor: initial;}
 .cursor-er{cursor: url(../img/paintingboard/eraser.png), auto;}*/

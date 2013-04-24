@@ -33,7 +33,7 @@
 .frame-panel {background-size: 99.99% 100%;background-position:center;}
 #frame-list{
     position: relative;
-    width: 880px;
+    width: auto;
     margin: auto;
     margin-bottom: 25px;
     display: -webkit-box;
