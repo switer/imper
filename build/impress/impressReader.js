@@ -219,8 +219,15 @@ var paintingBoards = {},
                     impressContainer.appendChild(slider);
                 }
             }
-            console.log('--------------', _impressWidth, _impressHeight)
-            var $overView = $('<div></div>').addClass('step').data('x', _impressWidth / 2).data('y', _impressHeight / 2).data('scale',10);
+            var DEFAULT_SCALE = 5,
+                scaling = DEFAULT_SCALE,
+                wScaling = _impressWidth / document.width,
+                hScaling = _impressHeight / document.height;
+
+            scaling = wScaling >= hScaling ? wScaling : hScaling;
+            scaling = scaling > DEFAULT_SCALE ? scaling : DEFAULT_SCALE;
+            console.log('scaling', scaling);
+            var $overView = $('<div></div>').addClass('step').data('x', _impressWidth / 2).data('y', _impressHeight / 2).data('scale', scaling);
             $overView[0].id = 'overview';
             $(impressContainer).append($overView);
             impress().init();

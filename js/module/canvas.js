@@ -918,7 +918,9 @@ Core.registerModule("canvas",function(sb){
                 switch (slideType) {
                     case 'impress' :
                     
-                    combHTML =  header + dataHtml +
+                    combHTML =  header + 
+                                styleBegin + animation + styleEnd +
+                                dataHtml +
                                 styleBegin + impressCSS + styleEnd +
                                 scriptBegin + impressJS + scriptEnd +
                                 scriptBegin + zepto + scriptEnd +
