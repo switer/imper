@@ -8,9 +8,9 @@
     /*background-image: url(../img/wood.jpg);*/
     /*border-top-left-radius: 20px;*/
     /*border-top-right-radius: 20px;*/
-    border-top: 1px solid black;
+    /*border-top: 1px solid black;*/
     padding-top: 10px;
-    background: rgba(0,0,0,0.1);
+    /*background: url(../img/bg-pattern.png);*/
 }
 .frame{
     position: relative;
@@ -33,8 +33,8 @@
 .frame-panel {background-size: 99.99% 100%;background-position:center;}
 #frame-list{
     position: relative;
-    width: 880px;
-    margin: auto;
+    width: auto;
+    /*margin: auto;*/
     margin-bottom: 25px;
     display: -webkit-box;
 

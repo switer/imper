@@ -42,10 +42,15 @@
                                     elem.style.zIndex = data.zIndex;
                                 }
                                 else if(data.type=="IMG"){
-                                    elem = new Image();
-                                    elem.src = data.value;
+                                    var panel = document.createElement('div');
+                                    var img = new Image();
+                                    elem = document.createElement('div');
+                                    panel.setAttribute('style', data.pAttr);
                                     elem.setAttribute("style", data.cAttr);
                                     elem.style.zIndex = data.zIndex;
+                                    img.src = data.value;
+                                    img.setAttribute("style", data.eAttr);
+                                    $(elem).append(panel).append(img);
                                 }
                                 else if (data.type==="VIDEO") {
                                     elem = document.createElement("video");

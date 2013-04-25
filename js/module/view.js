@@ -129,7 +129,7 @@ Core.registerModule("view",function(sb){
             // });
         },
         refleshFrameListMargin : function (value) {
-            $("#frame-list").css('margin-top', MAGIN_TOP_MAP[value])
+            // $("#frame-list").css('margin-top', MAGIN_TOP_MAP[value])
         },
         //更新每个窗口
         refleshFrameViewSize : function () {
@@ -582,10 +582,10 @@ Core.registerModule("view",function(sb){
             sb.find(".frame-panel",frames[currentFrame]).style[att.key] = att.value;
         },
         enterEditorMode:function(){
-            sb.container.style.display = "block";
+            $(sb.container).removeClass('dp-none');
         },
         enterPreviewMode:function(){
-            sb.container.style.display = "none";
+            $(sb.container).addClass('dp-none');
         }
     };
 });
