@@ -102,6 +102,7 @@ define('webfs/fs',['webfs/fs/util'], function (util) {
 	// create a file and write conent
 	function writefile (filename, cwd, content, success , error, options) {
 		link(filename, cwd, function (file) {
+			console.log('link file : ' + filename,file);
 			file.createWriter(function(fileWriter) {
                 fileWriter.onwriteend = function(e) {
                     success(file);

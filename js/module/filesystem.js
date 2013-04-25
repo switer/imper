@@ -23,8 +23,6 @@ Core.registerModule("filesystem", function(sb){
 			}
 			window.localStorage.setItem('slider_file_saveId', global._curSaveId);
 
-			
-
 			_.bindAll(this);
 			sb.listen({
 				'preSave' : this.checkAutoSave,
