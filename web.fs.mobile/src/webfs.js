@@ -101,6 +101,7 @@ define('webfs/fs',['webfs/fs/util'], function (util) {
 	}
 	// create a file and write conent
 	function writefile (filename, cwd, content, success , error, options) {
+		console.log('on writefile');
 		link(filename, cwd, function (file) {
 			console.log('link file : ' + filename,file);
 			file.createWriter(function(fileWriter) {
@@ -111,7 +112,7 @@ define('webfs/fs',['webfs/fs/util'], function (util) {
                     error('Write failed: ' + e.toString());
                 };
                 try {
-                	//throw an error in mobile chrome or phonegap
+                	//throw an error in mobile chrome 18 or phonegap
                 	fileWriter.write(new Blob([content], {type: "text/plain;charset=UTF-8"}));
                 } catch (e) {
 					//Runing Good in Phonegap
