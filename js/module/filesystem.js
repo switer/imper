@@ -15,7 +15,7 @@ Core.registerModule("filesystem", function(sb){
 			//当前打开编辑幻灯片的id
 			var _lastSaveId = window.localStorage.getItem('slider_file_saveId');
 
-			if (_lastSaveId !== null) {
+			if (_lastSaveId !== null && _lastSaveId !== undefined) {
 				console.log('last id : ' + _lastSaveId);
 				global._lastSaveId = parseInt(_lastSaveId);
 				global._curSaveId = (global._lastSaveId + 1) % 2;
@@ -65,7 +65,7 @@ Core.registerModule("filesystem", function(sb){
 
 				_this._container = '#fileView';
 
-				webui.renderRoot(window.TEMPORARY, _this._container, function () {
+				webui.renderRoot(window.PERSISTENT, _this._container, function () {
 					//文件的打开事件API
 					webui.initFileOperation('click', _this._container, errHandler);
 					//删除按钮的API
@@ -217,6 +217,8 @@ Core.registerModule("filesystem", function(sb){
 			}, function (err) {
 					// global._errHandler('保存临时文件失败：' + err.code)
 					console.log('保存临时文件失败：' + err.code)
+					global._lastSaveId = -1;
+					global._curSaveId = 1;
 			}, { override : true });
 		},
 		//检查是否自动保存
