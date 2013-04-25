@@ -129,7 +129,7 @@ Core.registerModule("view",function(sb){
             // });
         },
         refleshFrameListMargin : function (value) {
-            $("#frame-list").css('margin-top', MAGIN_TOP_MAP[value])
+            // $("#frame-list").css('margin-top', MAGIN_TOP_MAP[value])
         },
         //更新每个窗口
         refleshFrameViewSize : function () {
