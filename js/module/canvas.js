@@ -1658,6 +1658,7 @@ Core.registerModule("canvas",function(sb){
                     value   : value,
                     attr    : container.getAttribute("style"),
                     elemAttr: data.getAttribute("style"),
+                    pAttr   : data.tagName === 'IMG' ? $(container).find('.element-panel').attr("style") : ''
                 };
                 if ( data.tagName === 'CODE' ) {
                     copyParams.value = pasteElem.file.getDoc().getValue();
