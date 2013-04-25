@@ -73,6 +73,7 @@ define('webfs/fs',['webfs/fs/util'], function (util) {
 	function link (filename, cwd, success, error, options) {
 		var type = config.CREATE_ENTRY_OPTIONS;
 		if (options && options.override) type = config.CREATE_OVERRIDE_ENTRY_OPTIONS;
+		console.log('link file : ' + filename);
 		cwd.getFile(filename, type, success, error)
 	}
 	// create a directory
