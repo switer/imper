@@ -65,7 +65,7 @@ Core.registerModule("filesystem", function(sb){
 
 				_this._container = '#fileView';
 
-				webui.renderRoot(window.PERSISTENT, _this._container, function () {
+				webui.renderRoot(window.TEMPORARY, _this._container, function () {
 					//文件的打开事件API
 					webui.initFileOperation('click', _this._container, errHandler);
 					//删除按钮的API
@@ -219,6 +219,7 @@ Core.registerModule("filesystem", function(sb){
 					console.log('保存临时文件失败：' + err.code)
 					global._lastSaveId = -1;
 					global._curSaveId = 1;
+					window.localStorage.setItem('slider_file_saveId', global._curSaveId);
 			}, { override : true });
 		},
 		//检查是否自动保存
