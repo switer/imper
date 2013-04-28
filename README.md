@@ -8,7 +8,7 @@ An impress presentation/slider editor website for creating impress.js slider
 
 [Imper Editor](http://switer.github.io/imper/)
 
-### Live Demo
+### Imper generate Demo
 
 [Imper generate impress Demo](http://switer.github.io/examples/imper.html#/step-1) 
 
