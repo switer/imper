@@ -23,15 +23,15 @@ An impress presentation/slider editor website for creating impress.js slider
 		"width"  : "960px",
 		"thumb"  : ""
 	},
-        //frame data set
+	//frame data set
 	"cntData" : {
-                //frame data
+		//frame data
 		"slider1" : {
 			"anim"			: "",
 			"panelAttr" 	: "",
-                        //frame elements data set
+			//frame elements data set
 			"element"   		: {
-                                //frame element data
+				//frame element data
 				"data1":{
 					"type"		: "DIV",
 					"cAttr"		: "",
@@ -44,7 +44,7 @@ An impress presentation/slider editor website for creating impress.js slider
 				}
 			}
 		},
-                //frame data
+		//frame data
 		"slider2" : {
 			//...
 		}
