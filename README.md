@@ -10,9 +10,9 @@ An impress presentation/slider editor website for creating impress.js slider
 
 ### Live Demo
 
-[Imper impress Demo](http://switer.github.io/examples/imper.html#/step-1) 
+[Imper generate impress Demo](http://switer.github.io/examples/imper.html#/step-1) 
 
-[Imper google html5 slides Demo](http://switer.github.io/examples/html5slides.html)
+[Imper generate google html5 slides Demo](http://switer.github.io/examples/html5slides.html)
 
 ### Imper Data Format
 ```javascript
