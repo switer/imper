@@ -14,7 +14,7 @@ An impress presentation/slider editor website for creating impress.js slider
 
 [Imper google html5 slides Demo](http://switer.github.io/examples/html5slides.html)
 
-### Imper Data
+### Imper Data Format
 ```javascript
 {
   //globla config data
