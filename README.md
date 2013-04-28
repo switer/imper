@@ -6,7 +6,7 @@ An impress presentation/slider editor website for creating impress.js slider
 
 ### Imper Editor
 
-[Imper Editor](http://switer.github.io/imper/)
+[Imper editor website](http://switer.github.io/imper/)
 
 ### Imper Generation
 
