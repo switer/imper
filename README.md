@@ -17,21 +17,21 @@ An impress presentation/slider editor website for creating impress.js slider
 ### Imper Data
 ```javascript
 {
-　　//globla config data
+  //globla config data
   "cntConf" : {
 		"height" : "600px",
 		"width"  : "960px",
 		"thumb"  : ""
 	},
-　　//frame data set
+        //frame data set
 	"cntData" : {
-　　//frame data
+                //frame data
 		"slider1" : {
 			"anim"			: "",
 			"panelAttr" 	: "",
-　　  //frame elements data set
+                        //frame elements data set
 			"element"   		: {
-　　   //frame element data
+                                //frame element data
 				"data1":{
 					"type"		: "DIV",
 					"cAttr"		: "",
@@ -40,11 +40,11 @@ An impress presentation/slider editor website for creating impress.js slider
 					"value"		: "text content text!"
 				},
 　　"data1":{
-　　//...
+        //...
 　　}
 			}
 		},
-　　//frame data
+                //frame data
 		"slider2" : {
 			//...
 		}
