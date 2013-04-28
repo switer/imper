@@ -39,9 +39,9 @@ An impress presentation/slider editor website for creating impress.js slider
 					"zIndex"	: 1,
 					"value"		: "text content text!"
 				},
-　　"data1":{
-        //...
-　　}
+				"data1":{
+				        //...
+				}
 			}
 		},
                 //frame data
