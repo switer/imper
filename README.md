@@ -19,7 +19,7 @@ An impress presentation/slider editor website for creating impress.js slider
 {
   //globla config data
   "cntConf" : {
-		"height" : "600px",
+  	"height" : "600px",
 		"width"  : "960px",
 		"thumb"  : ""
 	},
@@ -27,17 +27,18 @@ An impress presentation/slider editor website for creating impress.js slider
 	"cntData" : {
 		//frame data
 		"slider1" : {
-			"anim"			: "",
-			"panelAttr" 	: "",
+			"anim"			: "", // frame transition animation
+			"panelAttr" 	: "", // frame panel style attr
 			//frame elements data set
 			"element"   		: {
 				//frame element data
 				"data1":{
-					"type"		: "DIV",
-					"cAttr"		: "",
-					"eAttr"		: "",
-					"zIndex"	: 1,
-					"value"		: "text content text!"
+					"type"		: "DIV", // element type
+					"cAttr"		: "", // element container style attr 
+					"eAttr"		: "", // element style attr
+          "pAttr"   : "", // element panel style attr
+					"zIndex"	: 1, //z-index
+					"value"		: "text content text!" //[text box || code box :  text string, image || video : data url] 
 				},
 				"data2":{
 				        //...
