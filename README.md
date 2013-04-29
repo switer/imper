@@ -54,4 +54,8 @@ An impress presentation/slider editor website for creating impress.js slider
 
 ### TODO List
 
-1.English Version
+*  English Version
+*  Support multiple element selections while editing
+*  Slider frame opertation(copy,paste,change position) 
+*  
+
