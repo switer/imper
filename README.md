@@ -58,4 +58,5 @@ An impress presentation/slider editor website for creating impress.js slider
 *  English Version
 *  Support multiple element selections while editing
 *  Slider frame opertation(copy,paste,change position) 
+*  touchable
 
