@@ -1,11 +1,14 @@
 Core.registerModule("canvas",function(sb){
+    var languages = localConfig.languages;
+        curLanguage = window.navigator.language.toLocaleLowerCase().match(/zh/) ? languages['zh'] : languages['en'];
     var anim_name = {
-        'none'              : '幻灯片',
-        "anim-scale":"放大",
-        "anim-ySpin":"右翻转",
-        "anim-xSpin":"左翻转",
-        "anim-rightRotate":"旋转"
+            'none'      : curLanguage.anim_slider,
+            "anim-scale":curLanguage.anim_sliderZoom,
+            "anim-ySpin":curLanguage.anim_rotateLeft,
+            "anim-xSpin":curLanguage.anim_rotateRight,
+            "anim-rightRotate":curLanguage.anim_reverse
         },
+        ANIMATION_LABEL  = curLanguage.anim_label,
         SCREEN_SIZE_MAP = {
             '16:9'  : {x:960,y:540},
             '8:5' : {x:960,y:600},
@@ -22,7 +25,6 @@ Core.registerModule("canvas",function(sb){
 
     var editor = null,newContainerFunc=null,data_number=0,item,viewY = 80,header=20,isEditor = false,
     sliders = new sb.ObjectLink(),currentSlider = null,slider_count = 0,slider_number = 0,
-    // editorElem = null,
     createSliderFunc=null,addSliderElementFunc = null,addSliderObjectFunc = null,moveInter = -1,curKeycode = -1,
     SliderDataSet=new sb.ObjectLink(),zIndex_Number = 0,elementSet = new sb.ObjectLink(),editorContainer,
     eom=null,easm = null,eomTout=-1,target = null,elementOpertateFunc = null,cancelElementOperateMenuFunc =null,
@@ -204,17 +206,24 @@ Core.registerModule("canvas",function(sb){
             currentSlider = currentSlider || this.createSlider("append").id;
             editor = sliders[currentSlider];
             
-            showAnim = document.createElement("div");
-            var $slideType = $(document.createElement("div"));
+            var showAnim = document.createElement("div"),
+                showAnimContainer = document.createElement('div'),
+                label = document.createElement('div'),
+                $slideType = $(document.createElement("div"));
 
-            $(showAnim).addClass("showAnim").addClass("blue-block").html(anim_name[$(editor).data("anim")])
-            .css({
-                width       : "120px",
+            $(showAnimContainer).append(label).append(showAnim).css({
+                position : 'absolute',
                 zIndex      : "2",
                 left        : "-125px",
                 top         : "0px"
             })
+            $(label).addClass('showAnim-label').html(ANIMATION_LABEL);
+            $(showAnim).addClass("showAnim").addClass("blue-block").addClass('animation-setting')
+            .html(anim_name[$(editor).data("anim")])
             .attr('title', '幻灯片的过渡动画/左键点击修改')
+            .css({
+                width       : "120px"
+            })
             // 
             var sliderTypeChoosebox = window.ChooseBox.create([
                     {key : 'impress',      value : 'impress'},
@@ -232,11 +241,12 @@ Core.registerModule("canvas",function(sb){
             global._slideType = DEFAULT_SLIDE_TYPE;
             $slideType.addClass("slideType").addClass("blue-block").html(DEFAULT_SLIDE_TYPE)
             .css({
+                position : 'absolute',
                 backgroundColor : '#CCC',
                 width       : "120px",
                 zIndex      : "2",
                 left        : "-125px",
-                top         : "50px"
+                top         : "110px"
             })
             .attr('title', '幻灯片的播放类型/左键点击修改')
             .on('click', function (e) {
@@ -254,10 +264,10 @@ Core.registerModule("canvas",function(sb){
     
             });
 
-            sb.move(showAnim, showAnim, {top : true});
+            sb.move(showAnimContainer, showAnimContainer, {top : true});
             sb.move($slideType[0], $slideType[0], {top : true});
 
-            $(editorContainer).append(showAnim).append($slideType);
+            $(editorContainer).append(showAnimContainer).append($slideType);
             sb.bind(window, "keydown",this.keyOperate);
             window.addEventListener("resize", function(){
                 sb.notify({
@@ -1744,7 +1754,7 @@ Core.registerModule("canvas",function(sb){
             });
         },
         changeShowAnim:function(anim){
-            showAnim.innerHTML = anim_name[anim];
+            $('.animation-setting').html(anim_name[anim]);
         },
         setSelect : function (elemID) {
 

@@ -24,6 +24,7 @@
         <script type="text/javascript" src="js/lib/codemirror/cm.theme.js"></script>
         <script type="text/javascript" src="js/lib/bowser/bowser.js"></script>
         <script type="text/javascript" src="js/lib/paintBoard/drawJS.js"></script>
+        <script type="text/javascript" src="js/common/config.js"></script>
         <script type="text/javascript" src="js/util/json.js"></script>
         <script type="text/javascript" src="js/util/colorboard.js"></script>
         <script type="text/javascript" src="js/util/screenboard.js"></script>
@@ -419,27 +420,27 @@
                 <div id='customShape' class='shape-icon' data-type='custom'  data-title="插入自定义图形"></div>
             </div>
             <div id="toolbar" class="transition-l allow">
-                <div id="tool-buttons"  data-intro='功能工具栏' data-step='3' data-position='right'>
-                    <div id="tool-enterPreviewMode" class="tool-app" data-title="保存" data-intro='保存' data-step='5'></div>
+                <div id="tool-buttons">
+                    <div id="tool-enterPreviewMode" class="tool-app" data-title="toolBar_save"></div>
                     <!--<div id="tool-addslider" class="tool-app" data-title="添加新的幻灯片" data-intro='添加新的幻灯片' data-step='6'></div>-->
-                    <div id="tool-import" class="tool-app" data-title="导入幻灯片文件" data-intro='导入幻灯片' data-step='14'>
+                    <div id="tool-import" class="tool-app" data-title="toolBar_import" >
                         <input type="file" id="importInp"/>
                     </div>
-                    <div id="tool-openFileSystem" class="tool-app " data-title="打开保存文件保存目录" data-intro='打开保存文件保存目录' data-step='7'></div>
-                    <div id="tool-play" class="tool-app" data-title="预览"></div>
-                    <div id="tool-addAnimation" class="tool-app ondetail" data-title="更改幻灯片过渡动画" data-intro='更改幻灯片过渡动画' data-step='8'></div>
-                    <div id="tool-addVideo" class="tool-app" data-title="添加视频(暂时只支持Mmp4格式)" data-intro='添加视频' data-step='9'>
+                    <div id="tool-openFileSystem" class="tool-app " data-title="toolBar_openFileSystem"></div>
+                    <div id="tool-play" class="tool-app" data-title="toolBar_preview"></div>
+                    <div id="tool-addAnimation" class="tool-app ondetail" data-title="toolBar_setAnimation" ></div>
+                    <div id="tool-addVideo" class="tool-app" data-title="toolBar_addVideo">
                         <input type="file" id="addVideoInp"/>
                     </div>
-                    <div id="tool-addimage" class="tool-app" data-title="插入一张图片" data-intro='添加一张图片' data-step='10'>
+                    <div id="tool-addimage" class="tool-app" data-title="toolBar_addImage">
                         <input type="file" id="addImageInp"/>
                     </div>
-                    <div id="tool-addtext" class="tool-app" data-title="插入文本输入框" data-intro='添加文本输入框' data-step='11'></div>
-                    <div id="tool-addCode" class="tool-app" data-title="插入代码编辑框" data-intro='添加代码编辑框' data-step='12'></div>
+                    <div id="tool-addtext" class="tool-app" data-title="toolBar_addText"></div>
+                    <div id="tool-addCode" class="tool-app" data-title="toolBar_addCode"></div>
                     <!--
                     <div id="tool-insertSlider" class="tool-app" data-title="往当前位置插入新的幻灯片" data-intro='往当前位置插入新的幻灯片' data-step='15'></div>
                     -->
-                    <div id="tool-screen" class="tool-app" data-title="更改幻灯片分辨率比例" data-intro='更改幻灯片比例' data-step='13'></div>
+                    <div id="tool-screen" class="tool-app" data-title="toolBar_changeScale"></div>
                     <!--<div class="tool-app show_execCommandDetail" data-title="打开文本编辑工具" data-intro='打开文本编辑工具' data-step='12'></div>-->
                     
                     <!--
