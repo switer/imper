@@ -1,6 +1,7 @@
 var localConfig = {
 	languages : {
 		"zh" : {
+			//tool bar
 			toolBar_save 			: "保存",
 			toolBar_import 			: "导入幻灯片文件",
 			toolBar_openFileSystem 	: "打开保存文件保存目录",
@@ -10,14 +11,55 @@ var localConfig = {
 			toolBar_addImage 		: "插入一张图片",
 			toolBar_addText 		: "插入文本输入框",
 			toolBar_addCode 		: "插入代码编辑框",
+			toolBar_changeScale		: "更改幻灯片分辨率比例",
+			//animation
 			anim_slider 			: "幻灯片",
-			anim_sliderZoom 		: "方法幻灯片",
+			anim_sliderZoom 		: "放大幻灯片",
 			anim_rotateLeft 		: "向左旋转",
 			anim_rotateRight 		: "向右旋转",
 			anim_reverse 			: "垂直翻转",
-			anim_label				: "过渡动画"
+			anim_label				: "过渡动画",
+			// shape bar
+			shape_triangle : "插入三角形",
+			shape_circular : "插入圆形",
+			shape_rectangle : "插入矩形",
+			shape_heart : "插入心形",
+			shape_star : "插入星形",
+			shape_message : "插入消息框图形",
+			shape_moon : "插入月牙形",
+			shape_polygon : "插入多角形",
+			shape_doodle : "插入自定义图形",
+			//canvas menu
+			canvasMenu_delete : "删除",
+			canvasMenu_copy : "复制",
+			canvasMenu_cut : "剪切",
+			canvasMenu_paste : "粘贴",
+			canvasMenu_layerForward : '上移一层',
+			canvasMenu_layerBackward : '下移一层',
+			canvasMenu_layerFont : '置顶',
+			canvasMenu_layerBack : '置底',
+			canvasMenu_background : '背景',
+			canvasMenu_settings : '属性',
+			viewMenu_create : '新建',
+			viewMenu_insert : '插入',
+			viewMenu_delete : '删除',
+			settings_background : "背景设置",
+			settings_border : "边框设置",
+			settings_shadow : "内阴影",
+			settings_transform : "变换",
+			settings_title_bgColor : '背景色',
+			settings_item_red : '红',
+			settings_item_green : '绿',
+			settings_item_blue : '蓝',
+			settings_title_bgAttribute : '背景属性',
+			settings_item_bgColor : '背景色',
+			settings_item_opacity : '透明度',
+			settings_item_fontSize : '字体大小',
+			//buttons
+			btn_close : '关闭'
 		},
 		'en' : {
+			//tool bar
 			toolBar_save 			: "save file",
 			toolBar_import 			: "import file",
 			toolBar_openFileSystem 	: "open storage filesystem",
@@ -28,12 +70,51 @@ var localConfig = {
 			toolBar_addText 		: "add a text-box element",
 			toolBar_addCode 		: "add a high-light editor element",
 			toolBar_changeScale 	: "change current presentation screen size",
+			// animation
 			anim_slider 			: "slider",
 			anim_sliderZoom 		: "slider zoom",
 			anim_rotateLeft 		: "rotate left",
 			anim_rotateRight 		: "rotate right",
 			anim_reverse 			: "reverse",
-			anim_label				: "transition"
+			anim_label				: "transition",
+			// shape bar
+			shape_triangle : "insert triangle shape",
+			shape_circular : "insert circular shape",
+			shape_rectangle : "insert rectangle shape",
+			shape_heart : "insert heart shape",
+			shape_star : "insert star shape",
+			shape_message : "insert message shape",
+			shape_moon : "insert moon shape",
+			shape_polygon : "insert polygon shape",
+			shape_doodle : "insert custom doodle",
+			//canvas menu
+			canvasMenu_delete : "Delete",
+			canvasMenu_copy : "Copy",
+			canvasMenu_cut : "Cut",
+			canvasMenu_paste : "Paste",
+			canvasMenu_layerForward : 'Layer forward',
+			canvasMenu_layerBackward : 'Layer backward',
+			canvasMenu_layerFont : 'Layer to font',
+			canvasMenu_layerBack : 'Layer to back',
+			canvasMenu_background : 'background',
+			canvasMenu_settings : 'settings',
+			viewMenu_create : 'create',
+			viewMenu_insert : 'insert',
+			viewMenu_delete : 'delete',
+			settings_background : "Background",
+			settings_border : "Border",
+			settings_shadow : "Shadow",
+			settings_transform : "Transform",
+			settings_title_bgColor : 'Background Color',
+			settings_item_red : 'Red',
+			settings_item_green : 'Green',
+			settings_item_blue : 'Blue',
+			settings_title_bgAttribute : 'Background Attributes',
+			settings_item_bgColor : 'Enable Background Color',
+			settings_item_opacity : 'Opacity',
+			settings_item_fontSize : 'Font Size',
+			//buttons
+			btn_close : 'close'
 		}
 	}
 }

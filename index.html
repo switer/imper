@@ -45,7 +45,7 @@
     </head>
     <body >
         <div id='previewContainer' class='panel1 dp-none op-full'>
-            <div class='close-menu' title='关闭预览'></div>
+            <div class='close-menu' data-title='btn_close'></div>
         </div>
         <div id='appContainer'>
             <div id="filesystem" class="sui-disp-none">
@@ -112,7 +112,7 @@
             <div class="colorSelector"></div>
             <div class="colorSelector" id="colorSelector"></div>
             <div id="execCommand-detail" class="panel1">
-                <div class="close-menu" data-title="关闭"></div>
+                <div class="close-menu" data-title="btn_close"></div>
                 <div class="execCommand-item font-family">
                     <select class="execC-but" onchange="if(this.value!=-1) document.execCommand('fontName',false,this.value);">
                         <option value="-1">选择字体</option>
@@ -214,32 +214,32 @@
                 <div id="code"></div>
             </div>
             <div id="canvas">
-                <div class="container" data-intro='编辑框' data-step='1' data-position='left'></div>
+                <div class="container"></div>
                 <div id="element-attrSetting-menu" class="panel1">
                     <div class="move"></div>
                     <div class="setting-menu-head">
-                        <div class="bgsetting-but setting-tag text-focus">背景设置</div>
-                        <div class="bordersetting-but setting-tag">边框设置</div>
-                        <div class="boxshadowsetting-but setting-tag">内阴影</div>
-                        <div class="transformsetting-but setting-tag">变换</div>
+                        <div data-lang="settings_background" class="bgsetting-but setting-tag text-focus">背景设置</div>
+                        <div data-lang="settings_border" class="bordersetting-but setting-tag">边框设置</div>
+                        <div data-lang="settings_shadow" class="boxshadowsetting-but setting-tag">内阴影</div>
+                        <div data-lang="settings_transform" class="transformsetting-but setting-tag">变换</div>
                     </div>
-                    <div class="close-menu" data-title="关闭"></div>
+                    <div class="close-menu" data-title="btn_close"></div>
                     <div class="bgsetting attr-setting-panel" >
                         <div class="setting-left">
-                            <div class="setting-title">背景色</div>
+                            <div class="setting-title" data-lang="settings_title_bgColor">背景色</div>
                             <div class="rgbcolor"  data-check="true" data-type="backgroundColor" data-event="setStyleAttr">
                                 <div class="red-setting">
-                                    <label  class="item-name">红</label>
+                                    <label  class="item-name" data-lang="settings_item_red">红</label>
                                     <input type="range" class="value-input" />
                                     <div class="preview"></div>
                                 </div>
                                 <div class="green-setting">
-                                    <label class="item-name">绿</label>
+                                    <label class="item-name" data-lang="settings_item_green">绿</label>
                                     <input type="range" class="value-input"/>
                                     <div class="preview"></div>
                                 </div>
                                 <div class="blue-setting">
-                                    <div  class="item-name">蓝</div>
+                                    <div  class="item-name" data-lang="settings_item_blue">蓝</div>
                                     <input type="range" class="value-input"/>
                                     <div class="preview"></div>
                                 </div> 
@@ -247,17 +247,17 @@
                             </div>
                         </div>
                         <div class="setting-right">
-                            <div class="setting-title">背景属性</div>
+                            <div class="setting-title" data-lang="settings_title_bgAttribute">背景属性</div>
                             <div class="setting-element for-backgroundColor" data-input="checkbox" data-event="setStyleAttr" data-type="backgroundColor" data-param="transparent">
-                                <label  class="item-name long">背景色</label>
+                                <label  class="item-name long" data-lang="settings_item_bgColor">背景色</label>
                                 <input type="checkbox" class="short value-input"/>
                             </div>
                             <div class="setting-element" data-unit="" data-factor="100"  data-check="true" data-input="range" data-type="opacity" data-event="setStyleAttr">
-                                <label  class="item-name normal">透明度</label>
+                                <label  class="item-name normal" data-lang="settings_item_opacity">透明度</label>
                                 <input type="range"  class="value-input"/>
                             </div>
                             <div class="setting-element" data-unit="px" data-factor="1"  data-check="true" data-input="range" data-type="fontSize" data-event="setStyleAttr">
-                                <label  class="item-name normal">字体大小</label>
+                                <label  class="item-name normal" data-lang="settings_item_fontSize">字体大小</label>
                                 <input type="range"  class="value-input"/>
                             </div>
                         </div>
@@ -382,18 +382,18 @@
                     </div>
                 </div>
                 <div id="element-operate-menu" class="panel1">
-                    <div class="close-menu" data-title="关闭"></div>
+                    <div class="close-menu" data-title="btn_close"></div>
                     <div class="elem-operation">
-                        <div id="elem-delete" class="elem-item elem-setting-item" data-event="deleteElement" data-title="删除该元素">删除</div>
-                        <div id="elem-copy" class="elem-item elem-setting-item" data-event="copyElement" data-title="复制该元素">复制</div>
-                        <div id="elem-copy" class="elem-item elem-setting-item" data-event="cutElement" data-title="剪切该元素">剪切</div>
-                        <div id="elem-paste" class="elem-item paste-menu-item" data-event="pasteElement" data-title="粘贴当前幻灯片">粘贴</div>
+                        <div id="elem-delete" class="elem-item elem-setting-item" data-event="deleteElement" data-title="canvasMenu_delete" data-lang='canvasMenu_delete'>删除</div>
+                        <div id="elem-copy" class="elem-item elem-setting-item" data-event="copyElement" data-title="canvasMenu_copy" data-lang='canvasMenu_copy'>复制</div>
+                        <div id="elem-copy" class="elem-item elem-setting-item" data-event="cutElement" data-title="canvasMenu_cut" data-lang='canvasMenu_cut'>剪切</div>
+                        <div id="elem-paste" class="elem-item paste-menu-item" data-event="pasteElement" data-title="canvasMenu_paste" data-lang='canvasMenu_paste'>粘贴</div>
                     </div>
                     <div class="elem-operation zIndex-setting-item">
-                        <div id="elem-zIndex-upward" class="elem-item" data-event="moveUpward" data-title="往上移动一层">上移一层</div>
-                        <div id="elem-zIndex-downward" class="elem-item" data-event="moveDownward" data-title="往下移动一层">下移一层</div>
-                        <div id="elem-zIndex-toTop" class="elem-item" data-event="moveToTop" data-title="置于最顶层">置顶</div>
-                        <div id="elem-zIndex-toBottom" class="elem-item" data-event="moveToBottom" data-title="置于最底层">置底</div>
+                        <div id="elem-zIndex-upward" class="elem-item" data-event="moveUpward" data-title="canvasMenu_layerForward" data-lang="canvasMenu_layerForward">上移一层</div>
+                        <div id="elem-zIndex-downward" class="elem-item" data-event="moveDownward" data-title="canvasMenu_layerBackward" data-lang="canvasMenu_layerBackward">下移一层</div>
+                        <div id="elem-zIndex-toTop" class="elem-item" data-event="moveToTop" data-title="canvasMenu_layerFont" data-lang="canvasMenu_layerFont">置顶</div>
+                        <div id="elem-zIndex-toBottom" class="elem-item" data-event="moveToBottom" data-title="canvasMenu_layerBack" data-lang="canvasMenu_layerBack">置底</div>
                     </div>
                     <div class="elem-operation dp-none textedit-setting-item menu-detect-item">
                         <div id="show_execCommandDetail" class="elem-item" data-event="showEcd" data-title="打开文本编辑工具栏">工具栏</div>
@@ -403,21 +403,21 @@
                         <div class="elem-item" data-event="codeboxThemeSetting" data-title="编辑框主题">主题</div>
                     </div>
                     <div class="elem-operation">
-                        <div  class="elem-item" data-event="backgroundSetting" data-title="设置背景">背景</div>
-                        <div class="elem-item" data-event="elemAttrSetting" data-title="属性设置">属性</div>
+                        <div  class="elem-item" data-event="backgroundSetting" data-title="canvasMenu_background" data-lang="canvasMenu_background">背景</div>
+                        <div class="elem-item" data-event="elemAttrSetting" data-title="canvasMenu_settings" data-lang="canvasMenu_settings">属性</div>
                     </div>
                 </div>
             </div>
             <div id='shapebar' class="transition-r allow" data-intro='图形工具栏' data-step='2' data-position='left'>
-                <div id='triangle' class='shape-icon' data-type='triangle' data-title="插入三角形"></div>
-                <div id='circular' class='shape-icon' data-type='circular' data-title="插入圆形"></div>
-                <div id='rectangle' class='shape-icon' data-type='rectangle' data-title="插入矩形"></div>
-                <div id='heart' class='shape-icon' data-type='heart' data-title="插入心形"></div>
-                <div id='star' class='shape-icon' data-type='star' data-title="插入星形"></div>
-                <div id='message' class='shape-icon' data-type='message' data-title="插入消息框图形"></div>
-                <div id='moon' class='shape-icon' data-type='moon' data-title="插入月牙形"></div>
-                <div id='polygon' class='shape-icon' data-type='polygon' data-title="插入多角形"></div>
-                <div id='customShape' class='shape-icon' data-type='custom'  data-title="插入自定义图形"></div>
+                <div id='triangle' class='shape-icon' data-type='triangle' data-title="shape_triangle"></div>
+                <div id='circular' class='shape-icon' data-type='circular' data-title="shape_circular"></div>
+                <div id='rectangle' class='shape-icon' data-type='rectangle' data-title="shape_rectangle"></div>
+                <div id='heart' class='shape-icon' data-type='heart' data-title="shape_heart"></div>
+                <div id='star' class='shape-icon' data-type='star' data-title="shape_star"></div>
+                <div id='message' class='shape-icon' data-type='message' data-title="shape_message"></div>
+                <div id='moon' class='shape-icon' data-type='moon' data-title="shape_moon"></div>
+                <div id='polygon' class='shape-icon' data-type='polygon' data-title="shape_polygon"></div>
+                <div id='customShape' class='shape-icon' data-type='custom'  data-title="shape_doodle"></div>
             </div>
             <div id="toolbar" class="transition-l allow">
                 <div id="tool-buttons">
@@ -453,17 +453,17 @@
             <!--工具栏详细操作菜单-->
             <div id="tool-operation" class='panel1 dp-none'>
                 <div id="tool-addAnimation-operation" class="tool-app-items">
-                    <div class="operation-item" data-event="changeSliderAnim" data-param="none">幻灯片</div>
-                    <div class="operation-item" data-event="changeSliderAnim" data-param="anim-scale">放大</div>
-                    <div class="operation-item" data-event="changeSliderAnim" data-param="anim-xSpin">左翻转</div>
-                    <div class="operation-item" data-event="changeSliderAnim" data-param="anim-ySpin">右翻转</div>
-                    <div class="operation-item" data-event="changeSliderAnim" data-param="anim-rightRotate">旋转</div>
+                    <div class="operation-item" data-event="changeSliderAnim" data-param="none" data-lang="anim_slider">幻灯片</div>
+                    <div class="operation-item" data-event="changeSliderAnim" data-param="anim-scale" data-lang="anim_sliderZoom">放大</div>
+                    <div class="operation-item" data-event="changeSliderAnim" data-param="anim-xSpin" data-lang="anim_rotateLeft">向左旋转</div>
+                    <div class="operation-item" data-event="changeSliderAnim" data-param="anim-ySpin" data-lang="anim_rotateRight">向右旋转</div>
+                    <div class="operation-item" data-event="changeSliderAnim" data-param="anim-rightRotate" data-lang="anim_reverse">翻转</div>
                 </div>
             </div>
             <div id='frame_view_menu' class='panel1 dp-none view-menu'>
-                <div class='menu-item' data-type='create' data-event='addSlider'>新建</div>
-                <div class='menu-item' data-type='insert' data-event='addSlider'>插入</div>
-                <div class='menu-item' data-type='delete' data-event='deleteSlider'>删除</div>
+                <div class='menu-item' data-type='create' data-event='addSlider' data-lang="viewMenu_create">新建</div>
+                <div class='menu-item' data-type='insert' data-event='addSlider' data-lang="viewMenu_insert">插入</div>
+                <div class='menu-item' data-type='delete' data-event='deleteSlider' data-lang="viewMenu_delete">删除</div>
             </div>
             <div id="view" class="cf flb-box">
                 <div class="flb-p1"></div>

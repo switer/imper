@@ -36,8 +36,10 @@
                 $(messageBox).hide();
                 $(e.target)[0].onmouseout = null;
             }
-            
-
+        })
+        _.each($('[data-lang]'), function (item) {
+            var lang = curLanguage[$(item).data('lang')] || $(item).data('lang');
+            $(item).html(lang);
         })
         // var titles = (document.querySelectorAll("[data-title]")),elem;
         // var messageBox = document.querySelector("#message-box");
