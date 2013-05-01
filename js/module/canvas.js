@@ -215,7 +215,7 @@ Core.registerModule("canvas",function(sb){
                 position : 'absolute',
                 zIndex      : "2",
                 left        : "-125px",
-                top         : "0px"
+                top         : "50px"
             })
             $(label).addClass('showAnim-label').html(ANIMATION_LABEL);
             $(showAnim).addClass("showAnim").addClass("blue-block").addClass('animation-setting')
@@ -246,7 +246,7 @@ Core.registerModule("canvas",function(sb){
                 width       : "120px",
                 zIndex      : "2",
                 left        : "-125px",
-                top         : "110px"
+                top         : "0px"
             })
             .attr('title', '幻灯片的播放类型/左键点击修改')
             .on('click', function (e) {

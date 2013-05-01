@@ -71,7 +71,7 @@ Core.registerModule("filesystem", function(sb){
 					//APP Event
 					initWebuiEvenet();
 
-					$('#addFile').html('保存为');
+					// $('#addFile').html('保存为');
 					$(".fs-icon-back.fs-icon-root").css('top', '45px');
 					$(".fs-view").css('marginTop','105px')
 					//检查上次缓存文件并回复
