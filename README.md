@@ -29,18 +29,19 @@ An presentation editor and the player powered by impress.js
 	"cntData" : {
 		//frame data
 		"slider1" : {
-			"anim"			: "", // frame transition animation
-			"panelAttr" 	: "", // frame panel style attr
+			"anim": "", // frame transition animation
+			"panelAttr": "", // frame panel style attr
 			//frame elements data set
-			"element"   		: {
+			"element": {
 				//frame element data
 				"data1":{
 					"type"		: "DIV", // element type
 					"cAttr"		: "", // element container style attr 
 					"eAttr"		: "", // element style attr
-          "pAttr"   : "", // element panel style attr
+					"pAttr"   : "", // element panel style attr
 					"zIndex"	: 1, //z-index
-					"value"		: "text content text!" //[text box || code box :  text string, image || video : data url] 
+					//[text box || code box :  text string, image || video : data url] 
+					"value"		: "text content!" 
 				},
 				"data2":{
 				        //...
