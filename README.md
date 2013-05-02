@@ -36,9 +36,9 @@ An impress presentation/slider editor website for creating impress.js slider
 					"type"		: "DIV", // element type
 					"cAttr"		: "", // element container style attr 
 					"eAttr"		: "", // element style attr
-          "pAttr"   : "", // element panel style attr
+					"pAttr"         : "", // element panel style attr
 					"zIndex"	: 1, //z-index
-					"value"		: "text content text!" //[text box || code box :  text string, image || video : data url] 
+					"value"		: "text content!" //[text box || code box :  text string, image || video : data url] 
 				},
 				"data2":{
 				        //...
