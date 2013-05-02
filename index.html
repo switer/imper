@@ -7,35 +7,36 @@
         <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="MobileOptimized" content="320"/>
         <meta name="format-detection" content="telephone=no">
-        <link rel="stylesheet" href="css/canvas.css" type="text/css" />
-        <link rel="stylesheet" href="css/toolbar.css" type="text/css" />
-        <link rel="stylesheet" href="css/stylebar.css" type="text/css" />
-        <link rel="stylesheet" href="css/shapebar.css" type="text/css" />
-        <link rel="stylesheet" href="css/main.css" type="text/css" />
-        <link rel="stylesheet" href="css/view.css" type="text/css" />
-        <link rel="stylesheet" href="css/animation.css" type="text/css" />
-        <link rel="stylesheet" href="css/preview.css" type="text/css" />
-        <link rel="stylesheet" href="css/codemirror.css" type="text/css" />
-        <link rel="stylesheet" href="css/cm.theme.css" type="text/css" />
-        <link rel="stylesheet" href="css/introjs.css" type="text/css" />
-        <script type="text/javascript" src="web.fs.mobile/src/lib/underscore.js"></script>
-        <script type="text/javascript" src="web.fs.mobile/src/lib/zepto.js"></script>
-        <script type="text/javascript" src="js/lib/codemirror/codemirror.js"></script>
-        <script type="text/javascript" src="js/lib/codemirror/cm.theme.js"></script>
-        <script type="text/javascript" src="js/lib/bowser/bowser.js"></script>
-        <script type="text/javascript" src="js/lib/paintBoard/drawJS.js"></script>
-        <script type="text/javascript" src="js/util/json.js"></script>
-        <script type="text/javascript" src="js/util/colorboard.js"></script>
-        <script type="text/javascript" src="js/util/screenboard.js"></script>
-        <script type="text/javascript" src="js/util/chooseBox.js"></script>
-        <script type="text/javascript" src="js/util/imageselector.js"></script>
-        <script type="text/javascript" src="js/util/util.js"></script>
-        <script type="text/javascript" src="js/util/altbox.js"></script>
-        <script type="text/javascript" src="js/core.js"></script>
-        <script type="text/javascript" src="js/sandbox.js"></script>
-        <script type="text/javascript" src="js/intro.js"></script>
-        <link rel="stylesheet" type="text/css" href="web.fs.mobile/src/theme/ui.css">
-        <link rel="stylesheet" type="text/css" href="web.fs.mobile/src/sui/sui.css">
+        <link rel="stylesheet" href="./css/canvas.css" type="text/css" />
+        <link rel="stylesheet" href="./css/toolbar.css" type="text/css" />
+        <link rel="stylesheet" href="./css/stylebar.css" type="text/css" />
+        <link rel="stylesheet" href="./css/shapebar.css" type="text/css" />
+        <link rel="stylesheet" href="./css/main.css" type="text/css" />
+        <link rel="stylesheet" href="./css/view.css" type="text/css" />
+        <link rel="stylesheet" href="./css/animation.css" type="text/css" />
+        <link rel="stylesheet" href="./css/preview.css" type="text/css" />
+        <link rel="stylesheet" href="./css/codemirror.css" type="text/css" />
+        <link rel="stylesheet" href="./css/cm.theme.css" type="text/css" />
+        <link rel="stylesheet" href="./css/introjs.css" type="text/css" />
+        <script type="text/javascript" src="./web.fs.mobile/src/lib/underscore.js"></script>
+        <script type="text/javascript" src="./web.fs.mobile/src/lib/zepto.js"></script>
+        <script type="text/javascript" src="./js/lib/codemirror/codemirror.js"></script>
+        <script type="text/javascript" src="./js/lib/codemirror/cm.theme.js"></script>
+        <script type="text/javascript" src="./js/lib/bowser/bowser.js"></script>
+        <script type="text/javascript" src="./js/lib/paintBoard/drawJS.js"></script>
+        <script type="text/javascript" src="./js/common/config.js"></script>
+        <script type="text/javascript" src="./js/util/json.js"></script>
+        <script type="text/javascript" src="./js/util/colorboard.js"></script>
+        <script type="text/javascript" src="./js/util/screenboard.js"></script>
+        <script type="text/javascript" src="./js/util/chooseBox.js"></script>
+        <script type="text/javascript" src="./js/util/imageselector.js"></script>
+        <script type="text/javascript" src="./js/util/util.js"></script>
+        <script type="text/javascript" src="./js/util/altbox.js"></script>
+        <script type="text/javascript" src="./js/core.js"></script>
+        <script type="text/javascript" src="./js/sandbox.js"></script>
+        <script type="text/javascript" src="./js/intro.js"></script>
+        <link rel="stylesheet" type="text/css" href="./web.fs.mobile/src/theme/ui.css">
+        <link rel="stylesheet" type="text/css" href="./web.fs.mobile/src/sui/sui.css">
         <style type="text/css">
             .nav-bar {height: 45px;background-color: black;position: fixed;top: 0px;width: 100%;}
             .nav-button {height: 100%;width: 80px;border: none;
@@ -44,7 +45,7 @@
     </head>
     <body >
         <div id='previewContainer' class='panel1 dp-none op-full'>
-            <div class='close-menu' title='关闭预览'></div>
+            <div class='close-menu' data-title='btn_close'></div>
         </div>
         <div id='appContainer'>
             <div id="filesystem" class="sui-disp-none">
@@ -56,9 +57,9 @@
                 <div id="fileView" class="fs-view fs-theme-android"></div>
                 <!-- Bottom Menu Bar -->
                 <div id="fileBar" class="fs-bar">
-                    <a id="addFolder" data-feed='true' class="fs-bar-btn" href="javascript:;">创建目录</a>
+                    <a id="addFolder" data-feed='true' class="fs-bar-btn" href="javascript:;" data-lang="fileSystem_newFolder">创建目录</a>
                     <a id="showDeleteIcon" data-feed='true' class="fs-bar-icon" href="javascript:;"></a>
-                    <a id="addFile" data-feed='true' class="fs-bar-btn" href="javascript:;" >另存为</a>
+                    <a id="addFile" data-feed='true' class="fs-bar-btn" href="javascript:;"  data-lang="fileSystem_saveAs">保存为</a>
                 </div>
                 <!-- Add Folder PopBox -->
                 <div class="sui-popbox sui-disp-none" data-vertical='center' data-position='fixed' data-transition=true data-cancel=true id="folderInpBox">
@@ -66,9 +67,9 @@
                     <div class="sui-popbox-box sui-popbox-white">
                         <div class="sui-popbox-content">
                             <div class="sui-inp-box sui-mg-top ">
-                                <input class="sui-inp" type="text" id="folderInp" placeholder="输入目录名" />
+                                <input class="sui-inp" type="text" id="folderInp" placeholder="输入目录名/Folder Name"/>
                             </div>
-                            <input class="sui-btn sui-w-full sui-mg-top sui-btn-primary" id="folderInpBtn" type="button" value="确定">
+                            <input class="sui-btn sui-w-full sui-mg-top sui-btn-primary" id="folderInpBtn" type="button" value="OK">
                         </div>
                     </div>
                 </div>
@@ -79,13 +80,13 @@
                         <div class="sui-popbox-content">
                             <div class="sui-inp-group sui-mg-top">
                                 <div class="sui-inp-box">
-                                    <input class="sui-inp" type="text" id="fileNameInp"  placeholder="输入文件名" />
+                                    <input class="sui-inp" type="text" id="fileNameInp"  placeholder="输入文件名/File Name" />
                                 </div>
 <!--                                 <div class="sui-inp-box">
                                     <input class="sui-inp" type="text" id="fileSufInp" placeholder="输入文件类型" />
                                 </div> -->
                             </div>
-                            <input class="sui-btn sui-w-full sui-mg-top sui-btn-primary" id="fileInpBtn" type="button" value="确定">
+                            <input class="sui-btn sui-w-full sui-mg-top sui-btn-primary" id="fileInpBtn" type="button" value="OK">
                         </div>
                     </div>
                 </div>
@@ -111,7 +112,7 @@
             <div class="colorSelector"></div>
             <div class="colorSelector" id="colorSelector"></div>
             <div id="execCommand-detail" class="panel1">
-                <div class="close-menu" data-title="关闭"></div>
+                <div class="close-menu" data-title="btn_close"></div>
                 <div class="execCommand-item font-family">
                     <select class="execC-but" onchange="if(this.value!=-1) document.execCommand('fontName',false,this.value);">
                         <option value="-1">选择字体</option>
@@ -213,32 +214,32 @@
                 <div id="code"></div>
             </div>
             <div id="canvas">
-                <div class="container" data-intro='编辑框' data-step='1' data-position='left'></div>
+                <div class="container"></div>
                 <div id="element-attrSetting-menu" class="panel1">
                     <div class="move"></div>
                     <div class="setting-menu-head">
-                        <div class="bgsetting-but setting-tag text-focus">背景设置</div>
-                        <div class="bordersetting-but setting-tag">边框设置</div>
-                        <div class="boxshadowsetting-but setting-tag">内阴影</div>
-                        <div class="transformsetting-but setting-tag">变换</div>
+                        <div data-lang="settings_background" class="bgsetting-but setting-tag text-focus">背景设置</div>
+                        <div data-lang="settings_border" class="bordersetting-but setting-tag">边框设置</div>
+                        <div data-lang="settings_shadow" class="boxshadowsetting-but setting-tag">内阴影</div>
+                        <div data-lang="settings_transform" class="transformsetting-but setting-tag">变换</div>
                     </div>
-                    <div class="close-menu" data-title="关闭"></div>
+                    <div class="close-menu" data-title="btn_close"></div>
                     <div class="bgsetting attr-setting-panel" >
                         <div class="setting-left">
-                            <div class="setting-title">背景色</div>
+                            <div class="setting-title" data-lang="settings_title_bgColor">背景色</div>
                             <div class="rgbcolor"  data-check="true" data-type="backgroundColor" data-event="setStyleAttr">
                                 <div class="red-setting">
-                                    <label  class="item-name">红</label>
+                                    <label  class="item-name" data-lang="settings_item_red">红</label>
                                     <input type="range" class="value-input" />
                                     <div class="preview"></div>
                                 </div>
                                 <div class="green-setting">
-                                    <label class="item-name">绿</label>
+                                    <label class="item-name" data-lang="settings_item_green">绿</label>
                                     <input type="range" class="value-input"/>
                                     <div class="preview"></div>
                                 </div>
                                 <div class="blue-setting">
-                                    <div  class="item-name">蓝</div>
+                                    <div  class="item-name" data-lang="settings_item_blue">蓝</div>
                                     <input type="range" class="value-input"/>
                                     <div class="preview"></div>
                                 </div> 
@@ -246,41 +247,56 @@
                             </div>
                         </div>
                         <div class="setting-right">
-                            <div class="setting-title">背景属性</div>
+                            <div class="setting-title" data-lang="settings_title_bgAttribute">背景属性</div>
                             <div class="setting-element for-backgroundColor" data-input="checkbox" data-event="setStyleAttr" data-type="backgroundColor" data-param="transparent">
-                                <label  class="item-name long">背景色</label>
+                                <label  class="item-name long" data-lang="settings_item_bgColor">背景色</label>
                                 <input type="checkbox" class="short value-input"/>
                             </div>
                             <div class="setting-element" data-unit="" data-factor="100"  data-check="true" data-input="range" data-type="opacity" data-event="setStyleAttr">
-                                <label  class="item-name normal">透明度</label>
+                                <label  class="item-name normal" data-lang="settings_item_opacity">透明度</label>
                                 <input type="range"  class="value-input"/>
                             </div>
                             <div class="setting-element" data-unit="px" data-factor="1"  data-check="true" data-input="range" data-type="fontSize" data-event="setStyleAttr">
-                                <label  class="item-name normal">字体大小</label>
+                                <label  class="item-name normal" data-lang="settings_item_fontSize">字体大小</label>
                                 <input type="range"  class="value-input"/>
                             </div>
                         </div>
                     </div>
                     <div class="bordersetting attr-setting-panel" >
                         <div class="setting-left">
-                            <div class="setting-title">边框属性</div>
+                            <div class="setting-title"  data-lang="settings_title_borderAttribute">边框属性</div>
+                            <div class="setting-element"  data-input="select" data-type="borderStyle" data-event="setStyleAttr">
+                                <label  class="item-name normal" data-lang="settings_item_borderType">类型</label>
+                                <select class="value-input middle">
+                                    <option value="none" data-lang="border_none">无</option>
+                                    <option value="solid" data-lang="border_solid">实线</option>
+                                    <option value="dashed" data-lang="border_dashed">折线</option>
+                                    <option value="double" data-lang="border_double">双实线</option>
+                                    <option value="dotted" data-lang="border_dotted">虚线</option>
+                                    <option value="groove" data-lang="border_groove">3D凹槽</option>
+                                    <option value="inset" data-lang="border_inset">3D凹边</option>
+                                    <option value="outset" data-lang="border_outset">3D凸边</option>
+                                    <option value="ridge" data-lang="border_ridge">菱形边</option>
+                                </select>
+                            </div>
                             <div class="setting-element" data-unit="px" data-factor="5" data-input="range"  data-type="borderWidth" data-event="setStyleAttr">
-                                <label  class="item-name short">宽度</label>
+                                <label  class="item-name short" data-lang="settings_item_borderWidth">宽度</label>
                                 <input type="range"  class="value-input"/>
                             </div>
+
                             <div class="rgbcolor" data-check="false"  data-type="borderColor" data-event="setStyleAttr">
                                 <div class="red-setting">
-                                    <label  class="item-name">红</label>
+                                    <label  class="item-name" data-lang="settings_item_red">红</label>
                                     <input type="range" class="value-input" />
                                     <div class="preview"></div>
                                 </div>
                                 <div class="green-setting">
-                                    <label class="item-name">绿</label>
+                                    <label class="item-name" data-lang="settings_item_green">绿</label>
                                     <input type="range" class="value-input"/>
                                     <div class="preview"></div>
                                 </div>
                                 <div class="blue-setting">
-                                    <div  class="item-name">蓝</div>
+                                    <div  class="item-name" data-lang="settings_item_blue">蓝</div>
                                     <input type="range" class="value-input"/>
                                     <div class="preview"></div>
                                 </div> 
@@ -288,37 +304,24 @@
                             </div>
                         </div>
                         <div class="setting-right">
-                            <div class="setting-title">圆角与线段</div>
+                            <div class="setting-title" data-lang="settings_title_bdrAttribute">圆角</div>
                             <div class="setting-element" data-unit="px" data-factor="1" data-input="range"  data-type="borderTopLeftRadius" data-event="setStyleAttr">
-                                <label  class="item-name normal">左上圆角</label>
+                                <label  class="item-name normal" data-lang="settings_item_leftTop">左上圆角</label>
                                 <input type="range"  class="value-input"/>
                             </div>
                             <div class="setting-element" data-unit="px" data-factor="1" data-input="range" data-type="borderTopRightRadius" data-event="setStyleAttr">
-                                <label  class="item-name normal">右上圆角</label>
+                                <label  class="item-name normal" data-lang="settings_item_rightTop">右上圆角</label>
                                 <input type="range"  class="value-input"/>
                             </div>
                             <div class="setting-element" data-unit="px" data-factor="1" data-input="range"  data-type="borderBottomLeftRadius" data-event="setStyleAttr">
-                                <label  class="item-name normal">左下圆角</label>
+                                <label  class="item-name normal" data-lang="settings_item_leftBottom">左下圆角</label>
                                 <input type="range"  class="value-input"/>
                             </div>
                             <div class="setting-element" data-unit="px" data-factor="1" data-input="range" data-type="borderBottomRightRadius" data-event="setStyleAttr">
-                                <label  class="item-name normal">右下圆角</label>
+                                <label  class="item-name normal" data-lang="settings_item_rightBottom">右下圆角</label>
                                 <input type="range"  class="value-input"/>
                             </div>
-                            <div class="setting-element"  data-input="select" data-type="borderStyle" data-event="setStyleAttr">
-                                <label  class="item-name normal">类型</label>
-                                <select class="value-input middle">
-                                    <option value="none">无</option>
-                                    <option value="solid">实线</option>
-                                    <option value="dashed">折线</option>
-                                    <option value="double">双实线</option>
-                                    <option value="dotted">虚线</option>
-                                    <option value="groove">3D凹槽</option>
-                                    <option value="inset">3D凹边</option>
-                                    <option value="outset">3D凸边</option>
-                                    <option value="ridge">菱形边</option>
-                                </select>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="boxshadowsetting attr-setting-panel">
@@ -381,18 +384,18 @@
                     </div>
                 </div>
                 <div id="element-operate-menu" class="panel1">
-                    <div class="close-menu" data-title="关闭"></div>
+                    <div class="close-menu" data-title="btn_close"></div>
                     <div class="elem-operation">
-                        <div id="elem-delete" class="elem-item elem-setting-item" data-event="deleteElement" data-title="删除该元素">删除</div>
-                        <div id="elem-copy" class="elem-item elem-setting-item" data-event="copyElement" data-title="复制该元素">复制</div>
-                        <div id="elem-copy" class="elem-item elem-setting-item" data-event="cutElement" data-title="剪切该元素">剪切</div>
-                        <div id="elem-paste" class="elem-item paste-menu-item" data-event="pasteElement" data-title="粘贴当前幻灯片">粘贴</div>
+                        <div id="elem-delete" class="elem-item elem-setting-item" data-event="deleteElement" data-title="canvasMenu_delete" data-lang='canvasMenu_delete'>删除</div>
+                        <div id="elem-copy" class="elem-item elem-setting-item" data-event="copyElement" data-title="canvasMenu_copy" data-lang='canvasMenu_copy'>复制</div>
+                        <div id="elem-copy" class="elem-item elem-setting-item" data-event="cutElement" data-title="canvasMenu_cut" data-lang='canvasMenu_cut'>剪切</div>
+                        <div id="elem-paste" class="elem-item paste-menu-item" data-event="pasteElement" data-title="canvasMenu_paste" data-lang='canvasMenu_paste'>粘贴</div>
                     </div>
                     <div class="elem-operation zIndex-setting-item">
-                        <div id="elem-zIndex-upward" class="elem-item" data-event="moveUpward" data-title="往上移动一层">上移一层</div>
-                        <div id="elem-zIndex-downward" class="elem-item" data-event="moveDownward" data-title="往下移动一层">下移一层</div>
-                        <div id="elem-zIndex-toTop" class="elem-item" data-event="moveToTop" data-title="置于最顶层">置顶</div>
-                        <div id="elem-zIndex-toBottom" class="elem-item" data-event="moveToBottom" data-title="置于最底层">置底</div>
+                        <div id="elem-zIndex-upward" class="elem-item" data-event="moveUpward" data-title="canvasMenu_layerForward" data-lang="canvasMenu_layerForward">上移一层</div>
+                        <div id="elem-zIndex-downward" class="elem-item" data-event="moveDownward" data-title="canvasMenu_layerBackward" data-lang="canvasMenu_layerBackward">下移一层</div>
+                        <div id="elem-zIndex-toTop" class="elem-item" data-event="moveToTop" data-title="canvasMenu_layerFont" data-lang="canvasMenu_layerFont">置顶</div>
+                        <div id="elem-zIndex-toBottom" class="elem-item" data-event="moveToBottom" data-title="canvasMenu_layerBack" data-lang="canvasMenu_layerBack">置底</div>
                     </div>
                     <div class="elem-operation dp-none textedit-setting-item menu-detect-item">
                         <div id="show_execCommandDetail" class="elem-item" data-event="showEcd" data-title="打开文本编辑工具栏">工具栏</div>
@@ -402,44 +405,44 @@
                         <div class="elem-item" data-event="codeboxThemeSetting" data-title="编辑框主题">主题</div>
                     </div>
                     <div class="elem-operation">
-                        <div  class="elem-item" data-event="backgroundSetting" data-title="设置背景">背景</div>
-                        <div class="elem-item" data-event="elemAttrSetting" data-title="属性设置">属性</div>
+                        <div  class="elem-item" data-event="backgroundSetting" data-title="canvasMenu_background" data-lang="canvasMenu_background">背景</div>
+                        <div class="elem-item" data-event="elemAttrSetting" data-title="canvasMenu_settings" data-lang="canvasMenu_settings">属性</div>
                     </div>
                 </div>
             </div>
             <div id='shapebar' class="transition-r allow" data-intro='图形工具栏' data-step='2' data-position='left'>
-                <div id='triangle' class='shape-icon' data-type='triangle' data-title="插入三角形"></div>
-                <div id='circular' class='shape-icon' data-type='circular' data-title="插入圆形"></div>
-                <div id='rectangle' class='shape-icon' data-type='rectangle' data-title="插入矩形"></div>
-                <div id='heart' class='shape-icon' data-type='heart' data-title="插入心形"></div>
-                <div id='star' class='shape-icon' data-type='star' data-title="插入星形"></div>
-                <div id='message' class='shape-icon' data-type='message' data-title="插入消息框图形"></div>
-                <div id='moon' class='shape-icon' data-type='moon' data-title="插入月牙形"></div>
-                <div id='polygon' class='shape-icon' data-type='polygon' data-title="插入多角形"></div>
-                <div id='customShape' class='shape-icon' data-type='custom'  data-title="插入自定义图形"></div>
+                <div id='triangle' class='shape-icon' data-type='triangle' data-title="shape_triangle"></div>
+                <div id='circular' class='shape-icon' data-type='circular' data-title="shape_circular"></div>
+                <div id='rectangle' class='shape-icon' data-type='rectangle' data-title="shape_rectangle"></div>
+                <div id='heart' class='shape-icon' data-type='heart' data-title="shape_heart"></div>
+                <div id='star' class='shape-icon' data-type='star' data-title="shape_star"></div>
+                <div id='message' class='shape-icon' data-type='message' data-title="shape_message"></div>
+                <div id='moon' class='shape-icon' data-type='moon' data-title="shape_moon"></div>
+                <div id='polygon' class='shape-icon' data-type='polygon' data-title="shape_polygon"></div>
+                <div id='customShape' class='shape-icon' data-type='custom'  data-title="shape_doodle"></div>
             </div>
             <div id="toolbar" class="transition-l allow">
-                <div id="tool-buttons"  data-intro='功能工具栏' data-step='3' data-position='right'>
-                    <div id="tool-enterPreviewMode" class="tool-app" data-title="保存" data-intro='保存' data-step='5'></div>
+                <div id="tool-buttons">
+                    <div id="tool-enterPreviewMode" class="tool-app" data-title="toolBar_save"></div>
                     <!--<div id="tool-addslider" class="tool-app" data-title="添加新的幻灯片" data-intro='添加新的幻灯片' data-step='6'></div>-->
-                    <div id="tool-import" class="tool-app" data-title="导入幻灯片文件" data-intro='导入幻灯片' data-step='14'>
+                    <div id="tool-import" class="tool-app" data-title="toolBar_import" >
                         <input type="file" id="importInp"/>
                     </div>
-                    <div id="tool-openFileSystem" class="tool-app " data-title="打开保存文件保存目录" data-intro='打开保存文件保存目录' data-step='7'></div>
-                    <div id="tool-play" class="tool-app" data-title="预览"></div>
-                    <div id="tool-addAnimation" class="tool-app ondetail" data-title="更改幻灯片过渡动画" data-intro='更改幻灯片过渡动画' data-step='8'></div>
-                    <div id="tool-addVideo" class="tool-app" data-title="添加视频(暂时只支持Mmp4格式)" data-intro='添加视频' data-step='9'>
+                    <div id="tool-openFileSystem" class="tool-app " data-title="toolBar_openFileSystem"></div>
+                    <div id="tool-play" class="tool-app" data-title="toolBar_preview"></div>
+                    <div id="tool-addAnimation" class="tool-app ondetail" data-title="toolBar_setAnimation" ></div>
+                    <div id="tool-addVideo" class="tool-app" data-title="toolBar_addVideo">
                         <input type="file" id="addVideoInp"/>
                     </div>
-                    <div id="tool-addimage" class="tool-app" data-title="插入一张图片" data-intro='添加一张图片' data-step='10'>
+                    <div id="tool-addimage" class="tool-app" data-title="toolBar_addImage">
                         <input type="file" id="addImageInp"/>
                     </div>
-                    <div id="tool-addtext" class="tool-app" data-title="插入文本输入框" data-intro='添加文本输入框' data-step='11'></div>
-                    <div id="tool-addCode" class="tool-app" data-title="插入代码编辑框" data-intro='添加代码编辑框' data-step='12'></div>
+                    <div id="tool-addtext" class="tool-app" data-title="toolBar_addText"></div>
+                    <div id="tool-addCode" class="tool-app" data-title="toolBar_addCode"></div>
                     <!--
                     <div id="tool-insertSlider" class="tool-app" data-title="往当前位置插入新的幻灯片" data-intro='往当前位置插入新的幻灯片' data-step='15'></div>
                     -->
-                    <div id="tool-screen" class="tool-app" data-title="更改幻灯片分辨率比例" data-intro='更改幻灯片比例' data-step='13'></div>
+                    <div id="tool-screen" class="tool-app" data-title="toolBar_changeScale"></div>
                     <!--<div class="tool-app show_execCommandDetail" data-title="打开文本编辑工具" data-intro='打开文本编辑工具' data-step='12'></div>-->
                     
                     <!--
@@ -452,17 +455,17 @@
             <!--工具栏详细操作菜单-->
             <div id="tool-operation" class='panel1 dp-none'>
                 <div id="tool-addAnimation-operation" class="tool-app-items">
-                    <div class="operation-item" data-event="changeSliderAnim" data-param="none">幻灯片</div>
-                    <div class="operation-item" data-event="changeSliderAnim" data-param="anim-scale">放大</div>
-                    <div class="operation-item" data-event="changeSliderAnim" data-param="anim-xSpin">左翻转</div>
-                    <div class="operation-item" data-event="changeSliderAnim" data-param="anim-ySpin">右翻转</div>
-                    <div class="operation-item" data-event="changeSliderAnim" data-param="anim-rightRotate">旋转</div>
+                    <div class="operation-item" data-event="changeSliderAnim" data-param="none" data-lang="anim_slider">幻灯片</div>
+                    <div class="operation-item" data-event="changeSliderAnim" data-param="anim-scale" data-lang="anim_sliderZoom">放大</div>
+                    <div class="operation-item" data-event="changeSliderAnim" data-param="anim-xSpin" data-lang="anim_rotateLeft">向左旋转</div>
+                    <div class="operation-item" data-event="changeSliderAnim" data-param="anim-ySpin" data-lang="anim_rotateRight">向右旋转</div>
+                    <div class="operation-item" data-event="changeSliderAnim" data-param="anim-rightRotate" data-lang="anim_reverse">翻转</div>
                 </div>
             </div>
             <div id='frame_view_menu' class='panel1 dp-none view-menu'>
-                <div class='menu-item' data-type='create' data-event='addSlider'>新建</div>
-                <div class='menu-item' data-type='insert' data-event='addSlider'>插入</div>
-                <div class='menu-item' data-type='delete' data-event='deleteSlider'>删除</div>
+                <div class='menu-item' data-type='create' data-event='addSlider' data-lang="viewMenu_create">新建</div>
+                <div class='menu-item' data-type='insert' data-event='addSlider' data-lang="viewMenu_insert">插入</div>
+                <div class='menu-item' data-type='delete' data-event='deleteSlider' data-lang="viewMenu_delete">删除</div>
             </div>
             <div id="view" class="cf flb-box">
                 <div class="flb-p1"></div>
@@ -489,22 +492,22 @@
         </div>
         <!-- cordova for mobile is used by phonegap -->
 
-        <script type="text/javascript" src="js/module/canvas.js"></script>
-        <script type="text/javascript" src="js/module/toolbar.js"></script>
-        <script type="text/javascript" src="js/module/shapebar.js"></script>
-        <script type="text/javascript" src="js/module/view.js"></script>
-        <script type="text/javascript" src="js/module/preview.js"></script>
-        <!--<script type="text/javascript" src="js/module/stylebar.js"></script>-->
-        <script type="text/javascript" src="js/module/filesystem.js"></script>
-        <!-- <script type="text/javascript" src="js/loader.js" ></script> -->
+        <script type="text/javascript" src="./js/module/canvas.js"></script>
+        <script type="text/javascript" src="./js/module/toolbar.js"></script>
+        <script type="text/javascript" src="./js/module/shapebar.js"></script>
+        <script type="text/javascript" src="./js/module/view.js"></script>
+        <script type="text/javascript" src="./js/module/preview.js"></script>
+        <!--<script type="text/javascript" src="./js/module/stylebar.js"></script>-->
+        <script type="text/javascript" src="./js/module/filesystem.js"></script>
+        <!-- <script type="text/javascript" src="./js/loader.js" ></script> -->
         <!-- UI Plugin sui is used by Android SDK H5 -->
-        <script type="text/javascript" src="web.fs.mobile/src/sui/sui.js"></script>
+        <script type="text/javascript" src="./web.fs.mobile/src/sui/sui.js"></script>
         <!-- Webfs UI Component -->
-        <script type="text/javascript" src="web.fs.mobile/src/wfui.js"></script>
+        <script type="text/javascript" src="./web.fs.mobile/src/wfui.js"></script>
         <!-- Modular By RequireJS -->
-        <script data-main="js/loader.js" src="web.fs.mobile/src/lib/require.js"></script>
+        <script data-main="js/loader.js" src="./web.fs.mobile/src/lib/require.js"></script>
         <script type="text/javascript" src='sourceMap.js'></script>
-        <script type="text/javascript" src="js/html2canvas.js"></script>
+        <script type="text/javascript" src="./js/html2canvas.js"></script>
         <script type="text/javascript">
           var _gaq = _gaq || [];
           _gaq.push(['_setAccount', 'UA-40089255-1']);

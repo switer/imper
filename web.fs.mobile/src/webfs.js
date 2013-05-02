@@ -73,6 +73,7 @@ define('webfs/fs',['webfs/fs/util'], function (util) {
 	function link (filename, cwd, success, error, options) {
 		var type = config.CREATE_ENTRY_OPTIONS;
 		if (options && options.override) type = config.CREATE_OVERRIDE_ENTRY_OPTIONS;
+		console.log('link file : ' + filename);
 		cwd.getFile(filename, type, success, error)
 	}
 	// create a directory
@@ -101,7 +102,9 @@ define('webfs/fs',['webfs/fs/util'], function (util) {
 	}
 	// create a file and write conent
 	function writefile (filename, cwd, content, success , error, options) {
+		console.log('on writefile');
 		link(filename, cwd, function (file) {
+			console.log('link file : ' + filename,file);
 			file.createWriter(function(fileWriter) {
                 fileWriter.onwriteend = function(e) {
                     success(file);
@@ -110,7 +113,7 @@ define('webfs/fs',['webfs/fs/util'], function (util) {
                     error('Write failed: ' + e.toString());
                 };
                 try {
-                	//throw an error in mobile chrome or phonegap
+                	//throw an error in mobile chrome 18 or phonegap
                 	fileWriter.write(new Blob([content], {type: "text/plain;charset=UTF-8"}));
                 } catch (e) {
 					//Runing Good in Phonegap

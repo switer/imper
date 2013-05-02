@@ -53,7 +53,7 @@ input{
 
     position: absolute;
     background-color: cornflowerblue;
-    display: none;
+    /*display: none;*/
     opacity:0.8;
     min-height: 30px;
     min-width: 60px;

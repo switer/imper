@@ -15,15 +15,13 @@ Core.registerModule("filesystem", function(sb){
 			//当前打开编辑幻灯片的id
 			var _lastSaveId = window.localStorage.getItem('slider_file_saveId');
 
-			if (_lastSaveId !== null) {
+			if (_lastSaveId !== null && _lastSaveId !== undefined) {
 				console.log('last id : ' + _lastSaveId);
 				global._lastSaveId = parseInt(_lastSaveId);
 				global._curSaveId = (global._lastSaveId + 1) % 2;
 				console.log('_curSaveId' + global._curSaveId);
 			}
 			window.localStorage.setItem('slider_file_saveId', global._curSaveId);
-
-			
 
 			_.bindAll(this);
 			sb.listen({
@@ -73,7 +71,7 @@ Core.registerModule("filesystem", function(sb){
 					//APP Event
 					initWebuiEvenet();
 
-					$('#addFile').html('保存为');
+					// $('#addFile').html('保存为');
 					$(".fs-icon-back.fs-icon-root").css('top', '45px');
 					$(".fs-view").css('marginTop','105px')
 					//检查上次缓存文件并回复
@@ -217,6 +215,9 @@ Core.registerModule("filesystem", function(sb){
 			}, function (err) {
 					// global._errHandler('保存临时文件失败：' + err.code)
 					console.log('保存临时文件失败：' + err.code)
+					global._lastSaveId = -1;
+					global._curSaveId = 1;
+					window.localStorage.setItem('slider_file_saveId', global._curSaveId);
 			}, { override : true });
 		},
 		//检查是否自动保存
