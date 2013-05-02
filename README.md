@@ -60,5 +60,5 @@ An presentation editor and the player powered by impress.js
 *  English Version
 *  Support multiple element selections while editing
 *  Slider frame opertation(copy,paste,change position) 
-*  Touchable and ipad device
+*  Touchable and support ipad device
 
