@@ -1,5 +1,6 @@
 #canvas{
-
+    position: relative;
+    margin-top: 15px;
 }
 #canvas .container{
 

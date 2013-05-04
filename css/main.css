@@ -8,6 +8,7 @@ body{
 input{
     background-color:transparent;
 }
+#appContainer {height: 100%;width: 100%;}
 .header{
 
     position: absolute;
@@ -107,12 +108,12 @@ input{
 .w0 {width: 0px!important;}
 .transition-w {-webkit-transition:width 0.3s;}
 .transition-h {-webkit-transition:height 0.3s;}
-.transition-l {-webkit-transition:left 0.3s;}
-.transition-r {-webkit-transition:right 0.3s;}
+.transition-l {-webkit-transition:margin-left 0.3s;}
+.transition-r {-webkit-transition:margin-right 0.3s;}
 .transition-t {-webkit-transition:top 0.3s;}
 .transition-b {-webkit-transition:bottom 0.3s;}
-.l-tb {left: -70px!important;}
-.l-sb {right: -85px!important;}
+.l-tb {margin-left: -70px!important;}
+.l-sb {margin-right: -85px!important;}
 .box {border: 1px solid;border-radius: 5px;background: white;height: 25px;}
 .w-auto {width: auto;}
 .on {box-shadow: inset 0 0 10px 2px cornflowerblue!important;}

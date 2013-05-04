@@ -47,7 +47,7 @@
         <div id='previewContainer' class='panel1 dp-none op-full'>
             <div class='close-menu' data-title='btn_close'></div>
         </div>
-        <div id='appContainer'>
+        <div id='appContainer' class="dp-none flb-box">
             <div id="filesystem" class="sui-disp-none">
                 <!-- Navigation Bar -->
                 <div id="fs_nav_bar" class="nav-bar">
@@ -214,7 +214,38 @@
             <div id="slider-preview">
                 <div id="code"></div>
             </div>
-            <div id="canvas" >
+            <div id="toolbar" class="transition-l allow"  data-intro='operation tool bar' data-step='1' data-position="right">
+                <div id="tool-buttons">
+                    <div id="tool-enterPreviewMode" class="tool-app" data-title="toolBar_save"></div>
+                    <!--<div id="tool-addslider" class="tool-app" data-title="添加新的幻灯片" data-intro='添加新的幻灯片' data-step='6'></div>-->
+                    <div id="tool-import" class="tool-app" data-title="toolBar_import" >
+                        <input type="file" id="importInp"/>
+                    </div>
+                    <div id="tool-openFileSystem" class="tool-app " data-title="toolBar_openFileSystem"></div>
+                    <div id="tool-play" class="tool-app" data-title="toolBar_preview"></div>
+                    <div id="tool-addAnimation" class="tool-app ondetail" data-title="toolBar_setAnimation" ></div>
+                    <div id="tool-addVideo" class="tool-app" data-title="toolBar_addVideo">
+                        <input type="file" id="addVideoInp"/>
+                    </div>
+                    <div id="tool-addimage" class="tool-app" data-title="toolBar_addImage">
+                        <input type="file" id="addImageInp"/>
+                    </div>
+                    <div id="tool-addtext" class="tool-app" data-title="toolBar_addText"></div>
+                    <div id="tool-addCode" class="tool-app" data-title="toolBar_addCode"></div>
+                    <!--
+                    <div id="tool-insertSlider" class="tool-app" data-title="往当前位置插入新的幻灯片" data-intro='往当前位置插入新的幻灯片' data-step='15'></div>
+                    -->
+                    <div id="tool-screen" class="tool-app" data-title="toolBar_changeScale"></div>
+                    <!--<div class="tool-app show_execCommandDetail" data-title="打开文本编辑工具" data-intro='打开文本编辑工具' data-step='12'></div>-->
+                    
+                    <!--
+                    <div id="tool-deleteSlider" class="tool-app" data-title="删除当前幻灯片" data-intro='删除当前幻灯片' data-step='16'></div>
+                    -->
+                    <div id="tool-help" class="tool-app" data-title="toolBar_help"></div>
+                </div>
+                <div></div>
+            </div>
+            <div id="canvas" class="flb-p1">
                 <div class="container" data-intro='Slider editing canvas' data-step='2'></div>
                 <div id="element-attrSetting-menu" class="panel1">
                     <div class="move"></div>
@@ -411,7 +442,7 @@
                     </div>
                 </div>
             </div>
-            <div id='shapebar' class="transition-r allow" data-intro='Shapes lib toolbar' data-step='3' data-position='left'>
+            <div id='shapebar' class="transition-r allow" data-intro='Shapes lib bar' data-step='3' data-position='left'>
                 <div id='triangle' class='shape-icon' data-type='triangle' data-title="shape_triangle"></div>
                 <div id='circular' class='shape-icon' data-type='circular' data-title="shape_circular"></div>
                 <div id='rectangle' class='shape-icon' data-type='rectangle' data-title="shape_rectangle"></div>
@@ -422,37 +453,7 @@
                 <div id='polygon' class='shape-icon' data-type='polygon' data-title="shape_polygon"></div>
                 <div id='customShape' class='shape-icon' data-type='custom'  data-title="shape_doodle"></div>
             </div>
-            <div id="toolbar" class="transition-l allow"  data-intro='operation tool bar' data-step='1' data-position="right">
-                <div id="tool-buttons">
-                    <div id="tool-enterPreviewMode" class="tool-app" data-title="toolBar_save"></div>
-                    <!--<div id="tool-addslider" class="tool-app" data-title="添加新的幻灯片" data-intro='添加新的幻灯片' data-step='6'></div>-->
-                    <div id="tool-import" class="tool-app" data-title="toolBar_import" >
-                        <input type="file" id="importInp"/>
-                    </div>
-                    <div id="tool-openFileSystem" class="tool-app " data-title="toolBar_openFileSystem"></div>
-                    <div id="tool-play" class="tool-app" data-title="toolBar_preview"></div>
-                    <div id="tool-addAnimation" class="tool-app ondetail" data-title="toolBar_setAnimation" ></div>
-                    <div id="tool-addVideo" class="tool-app" data-title="toolBar_addVideo">
-                        <input type="file" id="addVideoInp"/>
-                    </div>
-                    <div id="tool-addimage" class="tool-app" data-title="toolBar_addImage">
-                        <input type="file" id="addImageInp"/>
-                    </div>
-                    <div id="tool-addtext" class="tool-app" data-title="toolBar_addText"></div>
-                    <div id="tool-addCode" class="tool-app" data-title="toolBar_addCode"></div>
-                    <!--
-                    <div id="tool-insertSlider" class="tool-app" data-title="往当前位置插入新的幻灯片" data-intro='往当前位置插入新的幻灯片' data-step='15'></div>
-                    -->
-                    <div id="tool-screen" class="tool-app" data-title="toolBar_changeScale"></div>
-                    <!--<div class="tool-app show_execCommandDetail" data-title="打开文本编辑工具" data-intro='打开文本编辑工具' data-step='12'></div>-->
-                    
-                    <!--
-                    <div id="tool-deleteSlider" class="tool-app" data-title="删除当前幻灯片" data-intro='删除当前幻灯片' data-step='16'></div>
-                    -->
-                    <div id="tool-help" class="tool-app" data-title="toolBar_help"></div>
-                </div>
-                <div></div>
-            </div>
+            
             <!--工具栏详细操作菜单-->
             <div id="tool-operation" class='panel1 dp-none' >
                 <div id="tool-addAnimation-operation" class="tool-app-items">

@@ -214,7 +214,7 @@ Core.registerModule("canvas",function(sb){
             $(showAnimContainer).append(label).append(showAnim).css({
                 position : 'absolute',
                 zIndex      : "2",
-                left        : "-125px",
+                left        : "-95px",
                 top         : "50px"
             })
             $(label).addClass('showAnim-label').html(ANIMATION_LABEL);
@@ -222,7 +222,7 @@ Core.registerModule("canvas",function(sb){
             .html(anim_name[$(editor).data("anim")])
             .attr('title', '幻灯片的过渡动画/左键点击修改')
             .css({
-                width       : "120px"
+                width       : "90px"
             })
             // 
             var sliderTypeChoosebox = window.ChooseBox.create([
@@ -243,9 +243,9 @@ Core.registerModule("canvas",function(sb){
             .css({
                 position : 'absolute',
                 backgroundColor : '#CCC',
-                width       : "120px",
+                width       : "90px",
                 zIndex      : "2",
-                left        : "-125px",
+                left        : "-95px",
                 top         : "0px"
             })
             .attr('title', '幻灯片的播放类型/左键点击修改')
