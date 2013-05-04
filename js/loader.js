@@ -16,6 +16,6 @@ define('loader', ['../web.fs.mobile/src/webfs'], function (wfs) {
 	    Core.startAll();
 	    setTimeout(function () {
 	    	$('#appContainer').height(document.height);
-	    }, 10);
+	    }, 50);
 	}
 });
