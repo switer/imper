@@ -195,9 +195,9 @@ Core.registerModule("toolbar",function(sb){
                     data : null
                 });
             });
-            // $("#tool-help").on('click', function () {
-            //     introJs().start();
-            // })
+            $("#tool-help").on('click', function () {
+                introJs().start();
+            })
             $('#tool-play').on('click', function () {
                 sb.notify({
                     type : 'playSlider',
