@@ -12,6 +12,7 @@ var localConfig = {
 			toolBar_addText 		: "插入文本输入框",
 			toolBar_addCode 		: "插入代码编辑框",
 			toolBar_changeScale		: "更改幻灯片分辨率比例",
+			toolBar_help : '帮助',
 			//animation
 			anim_slider 			: "幻灯片",
 			anim_sliderZoom 		: "放大幻灯片",
@@ -89,6 +90,7 @@ var localConfig = {
 			toolBar_addText 		: "add a text-box element",
 			toolBar_addCode 		: "add a high-light editor element",
 			toolBar_changeScale 	: "change current presentation screen size",
+			toolBar_help 			: 'intro-helping',
 			// animation
 			anim_slider 			: "slider",
 			anim_sliderZoom 		: "slider zoom",
