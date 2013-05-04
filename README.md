@@ -63,9 +63,11 @@ An presentation editor and the player powered by impress.js
 *  Slider frame opertation(copy,paste,change position) 
 *  Touchable and support ipad device
 
+### License
+
 The MIT License (MIT)
 
-Copyright (c) <2013> <copyright Kaishe Guan>
+> Copyright (c) 2013 copyright Kaishe Guan (guankaishe@gmail.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
