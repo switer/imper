@@ -10,11 +10,12 @@ define('loader', ['../web.fs.mobile/src/webfs'], function (wfs) {
 	} else {
 		$('#appContainer').removeClass('dp-none');
 	    window.altbox.start();
-		$('#appContainer').removeClass('dp-none');
-	    Core.startAll();
 	    $(window).on('resize', function () {
 	    	$('#appContainer').height(document.height);
 	    })
-	    $('#appContainer').height(document.height);
+	    Core.startAll();
+	    setTimeout(function () {
+	    	$('#appContainer').height(document.height);
+	    }, 10);
 	}
 });
