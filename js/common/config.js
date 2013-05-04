@@ -75,6 +75,7 @@ var localConfig = {
 			settings_item_rightTop : '右上圆角',
 			fileSystem_newFolder : "创建目录",
 			fileSystem_saveAs : "另存为",
+			fileSystem_notice_restore : "正在恢复上次打开文件",
 			//buttons
 			btn_close : '关闭'
 		},
@@ -153,6 +154,7 @@ var localConfig = {
 			settings_item_rightTop : 'Right Top',
 			fileSystem_newFolder : "New Folder",
 			fileSystem_saveAs : "Save As",
+			fileSystem_notice_restore : "Loading file, please wait...",
 			//buttons
 			btn_close : 'close'
 		}

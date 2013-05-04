@@ -172,7 +172,7 @@ Core.registerModule("filesystem", function(sb){
 				//获取上次保存成功的缓存文件
 				var lastTempFileName =  window.localStorage.getItem('last_temp_file_name')
 				var cwd = webui.getCwd(_this._container);
-				global._errHandler('正在恢复上次打开文件');
+				global._errHandler(sb.lang().fileSystem_notice_restore);
 				webfs.openfile(lastTempFileName, cwd, function (file) {
 					webfs.readfile(file, 'UTF-8', function (evt) {
 						var content = evt.target.result;

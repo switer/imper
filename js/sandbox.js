@@ -1275,6 +1275,12 @@ var SandBox = (function() {
         return [numerator/gcd, denominator/gcd];
     }
 
+    SandBox.prototype.lang = function () {
+        var languages = localConfig.languages;
+        curLanguage = window.navigator.language.toLocaleLowerCase().match(/zh/) ? languages['zh'] : languages['en']
+        return curLanguage;
+    }
+
     if (!SandBox.prototype.ObjectLink.prototype.toJSONString) {
         SandBox.prototype.ObjectLink.prototype.toJSONString = function (filter) {
             return JSON.stringify(this, filter);
