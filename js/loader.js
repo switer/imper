@@ -8,8 +8,8 @@ define('loader', ['../web.fs.mobile/src/webfs'], function (wfs) {
 		mask.className = '';
 		mask.style.height =  document.documentElement.clientHeight + 'px';
 	} else {
+	    window.altbox.start();
 		$('#appContainer').removeClass('dp-none');
-		window.altbox.start();
 	    Core.startAll();
 	}
 });
