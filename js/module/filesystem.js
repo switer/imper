@@ -34,6 +34,7 @@ Core.registerModule("filesystem", function(sb){
 			$('#returnHomeBtn').on('click', function () {
 				$('#filesystem').hide();
 				$('body').css('overflow', 'hidden');
+				$("#appContainer").removeClass('dp-none');
 				sb.notify({
 					type: 'enterEditorMode',
 					data : null
@@ -247,6 +248,7 @@ Core.registerModule("filesystem", function(sb){
 			$('body').css('overflow', 'auto')
 			$('#filesystem').show();
 			$('#addFile').css('visibility', 'visible');
+			$("#appContainer").addClass('dp-none');
 		},
 		openFileSystem : function () {
 			window.location.hash = '!filesystem'
@@ -260,6 +262,7 @@ Core.registerModule("filesystem", function(sb){
 					data : null
 			})
 			$('#addFile').css('visibility', 'hidden');
+			
 		}
 	}
 });
