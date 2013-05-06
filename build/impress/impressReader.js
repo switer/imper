@@ -241,4 +241,9 @@ var paintingBoards = {},
     };
     window.module = module;
     module.init();
+    $(document).on('keydown', function (e) {
+        if (e.keyCode === 27) {
+            window.location.hash = 'overview';
+        }
+    })
 }());
