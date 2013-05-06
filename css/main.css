@@ -13,6 +13,15 @@ input{
     left: 0;
     top: 0;
 }
+.containerHeader {
+    position: absolute;
+    height: 40px;
+    border-bottom: 1px solid black;
+    background-color: rgba(0,0,0,0.1);
+}
+.containerBody {
+    height: -webkit-calc(100%);
+}
 .header{
 
     position: absolute;
@@ -116,8 +125,8 @@ input{
 .transition-r {-webkit-transition:margin-right 0.3s;}
 .transition-t {-webkit-transition:top 0.3s;}
 .transition-b {-webkit-transition:bottom 0.3s;}
-.l-tb {margin-left: -70px!important;}
-.l-sb {margin-right: -85px!important;}
+.l-tb {margin-left: -68px!important;}
+.l-sb {margin-right: -68px!important;}
 .box {border: 1px solid;border-radius: 5px;background: white;height: 25px;}
 .w-auto {width: auto;}
 .on {box-shadow: inset 0 0 10px 2px cornflowerblue!important;}

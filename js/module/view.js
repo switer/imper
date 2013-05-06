@@ -513,14 +513,13 @@ Core.registerModule("view",function(sb){
                 textAlign : 'center',
                 fontSize : '14px'
             }).addClass('frame-label');
-            $(frameCon).append(frame).append(frameLabel).attr('title', '右键打开操作菜单');
+            $(frameCon).append(frame).append(frameLabel).attr('title', sb.lang().notice_openMenu);
             frame.appendChild(framePanel);
             frame.className = "frame scale";
             framePanel.className = "frame-panel";
-            frame.setAttribute("style", "display:block;");
-            $(frame)
-                .css('height', FRAME_Y * FRAME_SCALE_SIZE + 'px')
-                .css('width', FRAME_X * FRAME_SCALE_SIZE + 'px');
+            $(frame).attr("style", "display:block;")
+                    .css('height', FRAME_Y * FRAME_SCALE_SIZE + 'px')
+                    .css('width', FRAME_X * FRAME_SCALE_SIZE + 'px');
             $(frame)[0].style['WebkitTransform'] =  'scale(' + conf.SCALE_SIZE/FRAME_SCALE_SIZE + ')';
             $(frameCon)
                 .addClass('frameCon')

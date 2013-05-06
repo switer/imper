@@ -9,11 +9,14 @@ define('loader', ['../web.fs.mobile/src/webfs'], function (wfs) {
 		mask.style.height =  document.documentElement.clientHeight + 'px';
 	} else {
 		$('#appContainer').removeClass('dp-none');
-	    window.altbox.start();
+	    
 	    // $(window).on('resize', function () {
 	    // 	$('#appContainer').height(document.height);
 	    // })
 	    Core.startAll();
+	    setTimeout(function () {
+	    	window.altbox.start();
+	    }, 10);
 	    // $('#appContainer').height(document.height);
 	}
 });

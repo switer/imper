@@ -9,8 +9,8 @@ Core.registerModule("toolbar",function(sb){
             global = this;
 
             this._textMatches = {
-                'foreColor' : '请选择文字颜色',
-                'hiliteColor' : '请选择文字背景颜色'
+                'foreColor' : sb.lang().textbar_foreColor,
+                'hiliteColor' : sb.lang().textbar_hiliteColor
             }
 
             ecd = sb.find("#execCommand-detail",document);
@@ -18,7 +18,7 @@ Core.registerModule("toolbar",function(sb){
             // showEcdBut = sb.find(".show_execCommandDetail",document);
             ecdresize = sb.find(".resize",ecd);
             // ecdmove = sb.find(".move",ecd);
-            closeEcd = sb.find(".close-menu",ecd);
+            // closeEcd = sb.find(".close-menu",ecd);
             colorSelector = sb.find("#colorSelector",document);
             execCType = sb.find(".execC_type",colorSelector);
             link = sb.find("#setlink",document);
@@ -28,11 +28,20 @@ Core.registerModule("toolbar",function(sb){
             fontBackground_but = sb.find(".font-background",ecd);
             linkValue = sb.find(".link-value",link);
             sb.css(ecd,{
-                display:'none',
-                height:'40px',
-                top:'400px',
-                left:(100)+'px'
+                // display:'none',
+                // height:'40px',
+                top:'100px',
+                left:'100px'
             });
+            $(ecd).find('[data-isFeed]').on('click', function (e) {
+                var $tar = $(e.target).hasClass("execC-but") ? $(e.target) : $(e.target).find(".execC-but"), 
+                    $parent = $tar.hasClass("execCommand-item") ? $tar : $tar.parent();
+                var action = $tar.data('action');
+                //wakaka eval !!!
+                eval(action);
+                if ($parent.hasClass('active')) $parent.removeClass('active');
+                else {$parent.addClass('active');}
+            })
             $('.close-menu', ecd).css('top','-10px').css('right','-10px')
             sb.css(link,{
                 display:"none",
@@ -88,12 +97,12 @@ Core.registerModule("toolbar",function(sb){
             //         data:e
             //     });
             // }, false);
-            closeEcd.addEventListener("click", function(e){
-                sb.notify({
-                    type:'showEcd',
-                    data:e
-                });
-            }, false);
+            // closeEcd.addEventListener("click", function(e){
+            //     sb.notify({
+            //         type:'showEcd',
+            //         data:e
+            //     });
+            // }, false);
 
 
             toolAppItems = sb.query(".tool-app");
@@ -206,7 +215,8 @@ Core.registerModule("toolbar",function(sb){
             })
             var $bar = $('#toolbar');
             $bar.on('click', function (evt) {
-                if ($(evt.target)[0].id !== 'tool-buttons') return; 
+                var eId = $(evt.target)[0].id;
+                if ( eId !== 'tool-buttons' && eId !== 'toolbar') return; 
                 if ( $bar.hasClass("l-tb") ) $bar.removeClass('l-tb')
                 else $bar.addClass('l-tb');
             })
@@ -302,12 +312,15 @@ Core.registerModule("toolbar",function(sb){
         },
         showEcd:function(){
             if(ecd.style.display=="block"){
-                colorSelector.style.display = "none";
-                ecd.style.display = "none"
-                link.style.display = "none";
+                global.hideEcd();
             }else{
                 ecd.style.display = "block";
             }
+        },
+        hideEcd : function () {
+            colorSelector.style.display = "none";
+            ecd.style.display = "none"
+            link.style.display = "none";
         },
         hiddenStyleBar:function(){
             sb.container.style.display = "none";

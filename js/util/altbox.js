@@ -37,9 +37,29 @@
                 $(e.target)[0].onmouseout = null;
             }
         })
+        $("[title]").on('mouseover', function (e) {
+            var title = $(e.target).attr('title') || $(e.target).parent().attr('title'),
+                msg;
+            if (title) {
+                msg = curLanguage[title] || title;
+                showAlt(msg, {clientX : e.clientX, clientY : e.clientY});
+            } 
+            $(e.target)[0].onmouseout = function () {
+                $(messageBox).hide();
+                $(e.target)[0].onmouseout = null;
+            }
+        })
         _.each($('[data-lang]'), function (item) {
             var lang = curLanguage[$(item).data('lang')] || $(item).data('lang');
             $(item).html(lang);
+        })
+        _.each($('[data-langPre]'), function (item) {
+            var lang = curLanguage[$(item).data('langpre')] || $(item).data('langpre');
+            $(item).html(lang + $(item).html());
+        })
+        _.each($('[data-langSuf]'), function (item) {
+            var lang = curLanguage[$(item).data('langsuf')] || $(item).data('langsuf');
+            $(item).html($(item).html() + lang );
         })
         // var titles = (document.querySelectorAll("[data-title]")),elem;
         // var messageBox = document.querySelector("#message-box");

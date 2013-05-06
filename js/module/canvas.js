@@ -220,7 +220,7 @@ Core.registerModule("canvas",function(sb){
             $(label).addClass('showAnim-label').html(ANIMATION_LABEL);
             $(showAnim).addClass("showAnim").addClass("blue-block").addClass('animation-setting')
             .html(anim_name[$(editor).data("anim")])
-            .attr('title', '幻灯片的过渡动画/左键点击修改')
+            .attr('data-title', sb.lang().notice_frameTransition)
             .css({
                 width       : "90px"
             })
@@ -248,7 +248,8 @@ Core.registerModule("canvas",function(sb){
                 left        : "-95px",
                 top         : "0px"
             })
-            .attr('title', '幻灯片的播放类型/左键点击修改')
+            // .attr('title', '幻灯片的播放类型/左键点击修改')
+            .attr('data-title', sb.lang().notice_presentationType)
             .on('click', function (e) {
                 if (window.ChooseBox.isHide(sliderTypeChoosebox)) {
                     $(this).addClass('on');
@@ -482,7 +483,7 @@ Core.registerModule("canvas",function(sb){
             global._chooseThemebox = chooseThemebox;
             //窗口关闭前的保存文件操作
             window.onbeforeunload = function () {
-                return '要离开正在编辑的内容？'
+                return sb.lang().notice_beforeClose;
             }
             $('#previewContainer').find('.close-menu').on('click', function () {
                 global._playFrame && $(global._playFrame).remove();
@@ -1279,7 +1280,7 @@ Core.registerModule("canvas",function(sb){
             textBox.setAttribute("contenteditable", "true");
             container.appendChild(textBox);
             editor.appendChild(container);
-            textBox.focus();
+            
             isEditor = true;
 
             dataID = global._insetIntoDataset(container, textBox)
@@ -1289,24 +1290,119 @@ Core.registerModule("canvas",function(sb){
             document.onselectstart = function(){
                 return true;
             }
-            textBox.onfocus = function(e){
+            $(textBox).on('focus', function(e){
                 document.onselectstart = function(){
                     return true;
                 }
+                if(!isEditor) {
+                    // $(".containerHeader").removeClass('dp-none')
+                    isEditor = true;
+                }
+            })
+            $(textBox).on('click', function() {
                 global.setSelect(dataID);
-                if(!isEditor) isEditor = true;
-            }
+            });
             $(textBox).on('blur', function(e){
                 document.onselectstart = function(){
                     return false;
                 }
-                isEditor = false;
+                if(isEditor) {
+                    isEditor = false;
+                    // $(".containerHeader").addClass('dp-none')
+                }
+                
             });
+            global.steTextEdit(textBox);
+            textBox.focus();
+
             //选中
             global.setSelect(dataID);
+
             return dataID;
         },
+        steTextEdit : function (textbox) {
+            var isSelectDown = false;
+            textbox.onmousedown = function () {
+                // global.checkTextHighlighting ( textbox ) ;
+            }
+            textbox.onmouseup = function( event ) {
+                // setTimeout( function() {
+                    global.checkTextHighlighting( textbox );
+                // }, 1);
+            };
+            //Ctrl + A
+            textbox.onkeydown = function (e) {
+                if (e.keyCode === 65 && e.ctrlKey) {
+                    isSelectDown = true
+                }
+            }
+            textbox.onkeyup = function () {
+                if (isSelectDown) {
+                    global.checkTextHighlighting ( textbox ) ;
+                    isSelectDown = false;
+                }
+            }
+            // $(textbox).on('blur', function () {
+            //     $("#execCommand-detail").addClass('dp-none');
+            // })
+        },
+        onSelectorBlur : function () {
 
+        },
+        updateToolbarStates : function () {
+            if (global._currentNodeList) {
+                console.log(global._currentNodeList);
+                if (global._currentNodeList['I']) {
+                    $("#execCommand-detail").find(".font-italic").addClass('active');
+                }
+                if (global._currentNodeList['B']) {
+                    $("#execCommand-detail").find(".font-bold").addClass('active');
+                }
+                if (global._currentNodeList['U']) {
+                    $("#execCommand-detail").find(".font-underline").addClass('active');
+                }
+                if (global._currentNodeList['STRIKE']) {
+                    $("#execCommand-detail").find(".font-strike").addClass('active');
+                }
+            }
+        },
+        checkTextHighlighting : function (container) {
+            var selection = window.getSelection();
+            var offset = $(selection.focusNode.parentNode).offset();
+            global._currentNodeList = global.findNodes(selection.focusNode, container);
+            if (selection.isCollapsed) { 
+                $("#execCommand-detail").addClass('dp-none')
+            }
+            else {
+                $("#execCommand-detail").find('.execCommand-item').removeClass('active');
+                $("#execCommand-detail").removeClass('dp-none')
+                setTimeout(function () {
+                    var left  = offset.left - $("#execCommand-detail").offset().width /2,
+                        fixLeft = left < 0 ? 0 : left,
+                        top = offset.top - $("#execCommand-detail").offset().height - 10,
+                        fixTop = top < 0 ? offset.bottom + $("#execCommand-detail").offset().height : top;
+                    $("#execCommand-detail").css({
+                        left : fixLeft,
+                        top : fixTop
+                    });
+                });
+                global.updateToolbarStates();
+            }
+            
+        },
+        findNodes : function( element, container ) {
+            var nodeNames = {};
+
+            while ( element && element.parentNode && element.parentNode !== container) {
+                nodeNames[element.nodeName] = true;
+                element = element.parentNode;
+
+                if ( element.nodeName === 'A' ) {
+                    nodeNames.url = element.href;
+                }
+            }
+            return nodeNames;
+        },
         addCode : function (pasteParam) {
             pasteParam || (pasteParam = {});
 
@@ -1656,7 +1752,7 @@ Core.registerModule("canvas",function(sb){
             //右键选中复制目标
             copyElem = rightMenuBtn;
 
-            if(copyElem&&elementSet[copyElem]){
+            if(copyElem && elementSet[copyElem]){
                 var pasteElem = elementSet[copyElem];
                 var container = pasteElem.container,data = pasteElem.data,
                 value = data.src || data.innerHTML;
@@ -1756,60 +1852,67 @@ Core.registerModule("canvas",function(sb){
         changeShowAnim:function(anim){
             $('.animation-setting').html(anim_name[anim]);
         },
+        //选中效果
         setSelect : function (elemID) {
 
-            if (!elemID || elemID === "panel" || target === elemID  ) return;
+            if (!elemID  || target === elemID ) return;
+            // else if ( elemID === "panel" ) {
+
+            // }
+            global.cancelRightMenu();
+
             //取消现有目标的效果
-            if(target&&elementSet[target]) {
+            if(target && elementSet[target]) {
                 sb.removeClass(elementSet[target].container,"element-select");
                 var parts = sb.query(".element-container-apart", elementSet[target].container);
                 for (i = 0; i < parts.length; i++) {
                     sb.removeClass(parts[i],"show-container-apart");
                 }
             }
-            // if (target === elemID) {
-            //     target = null;
-            //     return;
-            // }
+            if (elemID === 'panel') {
+                target = null;
+                return;
+            }
             target = elemID;
-            var container = elementSet[target].container;
+            var elementData = elementSet[target], container = elementData.container;
             sb.addClass(container, "element-select");
-            var elements = sb.query(".element-container-apart", elementSet[target].container);
+            var elements = sb.query(".element-container-apart", elementData.container);
             for (i = 0; i < elements.length; i++) {
                 sb.addClass(elements[i],"show-container-apart");
             }
 
         },
+        cancelRightMenu : function () {
+                cancelElementOperateMenuFunc();
+                easm.style.display = "none";
+        },
         elementOpertate:function(elemID,etar,container){
             var i;
             sb.click(etar, {isDown : false}, function (e) {
-                    cancelRightMenu();
                     if ( target === elemID) return;
-                    //取消现有目标的效果
-                    if(target && elementSet[target]) {
-                        sb.removeClass(elementSet[target].container,"element-select");
-                        var parts = sb.query(".element-container-apart", elementSet[target].container);
-                        for (i = 0; i < parts.length; i++) {
-                            sb.removeClass(parts[i],"show-container-apart");
-                        }
-                    }
-                    if (elemID === 'panel') {
-                        target = null;
-                        return;
-                    }
-                    target = elemID;
-                    sb.addClass(container, "element-select");
-                    var elements = sb.query(".element-container-apart", elementSet[target].container);
-                    for (i = 0; i < elements.length; i++) {
-                        sb.addClass(elements[i],"show-container-apart");
-                    }
+                    global.setSelect(elemID)
+                    // if ( target === elemID) return;
+                    // //取消现有目标的效果
+                    // if(target && elementSet[target]) {
+                    //     sb.removeClass(elementSet[target].container,"element-select");
+                    //     var parts = sb.query(".element-container-apart", elementSet[target].container);
+                    //     for (i = 0; i < parts.length; i++) {
+                    //         sb.removeClass(parts[i],"show-container-apart");
+                    //     }
+                    // }
+                    // if (elemID === 'panel') {
+                    //     target = null;
+                    //     return;
+                    // }
+                    // target = elemID;
+                    // sb.addClass(container, "element-select");
+                    // var elements = sb.query(".element-container-apart", elementSet[target].container);
+                    // for (i = 0; i < elements.length; i++) {
+                    //     sb.addClass(elements[i],"show-container-apart");
+                    // }
             })
-
-            function cancelRightMenu () {
-                cancelElementOperateMenuFunc();
-                easm.style.display = "none";
-                
-            }
+    
+            
             sb.bind(etar,"mousedown",function(e){
                 //监听鼠标右键
                 if(e.button == 2){
@@ -1820,16 +1923,19 @@ Core.registerModule("canvas",function(sb){
                     //选择性显示菜单项
                     global._chooseMenuItem(elemID);
 
-                    rightMenuBtn = elemID;
-                    if(elemID == 'panel'){
-                        //如果上次为面板触发右键，隐藏菜单
+                    //如果触发了右键，隐藏菜单
+                    if (elemID === rightMenuBtn) {
                         if(eom.style.display == "block"){
                             cancelElementOperateMenuFunc();
                             easm.style.display = "none";
                             return;
                         }
+                    }
+                    rightMenuBtn = elemID;
+                    if(elemID == 'panel'){
+                        
                         //面板触发右键，则没有选择目标
-                        target=null;
+                        rightMenuBtn = null;
                         eom.style.display = "block";
                         setPositionFunc(e,eom,-50,-50,-100,-200);
                         return;

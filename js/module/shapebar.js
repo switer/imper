@@ -1,6 +1,7 @@
 Core.registerModule("shapebar", function(sb){
 
-    var conf = {
+	var lang = sb.lang(),
+    	conf = {
     		PATNING_BOARD_HEIGHT : 300,
     		PATNING_BOARD_WIDTH : 300,
     		DEFAULT_ERASER_COLOR : 'rgba(255,255,255,0)',
@@ -59,7 +60,7 @@ Core.registerModule("shapebar", function(sb){
             })
             document.body.appendChild(cb);
             global._colorboard = cb;
-            window.colorboard.title(cb, '请选择图形颜色');
+            window.colorboard.title(cb, lang.text_shapebar_chooseImageColor);
 
             global.initPaintingBoard();
 
@@ -70,7 +71,7 @@ Core.registerModule("shapebar", function(sb){
 				pbElem = drawingBoard.getCanvas(),
 				pbContainer = document.createElement('div'),
 				$toolBar = $("<div></div>").addClass('painting-board-toolbar'),
-				$confirmBtn = $("<div></div>").addClass('painting-board-confirm').addClass('pb-btn').html('确定'),
+				$confirmBtn = $("<div></div>").addClass('painting-board-confirm').addClass('pb-btn').html(lang.text_shapebar_confirm),
 				$sizeSelector = $("<select></select>").addClass('painting-board-size').addClass('pb-btn'),
 				$colorBtn = $("<div></div>").addClass('painting-board-color').addClass('pb-btn'),
 				$eraserBtn = $("<div></div>").addClass('painting-board-eraser').addClass('pb-btn'),
@@ -113,7 +114,7 @@ Core.registerModule("shapebar", function(sb){
 			_.each(sizeArr, function (item) {
 				var selected = '';
 				if (item === conf.DEFAULT_PAINTING_SIZE) selected = 'selected'
-				sizeSelHTML += '<option value=' + item + ' ' + selected + '>笔粗-' + item + '</option>';
+				sizeSelHTML += '<option value=' + item + ' ' + selected + '>' + lang.text_shapebar_fontSize + '-' + item + '</option>';
 			})
 			$sizeSelector.html(sizeSelHTML)
 						 .on('change', function () {

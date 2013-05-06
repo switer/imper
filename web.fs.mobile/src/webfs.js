@@ -73,7 +73,6 @@ define('webfs/fs',['webfs/fs/util'], function (util) {
 	function link (filename, cwd, success, error, options) {
 		var type = config.CREATE_ENTRY_OPTIONS;
 		if (options && options.override) type = config.CREATE_OVERRIDE_ENTRY_OPTIONS;
-		console.log('link file : ' + filename);
 		cwd.getFile(filename, type, success, error)
 	}
 	// create a directory
@@ -102,9 +101,7 @@ define('webfs/fs',['webfs/fs/util'], function (util) {
 	}
 	// create a file and write conent
 	function writefile (filename, cwd, content, success , error, options) {
-		console.log('on writefile');
 		link(filename, cwd, function (file) {
-			console.log('link file : ' + filename,file);
 			file.createWriter(function(fileWriter) {
                 fileWriter.onwriteend = function(e) {
                     success(file);
@@ -165,17 +162,13 @@ define('webfs/fs',['webfs/fs/util'], function (util) {
 				rootPath = root.match(/.*\/$/) ? root : root + '/';
 			path = path.match(/.*\/$/) ? path : path + '/';
 			path = path.replace(new RegExp('^' + rootPath), './'); 
-			console.log(path, fs.root);
 			opendir(path, fs.root, function (directoryEntry) {
-				console.log('opendir success')
 				openfile(filename, directoryEntry, function () {
-					console.log('has old file');
 					//先把旧文件删除
 					unlink (filename, directoryEntry, function () {
 						writefile(filename, directoryEntry, content, success, error, options)
 					}, error) 
 				}, function () {
-					console.log('not old file');
 					writefile(filename, directoryEntry, content, success, error, options);
 				});
 			}, error)
@@ -421,12 +414,12 @@ define('webfs/ui',
 
 		/*目录项要指定渲染*/
 		if ( util.urlParse(getCwd(container).toURL()) !== util.urlParse(_this._root) ) {
-			rootname = '返回上一级';
+			rootname = 'Back';
 			rootpath = '..';
 			iconType = 'fs-icon-back';
 		}
 		else {
-			rootname = '根目录';
+			rootname = 'Root';
 			rootpath = '.';
 			iconType = 'fs-icon-back fs-icon-root';
 		}
