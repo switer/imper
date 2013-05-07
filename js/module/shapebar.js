@@ -4,6 +4,7 @@ Core.registerModule("shapebar", function(sb){
     	conf = {
     		PATNING_BOARD_HEIGHT : 300,
     		PATNING_BOARD_WIDTH : 300,
+    		PAINTNG_BOARD_RIGHT : 120,
     		DEFAULT_ERASER_COLOR : 'rgba(255,255,255,0)',
     		DEFAULT_ERASER_SIZE : 10,
     		DEFAULT_PAINTING_SIZE : 6
@@ -50,7 +51,9 @@ Core.registerModule("shapebar", function(sb){
             $bar.on('click', function (evt) {
                 if ($(evt.target)[0].id !== 'shapebar') return; 
                 if ( $bar.hasClass("l-sb") ) $bar.removeClass('l-sb')
-                else $bar.addClass('l-sb');
+                else {
+                	$bar.addClass('l-sb')
+                }
             })
 
 			var cb = window.colorboard.create(function (value) {
@@ -75,6 +78,7 @@ Core.registerModule("shapebar", function(sb){
 				$sizeSelector = $("<select></select>").addClass('painting-board-size').addClass('pb-btn'),
 				$colorBtn = $("<div></div>").addClass('painting-board-color').addClass('pb-btn'),
 				$eraserBtn = $("<div></div>").addClass('painting-board-eraser').addClass('pb-btn'),
+				$fullscreenBtn = $("<div></div>").addClass('painting-board-fullscreen').addClass('pb-btn'),
 				$pbPanel  =  $("<div></div>").addClass('painting-board-panel'),
 				sizeArr = [1,2,3,4,6,8,10,12,16, 18, 20, 24, 30, 32, 100],
 				sizeSelHTML = '';
@@ -91,7 +95,7 @@ Core.registerModule("shapebar", function(sb){
 				}
 			}
 
-			$toolBar.append($sizeSelector).append($colorBtn).append($eraserBtn).append($confirmBtn);
+			$toolBar.append($sizeSelector).append($colorBtn).append($eraserBtn).append($fullscreenBtn).append($confirmBtn);
 			$(pbElem).addClass('painting-board');
 			$colorBtn.on('click', function (evt) {
 				global._chooseColor(evt.clientY, function (color) {
@@ -109,7 +113,31 @@ Core.registerModule("shapebar", function(sb){
 					}
 				})
 			})
+			function fullscreenPaintBoard () {
+				var offset = $("#canvas>.container").offset();
+				$("#canvas>.container").append(pbContainer);
+				$(pbContainer).css({
+					left: -13,
+					top: -13,
+					// left : offset.left -11,
+					// top : offset.top -11,
+					right : 'initial'
+				})
+				$(pbElem).attr('height', offset.height-1).attr('width', offset.width-1);
+			}
 			$eraserBtn.on('click',  eraserHandler);
+			$fullscreenBtn.on('click', function (e) {
+				var $target = $(e.target);
+				if ($target.hasClass('on')) {
+					$("body").append(pbContainer);
+					$target.removeClass('on')
+					global.resetPaintingBoard();
+				}
+				else {
+					$target.addClass('on')
+					fullscreenPaintBoard();
+				}
+			})
 
 			_.each(sizeArr, function (item) {
 				var selected = '';
@@ -144,7 +172,25 @@ Core.registerModule("shapebar", function(sb){
 			$con.removeClass('dp-none');
 			$("#customShape").addClass('on')
 			setTimeout(function () {
-				$con.css('top', (clientY - $con.offset().height) + 'px')
+				if (!$con.find(".painting-board-fullscreen").hasClass('on')) {
+					$con.data('top' , (clientY - $con.offset().height) + 'px');
+					$con.css('top' , clientY - $con.offset().height);
+				}
+			}, 0)
+		},
+		resetPaintingBoard : function () {
+			var con = global._drawingBoardContainer,
+				$con = $(con),
+				$canvas = $con.find('canvas');
+			if (!con) return;
+
+			setTimeout(function (clientY) {
+				$con.css({
+					top : $con.data('top'),
+					left : 'initial',
+					right : conf.PAINTNG_BOARD_RIGHT
+				})
+				$canvas.attr('height', conf.PATNING_BOARD_HEIGHT).attr('width', conf.PATNING_BOARD_WIDTH)
 			}, 0)
 		},
 		hidePaintingBoard : function () {
