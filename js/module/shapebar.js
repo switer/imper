@@ -16,7 +16,8 @@ Core.registerModule("shapebar", function(sb){
 			sb.listen({
                 "enterEditorMode":this.enterEditorMode,
                 "enterPreviewMode":this.enterPreviewMode,
-                "windowResize":this.windowResize 
+                "windowResize":this.windowResize,
+                "refleshpaintBoard" : this.refleshpaintBoard
             });
             //插入图形
 			$('.shape-icon').on('click', function (e) {
@@ -164,6 +165,13 @@ Core.registerModule("shapebar", function(sb){
 			global._drawingBoard = drawingBoard;
 			global._drawingBoardContainer = pbContainer;
 			global.hidePaintingBoard.call();
+		},
+		refleshpaintBoard : function () {
+			var $con = $(global._drawingBoardContainer);
+			if ($("#customShape").hasClass('on') && $con.find('.painting-board-fullscreen').hasClass('on')) {
+				var offset = $("#canvas>.container").offset();
+				$con.find('canvas').attr('height', offset.height-1).attr('width', offset.width-1);
+			}
 		},
 		addPaintingImage : function () {
 

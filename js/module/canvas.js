@@ -18,6 +18,7 @@ Core.registerModule("canvas",function(sb){
             '2:1'   : {x:1000,y:500},
             '1:1'   : {x:640,y:640}
         },
+        DATASET_PRE = 'slider',
         DEFAULT_SLIDE_TYPE = 'impress',
         DEFAULT_SCREEN = '4:3',
         canvasX = 1200,
@@ -323,7 +324,9 @@ Core.registerModule("canvas",function(sb){
                 "changeCodeType" : this.changeCodeType,
                 "codeboxThemeSetting" : this.codeboxThemeSetting,
                 "autoSaveTimer" : this.autoSaveTimer,
-                "playSlider" :  this.playSlider
+                "playSlider" :  this.playSlider,
+                "copySlider" : this.copySlider,
+                "pasteSlider" : this.pasteSlider
             });
             for (i = 0; item =  eomItems[i]; i++) {
                 item.onclick = function(e){
@@ -576,6 +579,10 @@ Core.registerModule("canvas",function(sb){
             canvasY = sMap.y;
             //更新幻灯片size
             global.refreshScreesSize();
+            sb.notify({
+                type : "refleshpaintBoard",
+                data : null
+            })
         },
         refreshScreesSize : function () {
             $('.container', sb.container).css('height', canvasY + 'px').css('width', canvasX + 'px')
@@ -662,51 +669,55 @@ Core.registerModule("canvas",function(sb){
                 var count = 0;
                 for (var i = 0; i < elements.length; i++) {
                     var data = elements[i],elem;
-                    if(data.type === "DIV"){
-                        sb.notify({
-                            type:"addText",
-                            data: {
-                                paste : true,
-                                attr : data.cAttr,
-                                elemAttr : data.eAttr,
-                                value : decodeURIComponent(data.value)
-                            }
-                        });
-                    }
-                    else if(data.type === "IMG") {
-                        sb.notify({
-                            type:"addImage",
-                            data: {
-                                paste : true,
-                                attr : data.cAttr,
-                                elemAttr : data.eAttr,
-                                pAttr : data.panelAtt,
-                                value : data.value
-                            }
-                        });
-                    } 
-                    else if (data.type === "VIDEO") {
-                        global._addVideElement(data.value, {
-                            isPaste : true,
-                            eAttr : data.eAttr,
-                            cAttr : data.cAttr,
-                            value : data.value
-                        })
-                    }
-                    if(data.type === "CODE"){
-                        sb.notify({
-                            type:"addCode",
-                            data: {
-                                paste : true,
-                                attr : data.cAttr,
-                                elemAttr : data.eAttr,
-                                value : data.value,
-                                theme : data.theme,
-                                codeType : data.codeType
-                            }
-                        });
-                    }
+                    global.renderElement(data);
                 }
+            }
+        },
+        renderElement : function (data) {
+            var elem;
+            if(data.type === "DIV"){
+                sb.notify({
+                    type:"addText",
+                    data: {
+                        paste : true,
+                        attr : data.cAttr,
+                        elemAttr : data.eAttr,
+                        value : decodeURIComponent(data.value)
+                    }
+                });
+            }
+            else if(data.type === "IMG") {
+                sb.notify({
+                    type:"addImage",
+                    data: {
+                        paste : true,
+                        attr : data.cAttr,
+                        elemAttr : data.eAttr,
+                        pAttr : data.panelAtt,
+                        value : data.value
+                    }
+                });
+            } 
+            else if (data.type === "VIDEO") {
+                global._addVideElement(data.value, {
+                    isPaste : true,
+                    eAttr : data.eAttr,
+                    cAttr : data.cAttr,
+                    value : data.value
+                })
+            }
+            if(data.type === "CODE"){
+                sb.notify({
+                    type:"addCode",
+                    data: {
+                        paste : true,
+                        attr : data.cAttr,
+                        elemAttr : data.eAttr,
+                        value : data.value,
+                        theme : data.theme,
+                        codeType : data.codeType
+                    }
+                });
             }
         },
         readData:function (inp) {
@@ -735,7 +746,7 @@ Core.registerModule("canvas",function(sb){
             global.renderSlider(data);
         },
         destroy:function(){
-            editor=null;
+            editor = null;
         },
         windowResize:function(){
             // sb.container.style["marginTop"] = ((window.innerHeight-canvasY-viewY-header)/2+header)+"px";
@@ -838,40 +849,68 @@ Core.registerModule("canvas",function(sb){
                 isHasCode  = false;
 
             SliderDataSet.forEach(function(datasets, sliderIndex){
-                var data = new sb.ObjectLink();
-                var slider = {};
-                datasets.forEach(function(b, n){
-                    var sliderElement = {};
-                    sliderElement.type = b["data"].tagName;
-                    sliderElement.cAttr = b["container"].getAttribute("style");
-                    sliderElement.eAttr = b["data"].getAttribute("style");
-                    sliderElement.zIndex = b["zIndex"];
-                    //img.src||video-srouce.src||textbox.src
-                    sliderElement.value = b["data"].src || $(b["data"]).find('.video-source').attr('src') || encodeURIComponent(b["data"].innerHTML);
-                    if(sliderElement.type=="IMG"){
-                        sliderElement.panelAtt = sb.find(".element-panel",b["container"]).getAttribute("style");
-                    }
-                    if (sliderElement.type === 'CODE') {
-                        isHasCode = true;
-                        //code mirror
-                        var doc =  b['file'].getDoc();
-                        sliderElement.value = doc.getValue();
-                        sliderElement.codeType = doc.getMode().name;
-                        sliderElement.theme = b['file'].getOption('theme');
-                    }
-                    data[n] = sliderElement;
-                });
-                slider["anim"] = sliders[sliderIndex].getAttribute("data-anim");
-                slider["panelAttr"] = sb.find(".panel", sliders[sliderIndex]).getAttribute("style");
-                slider["element"] = data;
-                json[sliderIndex] = slider;
+                // var data = new sb.ObjectLink();
+                // var slider = {};
+                // datasets.forEach(function(b, n){
+                //     var sliderElement = {};
+                //     sliderElement.type = b["data"].tagName;
+                //     sliderElement.cAttr = b["container"].getAttribute("style");
+                //     sliderElement.eAttr = b["data"].getAttribute("style");
+                //     sliderElement.zIndex = b["zIndex"];
+                //     //img.src||video-srouce.src||textbox.src
+                //     sliderElement.value = b["data"].src || $(b["data"]).find('.video-source').attr('src') || encodeURIComponent(b["data"].innerHTML);
+                //     if(sliderElement.type=="IMG"){
+                //         sliderElement.panelAtt = sb.find(".element-panel",b["container"]).getAttribute("style");
+                //     }
+                //     if (sliderElement.type === 'CODE') {
+                //         isHasCode = true;
+                //         //code mirror
+                //         var doc =  b['file'].getDoc();
+                //         sliderElement.value = doc.getValue();
+                //         sliderElement.codeType = doc.getMode().name;
+                //         sliderElement.theme = b['file'].getOption('theme');
+                //     }
+                //     data[n] = sliderElement;
+                // });
+                // slider["anim"] = sliders[sliderIndex].getAttribute("data-anim");
+                // slider["panelAttr"] = sb.find(".panel", sliders[sliderIndex]).getAttribute("style");
+                // slider["element"] = data;
+                json[sliderIndex] = global._readSliderData(datasets, sliderIndex);
             });
             return {
                 data : json,
                 isHasCode : isHasCode
             }
         },
-
+        _readSliderData : function (sliderElementDataset, sliderIndex) {
+            var elementSet = new sb.ObjectLink();
+            var slider = {};
+            sliderElementDataset.forEach(function(data, name){
+                var sliderElement = {};
+                sliderElement.type = data["data"].tagName;
+                sliderElement.cAttr = data["container"].getAttribute("style");
+                sliderElement.eAttr = data["data"].getAttribute("style");
+                sliderElement.zIndex = data["zIndex"];
+                //img.src||video-srouce.src||textbox.src
+                sliderElement.value = data["data"].src || $(data["data"]).find('.video-source').attr('src') || encodeURIComponent(data["data"].innerHTML);
+                if(sliderElement.type=="IMG"){
+                    sliderElement.panelAtt = sb.find(".element-panel",data["container"]).getAttribute("style");
+                }
+                if (sliderElement.type === 'CODE') {
+                    isHasCode = true;
+                    //code mirror
+                    var doc =  data['file'].getDoc();
+                    sliderElement.value = doc.getValue();
+                    sliderElement.codeType = doc.getMode().name;
+                    sliderElement.theme = data['file'].getOption('theme');
+                }
+                elementSet[name] = sliderElement;
+            });
+            slider["anim"] = sliders[sliderIndex].getAttribute("data-anim");
+            slider["panelAttr"] = sb.find(".panel", sliders[sliderIndex]).getAttribute("style");
+            slider["element"] = elementSet;
+            return slider;
+        },
         _createSaveData : function (callback) {
             global._createThumb(sliders.getFirstElement(), function (thumb) {
                 var sliderJson = global._createSliderJSONData(),
@@ -1081,7 +1120,7 @@ Core.registerModule("canvas",function(sb){
                 addSliderObjectFunc({
                     key:sliderID,
                     value:newSlider
-                },method,null);
+                }, method, null);
                 addSliderElementFunc(newSlider, method, null, editorContainer);
             }
             currentSlider = sliderID;
@@ -1159,6 +1198,7 @@ Core.registerModule("canvas",function(sb){
                 });
                 video.style.height = '100%';
                 video.style.width = '100%';
+                global.refleshSliderFrame(currentSlider);
                 options && options.callback && options.callback.call(global, dataId);
             })
         },
@@ -1206,7 +1246,9 @@ Core.registerModule("canvas",function(sb){
                 });
                 img.style.height = '100%';
                 img.style.width = '100%';
+                global.refleshSliderFrame(currentSlider);
                 callback && callback(imgElementId)
+
             }
 
             function addImageConfig (container, img, obj) {
@@ -1261,6 +1303,12 @@ Core.registerModule("canvas",function(sb){
             var con_obj = newContainerFunc(obj, partSize,textBox);
             var container = con_obj.container;
 
+            $(container).css({
+                font : 'initial',
+                color : 'initial',
+                lineHeight : 'initial',
+                letterSpacing : 'initial'
+            });
             if(textObj["paste"]){
                 container.setAttribute("style", textObj["attr"]);
                 textBox.setAttribute("style", textObj["elemAttr"]);
@@ -1270,12 +1318,7 @@ Core.registerModule("canvas",function(sb){
                 textBox.setAttribute("style", "height:"+obj.height+"px;width:"+obj.width+"px;overflow:hidden;outline: none;");
             }
             container.style.zIndex = global._getMaxZIndex(currentSlider);
-            $(container).css({
-                font : 'initial',
-                color : 'initial',
-                lineHeight : 'initial',
-                letterSpacing : 'initial'
-            });
+            
 
             textBox.setAttribute("contenteditable", "true");
             container.appendChild(textBox);
@@ -1315,7 +1358,7 @@ Core.registerModule("canvas",function(sb){
 
             //选中
             global.setSelect(dataID);
-
+            global.refleshSliderFrame(currentSlider);
             return dataID;
         },
         steTextEdit : function (textbox) {
@@ -1467,6 +1510,7 @@ Core.registerModule("canvas",function(sb){
     
             var dataId = global._insetIntoDataset(containerDatas.container, codeWrap, codeMirror);
             elementOpertateFunc(dataId, containerDatas.container, containerDatas.container);
+            global.refleshSliderFrame(currentSlider);
             return dataId;
         },
         //添加svg矢量图
@@ -1808,6 +1852,54 @@ Core.registerModule("canvas",function(sb){
                 }
                 
             }
+        },
+        copySlider : function (sliderId) {
+            if (!sliderId) return;
+            var sliderData = global._readSliderData(SliderDataSet[DATASET_PRE + sliderId], DATASET_PRE + sliderId)
+            global._copySliderParam = sliderData;
+        },
+        pasteSlider : function (sliderId) {
+            global._copySliderParam && global.renderElements(global._copySliderParam, sliderId);
+        },
+        renderElements : function (slider, sliderId) {
+            var elements = slider.element;
+            sliders.forEach(function (data, name) {
+                console.log(name)
+            })
+            global.createSlider({
+                    'method' : 'insert',
+                    'dataId' : sliderId
+                }, {
+                attr : slider['panelAttr'], 
+                anim : slider['anim']
+            });
+            sb.notify({
+                type:"importSlider",
+                data: {
+                    'method' : 'insert',
+                    'dataId' : sliderId
+                }
+            });
+
+            elements.forEach(function (data, name) {
+                global.renderElement(data);
+            })
+            console.log('after insert---------');
+            sliders.forEach(function (data, name) {
+                console.log(name)
+            })
+
+        },
+        refleshSliderFrame : function (sliderId) {
+            var idNum = sliderId.replace('slider', '');
+            sb.notify({
+                type : "changeSlider",
+                data : idNum
+            });
+            sb.notify({
+                type : "changeFrame",
+                data : 'frame' + idNum
+            });
         },
         changeSlider:function(snum){
             var sliderID = "slider" + snum;

@@ -82,6 +82,15 @@ Core.registerModule("view",function(sb){
                     case 'delete' : 
                         params =  dataId;
                         break;
+                    case 'copy' :
+                        params =  dataId;
+                        break;
+                    case 'paste' :
+                        params =  dataId;
+                        break;
+                    default : 
+                        throw new Error(type + ' action not found');
+                        break;
                 }
                 sb.notify({
                     type : evtType,
@@ -182,6 +191,7 @@ Core.registerModule("view",function(sb){
             }
             global.changeDisplayFrameList(frame.id, method);
             global.updateFrameLabel();
+            
         },
         deleteFrame:function(delId){
             //nearFrame:当前frame的邻近frame,
@@ -364,16 +374,11 @@ Core.registerModule("view",function(sb){
                     elem.setAttribute("style", data[a].attr);
                     borderWidth = elem.style.borderWidth;
                     elem.style.position = "absolute";
-                    // elem.style.left = (parseInt(data[a].left)/VIEWSCALE)+"px";
-                    // elem.style.top = (parseInt(data[a].top)/VIEWSCALE)+"px";
-                    // elem.style.height = (parseInt(data[a].height)/VIEWSCALE)+"px";
-                    // elem.style.width = (parseInt(data[a].width)/VIEWSCALE)+"px";
                     elem.style.left     = data[a].left;
                     elem.style.top      = data[a].top;
                     elem.style.height   = data[a].height;
                     elem.style.width    = data[a].width;
                     if(borderWidth) {
-                        // elem.style.borderWidth = parseInt(parseInt(borderWidth)/VIEWSCALE+0.5)+"px";
                         elem.style.borderWidth = borderWidth;
                     }
                     elem.style.zIndex = data[a].zIndex;
@@ -397,15 +402,6 @@ Core.registerModule("view",function(sb){
                         var text = document.createElement("div");
                         text.innerHTML = data[a].value;
                         text.className = "text";
-                        // var theight = (parseInt(data[a].height.substr(0,data[a].height.length-2)));
-                        // var twidth = (parseInt(data[a].width.substr(0,data[a].width.length-2)));
-                        // text.style.top = ((-theight*(VIEWSCALE-1)/(VIEWSCALE))/2)+"px";
-                        // text.style.left = ((-twidth*(VIEWSCALE-1)/(VIEWSCALE))/2)+"px";
-                        // text.style.top = data[a].top;
-                        // text.style.left = data[a].left;
-                        // text.style.height = data[a].height;
-                        // text.style.width = data[a].width;
-                        // text.style.position = "relative";
                         text.style.height = '100%';
                         text.style.width = '100%';
                         elem.className = "textCon";
@@ -548,6 +544,7 @@ Core.registerModule("view",function(sb){
                     type:"changeFrame",
                     data:frameID
                 });
+                console.log(SframeNum, frameID);
             },false);
             $(frame).on('mousedown ', function (evt) {
                 if (evt.button === 2) {
