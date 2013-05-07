@@ -1308,9 +1308,7 @@ Core.registerModule("canvas",function(sb){
                 }
                 if(isEditor) {
                     isEditor = false;
-                    // $(".containerHeader").addClass('dp-none')
                 }
-                
             });
             global.steTextEdit(textBox);
             textBox.focus();
@@ -1325,11 +1323,9 @@ Core.registerModule("canvas",function(sb){
             textbox.onmousedown = function () {
                 // global.checkTextHighlighting ( textbox ) ;
             }
-            textbox.onmouseup = function( event ) {
-                // setTimeout( function() {
-                    global.checkTextHighlighting( textbox );
-                // }, 1);
-            };
+            $(document).on('mouseup', function( event ) {
+                global.checkTextHighlighting( textbox );
+            });
             //Ctrl + A
             textbox.onkeydown = function (e) {
                 if (e.keyCode === 65 && e.ctrlKey) {
@@ -1370,7 +1366,11 @@ Core.registerModule("canvas",function(sb){
             var selection = window.getSelection();
             var offset = $(selection.focusNode.parentNode).offset();
             global._currentNodeList = global.findNodes(selection.focusNode, container);
-            if (selection.isCollapsed) { 
+            var range = selection.getRangeAt(0),
+                start = range.startOffset,
+                end = range.endOffset;
+            console.log(selection.isCollapsed, start, end)
+            if (selection.isCollapsed && start === end) { 
                 $("#execCommand-detail").addClass('dp-none')
             }
             else {
@@ -1856,11 +1856,12 @@ Core.registerModule("canvas",function(sb){
         setSelect : function (elemID) {
 
             if (!elemID  || target === elemID ) return;
-            // else if ( elemID === "panel" ) {
-
-            // }
             global.cancelRightMenu();
-
+            /*
+            *   离开编辑框选择时隐藏编辑工具
+            *   blur事件会导致点击工具栏时会隐藏
+            */
+            if (!isEditor) { $("#execCommand-detail").addClass('dp-none');}
             //取消现有目标的效果
             if(target && elementSet[target]) {
                 sb.removeClass(elementSet[target].container,"element-select");

@@ -8,17 +8,19 @@
 <iframe src="http://baidu.com" id="frame"></iframe>
 <script type="text/javascript">
 $('#frame').on('load', function () {
-    var doc = $('#frame')[0].contentWindow.document;
-    html2canvas( [ document.body ], {
-	    onrendered: function(canvas) {
-	        /* canvas is the actual canvas element,
-	           to append it to the page call for example
-	           document.body.appendChild( canvas );
-	        */
-	        document.body.appendChild(canvas);
-	        alert('success');
-	      }
-	});
+    var doc = $('#frame')[0].contentWindow;
+    console.dir(doc)
+    // console.log(doc.documentElement)
+ //    html2canvas( [ document.body ], {
+	//     onrendered: function(canvas) {
+	//          canvas is the actual canvas element,
+	//            to append it to the page call for example
+	//            document.body.appendChild( canvas );
+	        
+	//         document.body.appendChild(canvas);
+	//         alert('success');
+	//       }
+	// });
 })
 </script>
 </body>
