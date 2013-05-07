@@ -34,6 +34,7 @@ Core.registerModule("shapebar", function(sb){
 
 					
 				} else {
+					var clientX = $()
 					global._chooseColor(e.clientY, function (color) {
 						var shapeData = sb.drawShape(type, color);
 						sb.notify({
@@ -98,9 +99,11 @@ Core.registerModule("shapebar", function(sb){
 			$toolBar.append($sizeSelector).append($colorBtn).append($eraserBtn).append($fullscreenBtn).append($confirmBtn);
 			$(pbElem).addClass('painting-board');
 			$colorBtn.on('click', function (evt) {
-				global._chooseColor(evt.clientY, function (color) {
+				var clientX = $(pbContainer).find(".painting-board-fullscreen").hasClass('on') ? document.width -  evt.clientX + 20 : null
+
+				global._chooseColor(evt.clientY - $(global._colorboard).offset().height, function (color) {
 					global._drawingBoard.setColor(color);
-				})
+				}, clientX)
 			})
 			$confirmBtn.on('click', function () {
 				var paintingData = pbElem.toDataURL();
@@ -201,9 +204,9 @@ Core.registerModule("shapebar", function(sb){
 			$con.addClass('dp-none');
 		},
 		//显示取色板
-		_chooseColor : function (clientY, callback) {
+		_chooseColor : function (clientY, callback, clientX) {
 			global._chooseColorCallback = callback;
-			$(global._colorboard).css('display', 'block').css('top', clientY + 'px').css('right', '100px')
+			$(global._colorboard).css('display', 'block').css('top', clientY + 'px').css('right', clientX || '100px')
 		},
 		destroy : function () {
 

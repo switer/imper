@@ -1364,6 +1364,7 @@ Core.registerModule("canvas",function(sb){
         },
         checkTextHighlighting : function (container) {
             var selection = window.getSelection();
+            if (!selection.focusNode) return;
             var offset = $(selection.focusNode.parentNode).offset();
             global._currentNodeList = global.findNodes(selection.focusNode, container);
             var range = selection.getRangeAt(0),
