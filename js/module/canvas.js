@@ -845,8 +845,7 @@ Core.registerModule("canvas",function(sb){
         },
 
         _createSliderJSONData : function () {
-            var json = new sb.ObjectLink(),
-                isHasCode  = false;
+            var json = new sb.ObjectLink(), isHasCode;
 
             SliderDataSet.forEach(function(datasets, sliderIndex){
                 // var data = new sb.ObjectLink();
@@ -875,7 +874,9 @@ Core.registerModule("canvas",function(sb){
                 // slider["anim"] = sliders[sliderIndex].getAttribute("data-anim");
                 // slider["panelAttr"] = sb.find(".panel", sliders[sliderIndex]).getAttribute("style");
                 // slider["element"] = data;
-                json[sliderIndex] = global._readSliderData(datasets, sliderIndex);
+                var readedSliderData = global._readSliderData(datasets, sliderIndex);
+                if (readedSliderData.isHasCode) isHasCode = true;
+                json[sliderIndex] = readedSliderData.data;
             });
             return {
                 data : json,
@@ -883,8 +884,7 @@ Core.registerModule("canvas",function(sb){
             }
         },
         _readSliderData : function (sliderElementDataset, sliderIndex) {
-            var elementSet = new sb.ObjectLink();
-            var slider = {};
+            var elementSet = new sb.ObjectLink(), isHasCode = false, slider = {};
             sliderElementDataset.forEach(function(data, name){
                 var sliderElement = {};
                 sliderElement.type = data["data"].tagName;
@@ -909,7 +909,10 @@ Core.registerModule("canvas",function(sb){
             slider["anim"] = sliders[sliderIndex].getAttribute("data-anim");
             slider["panelAttr"] = sb.find(".panel", sliders[sliderIndex]).getAttribute("style");
             slider["element"] = elementSet;
-            return slider;
+            return {
+                data : slider,
+                isHasCode : isHasCode
+            };
         },
         _createSaveData : function (callback) {
             global._createThumb(sliders.getFirstElement(), function (thumb) {
@@ -1855,7 +1858,7 @@ Core.registerModule("canvas",function(sb){
         },
         copySlider : function (sliderId) {
             if (!sliderId) return;
-            var sliderData = global._readSliderData(SliderDataSet[DATASET_PRE + sliderId], DATASET_PRE + sliderId)
+            var sliderData = global._readSliderData(SliderDataSet[DATASET_PRE + sliderId], DATASET_PRE + sliderId).data;
             global._copySliderParam = sliderData;
         },
         pasteSlider : function (sliderId) {
@@ -2029,7 +2032,7 @@ Core.registerModule("canvas",function(sb){
                     if(elemID == 'panel'){
                         
                         //面板触发右键，则没有选择目标
-                        rightMenuBtn = null;
+                        // rightMenuBtn = null;
                         eom.style.display = "block";
                         setPositionFunc(e,eom,-50,-50,-100,-200);
                         return;
