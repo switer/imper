@@ -62,7 +62,7 @@ An presentation editor and the player powered by impress.js
 *  Support multiple element selections while editing
 *  Slider frame opertation(copy,paste,change position) `*(Compeleted)`
 *  Touchable and support ipad device
-*  Impress GUI map drag-drop editing
+*  Impress GUI map drag-drop editing `*(Compeleted)`
 
 ### License
 
