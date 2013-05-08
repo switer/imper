@@ -99,6 +99,8 @@ var paintingBoards = {},
                 _maxHeightArr = [],
                 _impressWidth = 0,
                 _impressHeight = 0,
+                _x = 0,
+                _y = 0,
                 _dataLength = getLength(DATA);
 
             for(var s in DATA){
@@ -106,8 +108,9 @@ var paintingBoards = {},
                     var slider = document.createElement("DIV"),
                         panel = document.createElement("DIV"),
                         elements = DATA[s].element,
-                        anim = animMap[DATA[s].anim];
-                    console.log(animMap, DATA[s].anim, anim, animations, animations[anim]);
+                        anim = animMap[DATA[s].anim],
+                        sliderData = DATA[s];
+
                     slider.appendChild(panel);
                     panel.setAttribute('style', DATA[s].panelAttr);
                     sliders[s] = slider;
@@ -135,16 +138,17 @@ var paintingBoards = {},
                     if (( parseInt(conf.height) * scale  + 100) > _maxHeight) {
                         _maxHeight = ( parseInt(conf.height) * scale  + 100);
                     }
-                    
-
-                    console.log(animations[anim].datas, scale, _sWidth, _sHeight, _maxHeight)
+                    console.log(sliderData);
+                    _x = (sliderData.x !== null && sliderData.x !== undefined) ? sliderData.x : _sWidth + parseInt(conf.width) * scale/2;
+                    _y = (sliderData.y !== null && sliderData.y !== undefined) ? sliderData.y : _sHeight + parseInt(conf.height) * scale/2;
+                    console.log('====',sliderData.x !== null && sliderData.x !== undefined, sliderData.x, sliderData.y);
                     $(slider)
                             .css({
                                 'height' : conf.height,
                                 'width'  : conf.width
                             })
-                            .data('x', _sWidth + parseInt(conf.width) * scale/2)
-                            .data('y', _sHeight + parseInt(conf.height) * scale/2)
+                            .data('x', _x)
+                            .data('y', _y)
                             .addClass('step')
 
                     _sWidth += ( parseInt(conf.width) ) * scale + 100;
@@ -219,14 +223,13 @@ var paintingBoards = {},
                     impressContainer.appendChild(slider);
                 }
             }
-            var DEFAULT_SCALE = 5,
+            var DEFAULT_SCALE = 5.5,
                 scaling = DEFAULT_SCALE,
-                wScaling = _impressWidth / document.width,
-                hScaling = _impressHeight / document.height;
+                wScaling = document.width / _impressWidth,
+                hScaling = document.height / _impressHeight;
 
             scaling = wScaling >= hScaling ? wScaling : hScaling;
             scaling = scaling > DEFAULT_SCALE ? scaling : DEFAULT_SCALE;
-            console.log('scaling', scaling);
             var $overView = $('<div></div>').addClass('step').data('x', _impressWidth / 2).data('y', _impressHeight / 2).data('scale', scaling);
             $overView[0].id = 'overview';
             $(impressContainer).append($overView);

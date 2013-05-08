@@ -326,7 +326,9 @@ Core.registerModule("canvas",function(sb){
                 "autoSaveTimer" : this.autoSaveTimer,
                 "playSlider" :  this.playSlider,
                 "copySlider" : this.copySlider,
-                "pasteSlider" : this.pasteSlider
+                "pasteSlider" : this.pasteSlider,
+                "enterMapEdtingMode" : this.enterMapEdtingMode,
+                "updateSliderPositionData" : this.updateSliderPositionData
             });
             for (i = 0; item =  eomItems[i]; i++) {
                 item.onclick = function(e){
@@ -493,6 +495,25 @@ Core.registerModule("canvas",function(sb){
                 $('#previewContainer').addClass('dp-none');
                 $('#appContainer').removeClass('dp-none');
             })
+            $('#mapEditingContainer').find('.close-menu').on('click', function () {
+                $('#mapEditingContainer').addClass('dp-none');
+                $('#mapEditingContainer').find('.impressContainer').html('');
+                $('#appContainer').removeClass('dp-none');
+            })
+            $('#mapEditingContainer').find('.confirm-btn').on('click', function () {
+                var impressContainer = $('#mapEditingContainer').find('.impressContainer'),
+                    impressPositionData = window.ImpressRender.readAttributes(impressContainer);
+
+                $('#mapEditingContainer').addClass('dp-none');
+                $('#mapEditingContainer').find('.impressContainer').html('');
+                $('#appContainer').removeClass('dp-none');
+
+                sb.notify({
+                    type : 'updateSliderPositionData',
+                    data : impressPositionData
+                })
+
+            })
         },
         //预览
         playSlider : function () {
@@ -511,6 +532,29 @@ Core.registerModule("canvas",function(sb){
                     $previewContainer.append(iframe).removeClass('dp-none');
                     $appContainer.addClass('dp-none');
 
+            })
+        },
+        enterMapEdtingMode : function () {
+            var $mapEditor = $('#mapEditingContainer'),
+                $appContainer = $('#appContainer'),
+                $impressContainer = $mapEditor.find('.impressContainer');
+            $appContainer.addClass('dp-none');
+            $mapEditor.removeClass('dp-none');
+            var dataJson = global._createSliderJSONData(),
+                datas = {
+                    cntConf : {
+                        'height' : editorContainer.style.height,
+                        'width' : editorContainer.style.width,
+                    },
+                    cntData : dataJson.data
+                }
+            console.log(dataJson);
+            window.ImpressRender.render(datas.cntData, datas.cntConf, $impressContainer[0], sb);
+        },
+        updateSliderPositionData : function (pData) {
+            _.each(pData, function (values, key) {
+                $(sliders[key]).data('x', values.x).data('y', values.y);
+                console.log(sliders[key],values.x );
             })
         },
         // 定时保存
@@ -659,7 +703,9 @@ Core.registerModule("canvas",function(sb){
 
                 createSliderFunc('append', {
                     attr : slider.data['panelAttr'], 
-                    anim : slider.data['anim']
+                    anim : slider.data['anim'],
+                    x : slider.data.x,
+                    y : slider.data.y,
                 });
 
                 sb.notify({
@@ -848,32 +894,7 @@ Core.registerModule("canvas",function(sb){
             var json = new sb.ObjectLink(), isHasCode;
 
             SliderDataSet.forEach(function(datasets, sliderIndex){
-                // var data = new sb.ObjectLink();
-                // var slider = {};
-                // datasets.forEach(function(b, n){
-                //     var sliderElement = {};
-                //     sliderElement.type = b["data"].tagName;
-                //     sliderElement.cAttr = b["container"].getAttribute("style");
-                //     sliderElement.eAttr = b["data"].getAttribute("style");
-                //     sliderElement.zIndex = b["zIndex"];
-                //     //img.src||video-srouce.src||textbox.src
-                //     sliderElement.value = b["data"].src || $(b["data"]).find('.video-source').attr('src') || encodeURIComponent(b["data"].innerHTML);
-                //     if(sliderElement.type=="IMG"){
-                //         sliderElement.panelAtt = sb.find(".element-panel",b["container"]).getAttribute("style");
-                //     }
-                //     if (sliderElement.type === 'CODE') {
-                //         isHasCode = true;
-                //         //code mirror
-                //         var doc =  b['file'].getDoc();
-                //         sliderElement.value = doc.getValue();
-                //         sliderElement.codeType = doc.getMode().name;
-                //         sliderElement.theme = b['file'].getOption('theme');
-                //     }
-                //     data[n] = sliderElement;
-                // });
-                // slider["anim"] = sliders[sliderIndex].getAttribute("data-anim");
-                // slider["panelAttr"] = sb.find(".panel", sliders[sliderIndex]).getAttribute("style");
-                // slider["element"] = data;
+                
                 var readedSliderData = global._readSliderData(datasets, sliderIndex);
                 if (readedSliderData.isHasCode) isHasCode = true;
                 json[sliderIndex] = readedSliderData.data;
@@ -890,6 +911,7 @@ Core.registerModule("canvas",function(sb){
                 sliderElement.type = data["data"].tagName;
                 sliderElement.cAttr = data["container"].getAttribute("style");
                 sliderElement.eAttr = data["data"].getAttribute("style");
+                
                 sliderElement.zIndex = data["zIndex"];
                 //img.src||video-srouce.src||textbox.src
                 sliderElement.value = data["data"].src || $(data["data"]).find('.video-source').attr('src') || encodeURIComponent(data["data"].innerHTML);
@@ -909,6 +931,9 @@ Core.registerModule("canvas",function(sb){
             slider["anim"] = sliders[sliderIndex].getAttribute("data-anim");
             slider["panelAttr"] = sb.find(".panel", sliders[sliderIndex]).getAttribute("style");
             slider["element"] = elementSet;
+            slider.x = $(sliders[sliderIndex]).data('x');
+            slider.y = $(sliders[sliderIndex]).data('y');
+            console.log('((((((((' , slider);
             return {
                 data : slider,
                 isHasCode : isHasCode
@@ -1090,6 +1115,9 @@ Core.registerModule("canvas",function(sb){
             if (pasteObj) {
                 panel.setAttribute("style", pasteObj.attr);
                 newSlider.setAttribute("data-anim", pasteObj.anim);
+                newSlider.setAttribute("data-anim", pasteObj.anim);
+                !_.isEmpty(pasteObj.x) && $(newSlider).data('x', pasteObj.x);
+                !_.isEmpty(pasteObj.y) && $(newSlider).data('y', pasteObj.y);
             } else {
                 panel.setAttribute("style", "width:100%;height:100%;position:absolute;left:0;top:0;background-size:99.99% 100%;background-position:center;");
                 newSlider.setAttribute("data-anim", "none");
@@ -1874,7 +1902,9 @@ Core.registerModule("canvas",function(sb){
                     'dataId' : sliderId
                 }, {
                 attr : slider['panelAttr'], 
-                anim : slider['anim']
+                anim : slider['anim'],
+                x : slider.x,
+                y : slider.y
             });
             sb.notify({
                 type:"importSlider",
@@ -1886,10 +1916,6 @@ Core.registerModule("canvas",function(sb){
 
             elements.forEach(function (data, name) {
                 global.renderElement(data);
-            })
-            console.log('after insert---------');
-            sliders.forEach(function (data, name) {
-                console.log(name)
             })
 
         },

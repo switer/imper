@@ -212,7 +212,6 @@ Core.registerModule("filesystem", function(sb){
 					//重新标志当前保存成功的缓存文件
 					window.localStorage.setItem('last_temp_file_name', filename)
 					// global._errHandler('成功保存临时文件')
-					console.log('成功保存临时文件')
 			}, function (err) {
 					// global._errHandler('保存临时文件失败：' + err.code)
 					console.log('保存临时文件失败：' + err.code)

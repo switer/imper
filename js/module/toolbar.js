@@ -204,8 +204,15 @@ Core.registerModule("toolbar",function(sb){
                     data : null
                 });
             });
-            $("#tool-help").on('click', function () {
-                introJs().start();
+            // $("#tool-help").on('click', function () {
+            //     introJs().start();
+            // })
+            $("#tool-mapEditing").on('click', function () {
+                console.log('----------');
+                sb.notify({
+                    type : 'enterMapEdtingMode',
+                    data : null
+                })
             })
             $('#tool-play').on('click', function () {
                 sb.notify({

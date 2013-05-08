@@ -33,6 +33,7 @@
         <script type="text/javascript" src="./js/util/imageselector.js"></script>
         <script type="text/javascript" src="./js/util/util.js"></script>
         <script type="text/javascript" src="./js/util/altbox.js"></script>
+        <script type="text/javascript" src="./js/util/render.js"></script>
         <script type="text/javascript" src="./js/core.js"></script>
         <script type="text/javascript" src="./js/sandbox.js"></script>
         <script type="text/javascript" src="./js/intro.js"></script>
@@ -47,6 +48,11 @@
     <body >
         <div id='previewContainer' class='panel1 dp-none op-full'>
             <div class='close-menu' data-title='btn_close'></div>
+        </div>
+        <div id="mapEditingContainer" class='panel1 dp-none op-full'>
+            <div class='close-menu' data-title='btn_close'></div>
+            <div class='confirm-btn' title="Save edits"></div>
+            <div class="impressContainer"></div>
         </div>
         <div id="filesystem" class="sui-disp-none">
                 <!-- Navigation Bar -->
@@ -138,13 +144,13 @@
                                 <option value="7">7(36px)</option>
                             </select>
                         </div>
-                        <div class="execCommand-item font-color" title="改变字体颜色">
+                        <div class="execCommand-item font-color" data-title="textbar_fontColor">
                             <a href="javascript:;" class="execC-but"></a>
                         </div>
-                        <div class="execCommand-item font-background" title="改变字体背景颜色">
+                        <div class="execCommand-item font-background" data-title="textbar_fontBGColor">
                             <a href="javascript:;" class="execC-but"></a>
                         </div>
-                        <div class="execCommand-item font-formatblock" title="段落">
+                        <div class="execCommand-item font-formatblock" data-title="textbar_selParagraph">
                             <select class="execC-but" onchange="if(this.value!=-1) document.execCommand('formatBlock',false,this.value);">
                                 <option value="-1" data-lang="textbar_paragraph">段落</option>
                                 <option value="h1" data-langPre="textbar_title">1</option>
@@ -157,53 +163,53 @@
                                 <option value="pre" data-lang="textbar_pre">pre</option>
                             </select>
                         </div>
-                        <div class="execCommand-item font-leftAlign" title="左对齐">
+                        <div class="execCommand-item font-leftAlign" data-title="textbar_justifyLeft">
                             <a href="javascript:;" class="execC-but" onclick="document.execCommand('justifyLeft',false);"></a>
                         </div>
-                        <div class="execCommand-item font-centerAlign" title="居中对齐">
+                        <div class="execCommand-item font-centerAlign" data-title="textbar_justifyCenter">
                             <a href="javascript:;" class="execC-but"  onclick="document.execCommand('justifyCenter',false);"></a>
                         </div>
-                        <div class="execCommand-item font-rightAlign" title="右对齐">
+                        <div class="execCommand-item font-rightAlign" data-title="textbar_justifyRight">
                             <a href="javascript:;" class="execC-but" onclick="document.execCommand('justifyRight',false);"></a>
                         </div>        
                         
                     </div>
                     <div class="flb-box">
 
-                        <div class="execCommand-item font-italic" title="斜体" data-isFeed="true">
+                        <div class="execCommand-item font-italic" data-title="textbar_italic" data-isFeed="true">
                             <a href="javascript:;" class="execC-but" data-action="document.execCommand('italic',false);"></a>
                         </div>
-                        <div class="execCommand-item font-bold" title="粗体" data-isFeed="true">
+                        <div class="execCommand-item font-bold" data-title="textbar_bold" data-isFeed="true">
                             <a href="javascript:;" class="execC-but" data-action="document.execCommand('bold',false);"></a>
                         </div>
-                        <div class="execCommand-item font-underline" title="下划线" data-isFeed="true">
+                        <div class="execCommand-item font-underline" data-title="textbar_underline" data-isFeed="true">
                             <a href="javascript:;" class="execC-but" data-action="document.execCommand('underline',false);"></a>
                         </div>
-                        <div class="execCommand-item font-strike" title="删除线" data-isFeed="true">
+                        <div class="execCommand-item font-strike" data-title="textbar_strikeThrough" data-isFeed="true">
                             <a href="javascript:;" class="execC-but" data-action="document.execCommand('strikeThrough',false);"></a>
                         </div>
-                        <div class="execCommand-item font-eraser" title="擦除格式">
+                        <div class="execCommand-item font-eraser" data-title="textbar_removeFormat">
                             <a href="javascript:;" class="execC-but" onclick="document.execCommand('removeFormat',false);"></a>
                         </div>
-                        <div class="execCommand-item font-link" title="添加链接">
+                        <div class="execCommand-item font-link" data-title="textbar_link">
                             <a href="javascript:;" class="execC-but" ></a>
                         </div>
-                        <div class="execCommand-item font-undo" title="撤销">
+                        <div class="execCommand-item font-undo" data-title="textbar_undo">
                             <a href="javascript:;" class="execC-but" onclick="document.execCommand('undo',false);"></a>
                         </div>
-                        <div class="execCommand-item font-redo" title="重做" >
+                        <div class="execCommand-item font-redo" data-title="textbar_redo" >
                             <a href="javascript:;" class="execC-but" onclick="document.execCommand('redo',false);"></a>
                         </div> 
-                        <div class="execCommand-item font-list" title="有序列表">
+                        <div class="execCommand-item font-list" data-title="textbar_insertOrderedList">
                             <a href="javascript:;" class="execC-but" onclick="document.execCommand('insertOrderedList',true);"></a>
                         </div> 
-                        <div class="execCommand-item font-unOrderList" title="无序列表">
+                        <div class="execCommand-item font-unOrderList" data-title="textbar_insertUnorderedList">
                             <a href="javascript:;" class="execC-but" onclick="document.execCommand('insertUnorderedList',true);"></a>
                         </div>  
-                        <div class="execCommand-item font-indent" title="缩进">
+                        <div class="execCommand-item font-indent" data-title="textbar_indent">
                             <a href="javascript:;" class="execC-but" onclick="document.execCommand('indent',false);"></a>
                         </div> 
-                        <div class="execCommand-item font-outdent" title="缩进">
+                        <div class="execCommand-item font-outdent" data-title="textbar_outdent">
                             <a href="javascript:;" class="execC-but" onclick="document.execCommand('outdent',false);"></a>
                         </div> 
                     </div>
@@ -226,6 +232,7 @@
                         </div>
                         <div id="tool-openFileSystem" class="tool-app " data-title="toolBar_openFileSystem"></div>
                         <div id="tool-play" class="tool-app" data-title="toolBar_preview"></div>
+                        <div id="tool-mapEditing" class="tool-app" data-title="toolBar_mapEditing"></div>
                         <div id="tool-addAnimation" class="tool-app ondetail" data-title="toolBar_setAnimation" ></div>
                         <div id="tool-addVideo" class="tool-app" data-title="toolBar_addVideo">
                             <input type="file" id="addVideoInp"/>
@@ -244,7 +251,8 @@
                         <!--
                         <div id="tool-deleteSlider" class="tool-app" data-title="删除当前幻灯片" data-intro='删除当前幻灯片' data-step='16'></div>
                         -->
-                        <div id="tool-help" class="tool-app" data-title="toolBar_help"></div>
+                        <!-- <div id="tool-help" class="tool-app" data-title="toolBar_help"></div> -->
+                        
                     </div>
                     <div></div>
                 </div>

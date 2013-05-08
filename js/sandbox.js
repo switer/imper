@@ -761,14 +761,15 @@ var SandBox = (function() {
     SandBox.prototype.move = function(elem,tar, options){
         options = options || {};
         var initY=0,initX=0,pInitX=0,pInitY=0,
+            scaling = options.scaling || 1,
         flag={
             isInit:false,
             isDown:false
         };
         this.ondrag(elem,flag, function(event){
             if(flag.isDown){
-                var eventX = event.screenX;
-                var eventY = event.screenY;
+                var eventX = event.screenX*scaling;
+                var eventY = event.screenY*scaling;
                 if(!flag.isInit){
                     initX=eventX;
                     initY=eventY;
