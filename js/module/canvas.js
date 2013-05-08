@@ -490,29 +490,34 @@ Core.registerModule("canvas",function(sb){
             window.onbeforeunload = function () {
                 return sb.lang().notice_beforeClose;
             }
+            function enterHomePage () {
+                $('#mapEditingContainer').addClass('dp-none');
+                $('#mapEditingContainer').find('.impressContainer').html('');
+                $('#appContainer').removeClass('dp-none');  
+            }
+            window.onhashchange = function () {
+                if (window.location.hash === '') {
+                    enterHomePage ();
+                }
+            }
+
             $('#previewContainer').find('.close-menu').on('click', function () {
                 global._playFrame && $(global._playFrame).remove();
                 $('#previewContainer').addClass('dp-none');
-                $('#appContainer').removeClass('dp-none');
+                
             })
             $('#mapEditingContainer').find('.close-menu').on('click', function () {
-                $('#mapEditingContainer').addClass('dp-none');
-                $('#mapEditingContainer').find('.impressContainer').html('');
-                $('#appContainer').removeClass('dp-none');
+                window.location.hash = "";
             })
             $('#mapEditingContainer').find('.confirm-btn').on('click', function () {
                 var impressContainer = $('#mapEditingContainer').find('.impressContainer'),
                     impressPositionData = window.ImpressRender.readAttributes(impressContainer);
 
-                $('#mapEditingContainer').addClass('dp-none');
-                $('#mapEditingContainer').find('.impressContainer').html('');
-                $('#appContainer').removeClass('dp-none');
-
                 sb.notify({
                     type : 'updateSliderPositionData',
                     data : impressPositionData
                 })
-
+                window.location.hash = "";
             })
         },
         //预览
@@ -535,6 +540,7 @@ Core.registerModule("canvas",function(sb){
             })
         },
         enterMapEdtingMode : function () {
+            window.location.hash = "dragAndDrop";
             var $mapEditor = $('#mapEditingContainer'),
                 $appContainer = $('#appContainer'),
                 $impressContainer = $mapEditor.find('.impressContainer');
@@ -548,13 +554,11 @@ Core.registerModule("canvas",function(sb){
                     },
                     cntData : dataJson.data
                 }
-            console.log(dataJson);
             window.ImpressRender.render(datas.cntData, datas.cntConf, $impressContainer[0], sb);
         },
         updateSliderPositionData : function (pData) {
             _.each(pData, function (values, key) {
                 $(sliders[key]).data('x', values.x).data('y', values.y);
-                console.log(sliders[key],values.x );
             })
         },
         // 定时保存

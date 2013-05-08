@@ -13,6 +13,7 @@ var localConfig = {
 			toolBar_addCode 		: "插入代码编辑框",
 			toolBar_changeScale		: "更改幻灯片分辨率比例",
 			toolBar_help : '帮助',
+			toolBar_mapEditing : "幻灯片位置拖拽编辑",
 			//animation
 			anim_slider 			: "幻灯片",
 			anim_sliderZoom 		: "放大幻灯片",
@@ -158,6 +159,7 @@ var localConfig = {
 			toolBar_addCode 		: "add a high-light editor element",
 			toolBar_changeScale 	: "change current presentation screen size",
 			toolBar_help 			: 'intro-helping',
+			toolBar_mapEditing 		: "Drag and drop to edit frame position",
 			// animation
 			anim_slider 			: "slider",
 			anim_sliderZoom 		: "slider zoom",
