@@ -108,12 +108,13 @@
                 if(DATA.hasOwnProperty(s)){
                     var slider = document.createElement("DIV"),
                         panel = document.createElement("DIV"),
+                        labelPanel = document.createElement("DIV"),
                         elements = DATA[s].element,
                         anim = animMap[DATA[s].anim],
                         sliderData = DATA[s];
 
 
-                    slider.appendChild(panel);
+                    $(slider).append(panel).append(labelPanel);
                     panel.setAttribute('style', DATA[s].panelAttr);
                     sliders[s] = slider;
                     var scale = 1;
@@ -125,10 +126,13 @@
                         curRow = parseInt(index / sqrtNum);
 
                     index ++;
-                    $(panel).html(index).css({
-                        fontSize : '100px',
-                        color : 'rgba(0,0,0,0.5)'
-
+                    $(labelPanel).html(index).css({
+                        position    : 'absolute',
+                        fontSize    : '100px',
+                        color       : 'black',
+                        left : '10px',
+                        top : '0px',
+                        zIndex : 9999
                     });
 
                     if (curColum === 0) {
