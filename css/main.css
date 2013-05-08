@@ -126,6 +126,11 @@ input{
     background: url(../img/confir_btn.png);height: 60px;width: 60px;position: absolute;
     bottom: 10px;right: 10px;cursor: pointer;background-size:60px;border-radius: 10px;}
 #mapEditingContainer .confirm-btn:hover {box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);}
+#mapEditingContainer .reset-btn {
+    background: url(../img/reset_btn.png);height: 60px;width: 60px;position: absolute;
+    bottom: 80px;right: 10px;cursor: pointer;background-size:60px;border-radius: 10px;
+}
+#mapEditingContainer .reset-btn:hover {box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);}
 .dp-none {display: none!important;}
 /**清除浮动**/
 .cf:before, .cf:after {content:"";display:table;}

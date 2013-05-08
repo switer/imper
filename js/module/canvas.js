@@ -520,6 +520,11 @@ Core.registerModule("canvas",function(sb){
             $('#mapEditingContainer').find('.close-menu').on('click', function () {
                 window.location.hash = "";
             })
+            
+             $('#mapEditingContainer').find('.reset-btn').on('click', function () {
+                var impressContainer = $('#mapEditingContainer').find('.impressContainer')
+                window.ImpressRender.resetPosition(impressContainer);
+             });
             $('#mapEditingContainer').find('.confirm-btn').on('click', function () {
                 var impressContainer = $('#mapEditingContainer').find('.impressContainer'),
                     impressPositionData = window.ImpressRender.readAttributes(impressContainer);

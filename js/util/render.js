@@ -144,8 +144,11 @@
                     if (( parseInt(conf.height) * scale  + 100) > _maxHeight) {
                         _maxHeight = ( parseInt(conf.height) * scale  + 100);
                     }
-                    _x = !_.isEmpty(sliderData.x) ? sliderData.x: _sWidth + parseInt(conf.width) * scale/2;
-                    _y = !_.isEmpty(sliderData.y) ? sliderData.y: _sHeight + parseInt(conf.height) * scale/2;
+                    var calcX =  _sWidth + parseInt(conf.width) * scale/2,
+                        calcY =  _sHeight + parseInt(conf.height) * scale/2;
+
+                    _x = !_.isEmpty(sliderData.x) ? sliderData.x : calcX;
+                    _y = !_.isEmpty(sliderData.y) ? sliderData.y : calcY;
                     $(slider)
                             .css({
                                 backgroundColor : 'white',
@@ -158,6 +161,8 @@
                             .data('id', s)
                             .data('x', _x)
                             .data('y', _y)
+                            .data('calcx', calcX)
+                            .data('calcy', calcY)
                             .addClass('step')
                             .attr('draggable', false);
 
@@ -274,8 +279,25 @@
                     }
                 sliderDataset[sliderId] = data;
             })
-
             return sliderDataset;
+        },
+        resetPosition : function (container) {
+            var $sliders = $('.step', container);
+            _.each($sliders, function (slider) {
+                var $slider = $(slider),
+                    calcX = $slider.data('calcx'),
+                    calcY = $slider.data('calcy');
+
+                console.log($slider.data('x'));
+                $(slider).data('x', calcX);
+                $(slider).data('y', calcY);
+                $(slider).css({
+                    top : (calcX + 'px'),
+                    left : (calcY + 'px')
+                })
+                console.log(calcX, calcY);
+
+            })
         }
     }
     window.ImpressRender = module;
