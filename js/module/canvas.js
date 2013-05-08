@@ -490,21 +490,32 @@ Core.registerModule("canvas",function(sb){
             window.onbeforeunload = function () {
                 return sb.lang().notice_beforeClose;
             }
-            function enterHomePage () {
+            function mapEditEnterHomePage () {
                 $('#mapEditingContainer').addClass('dp-none');
                 $('#mapEditingContainer').find('.impressContainer').html('');
                 $('#appContainer').removeClass('dp-none');  
             }
+            function previewEnterHomePage () {
+                global._playFrame && $(global._playFrame).remove();
+                $('#previewContainer').addClass('dp-none');
+                $('#appContainer').removeClass('dp-none');
+            }
             window.onhashchange = function () {
                 if (window.location.hash === '') {
-                    enterHomePage ();
+                    switch (global._mode) {
+                        case 'previewMode' : 
+                            previewEnterHomePage();
+                            break;
+                        case 'mapEditingMode' : 
+                            mapEditEnterHomePage();
+                            break;
+                        default:break;
+                    }
                 }
             }
 
             $('#previewContainer').find('.close-menu').on('click', function () {
-                global._playFrame && $(global._playFrame).remove();
-                $('#previewContainer').addClass('dp-none');
-                
+                window.location.hash = "";
             })
             $('#mapEditingContainer').find('.close-menu').on('click', function () {
                 window.location.hash = "";
@@ -523,6 +534,8 @@ Core.registerModule("canvas",function(sb){
         //预览
         playSlider : function () {
             global._createSaveData(function (playHtml) {
+                window.location.hash = 'preview';
+                global._mode = 'previewMode';
                 var $previewContainer = $('#previewContainer'),
                     iframe = document.createElement('iframe'),
                     $appContainer = $('#appContainer');
@@ -540,7 +553,8 @@ Core.registerModule("canvas",function(sb){
             })
         },
         enterMapEdtingMode : function () {
-            window.location.hash = "dragAndDrop";
+            window.location.hash = "mapEditing";
+            global._mode = 'mapEditingMode';
             var $mapEditor = $('#mapEditingContainer'),
                 $appContainer = $('#appContainer'),
                 $impressContainer = $mapEditor.find('.impressContainer');
@@ -563,7 +577,6 @@ Core.registerModule("canvas",function(sb){
         },
         // 定时保存
         autoSaveTimer : function () {
-            console.log('setTimer');
             //一个定时器定时保存文件
             window.setInterval( global.saveTempFile, 1000*5);
         },
@@ -785,7 +798,6 @@ Core.registerModule("canvas",function(sb){
                                 .replace(/\<\!\-\-\[DATA_JSON_END\]\-\-\>/,'')
                                 .replace(/^\<script[^\<\>]*\>/,'')
                                 .replace(/\<\/script\>/,'');
-                   console.log(data);
                     global.renderSlider(data);
                 } 
 
@@ -937,7 +949,6 @@ Core.registerModule("canvas",function(sb){
             slider["element"] = elementSet;
             slider.x = $(sliders[sliderIndex]).data('x');
             slider.y = $(sliders[sliderIndex]).data('y');
-            console.log('((((((((' , slider);
             return {
                 data : slider,
                 isHasCode : isHasCode
@@ -1425,7 +1436,6 @@ Core.registerModule("canvas",function(sb){
         },
         updateToolbarStates : function () {
             if (global._currentNodeList) {
-                console.log(global._currentNodeList);
                 if (global._currentNodeList['I']) {
                     $("#execCommand-detail").find(".font-italic").addClass('active');
                 }
@@ -1448,7 +1458,6 @@ Core.registerModule("canvas",function(sb){
             var range = selection.getRangeAt(0),
                 start = range.startOffset,
                 end = range.endOffset;
-            console.log(selection.isCollapsed, start, end)
             if (selection.isCollapsed && start === end) { 
                 $("#execCommand-detail").addClass('dp-none')
             }
@@ -1620,7 +1629,6 @@ Core.registerModule("canvas",function(sb){
                     rgbArr;
 
                 type = item.getAttribute("data-type");
-                console.log('rightMenuBtn', rightMenuBtn);
                 if (rightMenuBtn === 'panel') {
                     attrValue =   sliders[currentSlider].style[type] || defaultAtt[type];
                 } else {
@@ -1898,9 +1906,7 @@ Core.registerModule("canvas",function(sb){
         },
         renderElements : function (slider, sliderId) {
             var elements = slider.element;
-            sliders.forEach(function (data, name) {
-                console.log(name)
-            })
+            
             global.createSlider({
                     'method' : 'insert',
                     'dataId' : sliderId
