@@ -247,6 +247,10 @@
             scaling = scaling > DEFAULT_SCALE ? scaling : DEFAULT_SCALE;
 
             container.style.WebkitTransform = 'scale(' + 1/scaling + ')';
+            $(container).css({
+                top : (($(container).parent().height() - _impressHeight / scaling) / 2 - 60)   + 'px',
+                left : (($(container).parent().width() - _impressWidth / scaling) / 2 - 100)  + 'px',
+            })
 
             var borderWidth = scaling >= 1 ? scaling : 1;
             // $('.step', container).css({
