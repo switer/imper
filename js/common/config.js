@@ -143,6 +143,10 @@ var localConfig = {
 			notice_beforeClose : "要离开正在编辑的内容？",
 			notice_openMenu : "右键打开操作菜单",
 			notice_confirm : '保存编辑',
+			browser_LieBao : '猎豹浏览器极速模式',
+			browser_chrome : '谷歌chrome浏览器',
+			browser_360 : '360 极速浏览器',
+			browser_notice : '请使用最新版本的chrome系列极速浏览器',
 			//buttons
 			btn_close : '关闭'
 		},
@@ -289,6 +293,10 @@ var localConfig = {
 			notice_beforeClose : "Editing ! Are you sure to leave ?",
 			notice_openMenu : "Click right-button to open operate menu",
 			notice_confirm : 'Save edits',
+			browser_LieBao : 'LieBao browser',
+			browser_chrome : 'chrome browser',
+			browser_360 : '360 chrome browser',
+			browser_notice : 'Please use chrome browser for you bestexperience ',
 
 			//buttons
 			btn_close : 'close'

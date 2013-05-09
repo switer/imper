@@ -1,5 +1,7 @@
 define('loader', ['../web.fs.mobile/src/webfs'], function (wfs) {
-	
+	setTimeout(function () {
+    	window.altbox.start();
+    }, 10);
 	if (!bowser.chrome) {
 		var body = document.body;
 		body.style.backgroundColor = 'black';
@@ -14,9 +16,7 @@ define('loader', ['../web.fs.mobile/src/webfs'], function (wfs) {
 	    // 	$('#appContainer').height(document.height);
 	    // })
 	    Core.startAll();
-	    setTimeout(function () {
-	    	window.altbox.start();
-	    }, 10);
+
 	    // $('#appContainer').height(document.height);
 	}
 });
