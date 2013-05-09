@@ -21,25 +21,31 @@ An presentation editor and the player powered by impress.js
 {
   //globla config data
   "cntConf" : {
-  	"height" : "600px",
+  		"height" : "600px",
 		"width"  : "960px",
 		"thumb"  : ""
 	},
-	//frame data set
+	//frame dataset
 	"cntData" : {
+
 		//frame data
 		"slider1" : {
-			"anim": "", // frame transition animation
-			"panelAttr": "", // frame panel style attr
-			//frame elements data set
+
+			"anim": "", 		// frame transition animation
+			"panelAttr": "", 	// frame panel style attr
+			"x" : "", 			//data-x of impress.js layout mode[options]
+			"y" : "", 			//[options]
+
+			//frame elements dataset
 			"element": {
 				//frame element data
 				"data1":{
-					"type"		: "DIV", // element type
-					"cAttr"		: "", // element container style attr 
-					"eAttr"		: "", // element style attr
-					"pAttr"   : "", // element panel style attr
-					"zIndex"	: 1, //z-index
+					"type"		: "DIV", 	// element type
+					"cAttr"		: "", 		// element container style attr 
+					"eAttr"		: "", 		// element style attr
+					"pAttr"   	: "", 		// element panel style attr
+					"zIndex"	: 1, 		//z-index
+
 					//[text box || code box :  text string, image || video : data url] 
 					"value"		: "text content!" 
 				},
@@ -59,10 +65,12 @@ An presentation editor and the player powered by impress.js
 ### TODO List
 
 *  English Version `*(Compeleted)`
-*  Support multiple element selections while editing
-*  Slider frame opertation(copy,paste,change position) `*(Compeleted)`
-*  Touchable and support ipad device
 *  Impress GUI map drag-drop editing `*(Compeleted)`
+*  Slider frame opertation(copy,paste,change position) `*(Compeleted)`
+*  Support multiple element selections while editing
+*  Touchable and support ipad device
+*  Support markdown editor box
+*  Import data from impress html file
 
 ### License
 
