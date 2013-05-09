@@ -18,11 +18,18 @@ var fs 		= require('fs'),
 		'animationCSS'	: 'animation.css',
 		'drawJS'		: 'drawJS/drawJS.js',
 		'zepto'			: 'zepto.min.js',
+		//ImpressJS
 		'impressCSS' 	: 'impress/impress-demo.css',
 		'impressJS' 	: 'impress/impress.js',
 		'impressHeader' : 'impress/impressHeader.html',
 		'impressFooter' : 'impress/impressFooter.html',
-		'impressReader' : 'impress/impressReader.js'
+		'impressReader' : 'impress/impressReader.js',
+		//showerJS
+		'showerJS' 		: 'shower/shower.js',
+		'showerCSS' 	: 'shower/shower.css',
+		'showerHeader' 	: 'shower/showerHeader.html',
+		'showerFooter' 	: 'shower/showerFooter.html',
+		'showerReader' 	: 'shower/showerReader.js'
 	}
 var ctn,
 	sourceMap = {};

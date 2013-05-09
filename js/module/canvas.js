@@ -228,6 +228,7 @@ Core.registerModule("canvas",function(sb){
             // 
             var sliderTypeChoosebox = window.ChooseBox.create([
                     {key : 'impress',      value : 'impress'},
+                    {key : 'shower',       value : 'shower'},
                     {key : 'slide',       value : 'slide'}
                 ]);
             window.ChooseBox.hide(sliderTypeChoosebox);
@@ -982,18 +983,29 @@ Core.registerModule("canvas",function(sb){
                     footer      = window._sourceMap.footer,
                     blogHeader          = window._sourceMap.blogHeader,
                     blogFooter          = window._sourceMap.blogFooter,
+                    //impress
                     impressHeader       = window._sourceMap.impressHeader,
                     impressFooter       = window._sourceMap.impressFooter,
                     impressReader       = window._sourceMap.impressReader,
+                    impressCSS  = window._sourceMap.impressCSS, 
+                    impressJS   = window._sourceMap.impressJS, 
+                    //shower
+                    showerHeader       = window._sourceMap.showerHeader,
+                    showerFooter       = window._sourceMap.showerFooter,
+                    showerReader       = window._sourceMap.showerReader,
+                    showerCSS  = window._sourceMap.showerCSS, 
+                    showerJS   = window._sourceMap.showerJS, 
+
+                    //codeMirror
                     cmJS        = window._sourceMap.cmJS,
                     cmThemeJS   = window._sourceMap.cmThemeJS,
                     cmCss       = window._sourceMap.cmCSS,
                     cmThemeCSS  = window._sourceMap.cmThemeCSS,
+                    //animation lib
                     animation   = window._sourceMap.animationCSS,
                     drawJS      = window._sourceMap.drawJS, //画板（用作批注）
                     zepto       = window._sourceMap.zepto, 
-                    impressCSS  = window._sourceMap.impressCSS, 
-                    impressJS   = window._sourceMap.impressJS, 
+
                     dataJsonMarkBegin   = '<!--[DATA_JSON_BEGIN]-->', 
                     dataJsonMarkEnd     = '<!--[DATA_JSON_END]-->';
 
@@ -1005,6 +1017,8 @@ Core.registerModule("canvas",function(sb){
 
                 if (slideType === 'impress') {
                     header = impressHeader, footer = impressFooter;
+                } else if (slideType === 'shower') {
+                    header = showerHeader, footer = showerFooter;
                 }
                 //包含了高亮代码输入框
                 if (sliderJson.isHasCode) {
@@ -1025,6 +1039,17 @@ Core.registerModule("canvas",function(sb){
                                 scriptBegin + impressReader + scriptEnd +
                                 footer;
                     break; 
+                    case 'shower' :
+                    
+                    combHTML =  header + 
+                                styleBegin + animation + styleEnd +
+                                dataHtml +
+                                styleBegin + showerCSS + styleEnd +
+                                scriptBegin + zepto + scriptEnd +
+                                scriptBegin + showerReader + scriptEnd +
+                                scriptBegin + showerJS + scriptEnd +
+                                footer;
+                    break;
                     case 'blog' :; 
                     case 'slide' :
 
