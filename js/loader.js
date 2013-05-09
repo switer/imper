@@ -1,6 +1,6 @@
 define('loader', ['../web.fs.mobile/src/webfs'], function (wfs) {
 	
-	if (!bowser.webkit) {
+	if (!bowser.chrome) {
 		var body = document.body;
 		body.style.backgroundColor = 'black';
 		body.style.overflow = 'hidden';

@@ -257,7 +257,6 @@
                 top : (($(container).parent().height() - _impressHeight / scaling) / 2 - 60)   + 'px',
                 left : (($(container).parent().width() - _impressWidth / scaling) / 2 - 100)  + 'px',
             })
-
             var borderWidth = scaling >= 1 ? scaling : 1;
             // $('.step', container).css({
             //     'boxShadow' : '0 0 0 ' + borderWidth + 'px + black'
