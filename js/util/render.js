@@ -149,6 +149,7 @@
 
                     _x = !_.isEmpty(sliderData.x) ? sliderData.x : calcX;
                     _y = !_.isEmpty(sliderData.y) ? sliderData.y : calcY;
+                    console.log(_x,_y)
                     $(slider)
                             .css({
                                 backgroundColor : 'white',
@@ -288,12 +289,11 @@
                     calcX = $slider.data('calcx'),
                     calcY = $slider.data('calcy');
 
-                console.log($slider.data('x'));
                 $(slider).data('x', calcX);
                 $(slider).data('y', calcY);
                 $(slider).css({
-                    top : (calcX + 'px'),
-                    left : (calcY + 'px')
+                    top : (calcY + 'px'),
+                    left : (calcX + 'px')
                 })
                 console.log(calcX, calcY);
 
