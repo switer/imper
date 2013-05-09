@@ -296,7 +296,7 @@ var localConfig = {
 			browser_LieBao : 'LieBao browser',
 			browser_chrome : 'chrome browser',
 			browser_360 : '360 chrome browser',
-			browser_notice : 'Please use chrome browser for you bestexperience ',
+			browser_notice : 'Please use chrome browser for you best experience ',
 
 			//buttons
 			btn_close : 'close'
