@@ -177,7 +177,9 @@ var paintingBoards = {},
                                 var panel = document.createElement('div');
                                 var img = new Image();
                                 elem = document.createElement('div');
-                                panel.setAttribute('style', data.pAttr);
+                                //panel attr
+                                data.pAttr && panel.setAttribute('style', data.pAttr);
+                                //container attr
                                 elem.setAttribute("style", data.cAttr);
                                 elem.style.zIndex = data.zIndex;
                                 img.src = data.value;

@@ -936,7 +936,7 @@ Core.registerModule("canvas",function(sb){
                 sliderElement.zIndex = data["zIndex"];
                 //img.src||video-srouce.src||textbox.src
                 sliderElement.value = data["data"].src || $(data["data"]).find('.video-source').attr('src') || encodeURIComponent(data["data"].innerHTML);
-                if(sliderElement.type=="IMG"){
+                if(sliderElement.type=="IMG") {
                     sliderElement.panelAtt = sb.find(".element-panel",data["container"]).getAttribute("style");
                 }
                 if (sliderElement.type === 'CODE') {

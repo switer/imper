@@ -42,8 +42,8 @@ input{
     border: 1px solid #100;
     background-color: #EEE;
     -webkit-box-shadow:0px 0px 10px 2px #CCC;
-    -moz-box-shadow:0px 0px 5px #100;
-    -webkit-border-radius:10px;
+    /*-moz-box-shadow:0px 0px 5px #100;*/
+    /*-webkit-border-radius:10px;*/
     -moz-border-radius:10px;
     opacity:0.9;
 
