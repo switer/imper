@@ -211,14 +211,14 @@ select.execC-but {-webkit-appearance:button;width: auto!important;}
 .screen-box {display: -webkit-box;position: absolute;width: auto;z-index: 999;padding: 10px;cursor: move;}
 .screen-scale {width: 80px;height: 50px;vertical-align: middle;text-align: center;line-height: 50px;font-size: 24px;margin: 10px;
 background-color: cornflowerblue;color: white;text-shadow:0 0 2px black;}
-.screen-scale:hover {box-shadow: 0 0 6px 1px black;cursor: pointer;}
+.screen-scale:hover {-webkit-transform:scale(1.2);cursor: pointer;}
 
 
 
 .choose-box {display: -webkit-box;position: absolute;width: auto;z-index: 998;padding: 10px;cursor: move;}
 .choose-item {width: auto;height: 25px;vertical-align: middle;text-align: center;line-height: 25px;font-size: 14px;margin: 10px;
 background-color: cornflowerblue;color: white;text-shadow:0 0 3px black;padding: 0 5px;}
-.choose-item:hover {box-shadow: 0 0 6px 1px black;cursor: pointer;}
+.choose-item:hover {cursor: pointer;-webkit-transform:scale(1.2);}
 
 
 

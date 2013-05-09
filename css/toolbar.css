@@ -92,7 +92,8 @@
     background-repeat: no-repeat;
 }
 .tool-app:hover{
-    -webkit-box-shadow:0px 0px 10px black;
+    /*-webkit-box-shadow:0px 0px 10px black;*/
+    -webkit-transform:scale(1.2);
 }
 .tool-app input{
     position: relative;
