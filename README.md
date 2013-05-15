@@ -10,7 +10,7 @@ And the player powered by impress.js and shower
 
 [Imper editor website](http://switer.github.io/imper/)
 
-### Imper Generation
+### Imper Demo
 
 [Imper generate impress Demo](http://switer.github.io/examples/imper.html#/step-1) 
 
