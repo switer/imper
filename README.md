@@ -4,7 +4,7 @@ imper
 An presentations/slides visual editor website for creating impress.js slider 
 (impress.js is inspired by the idea behind prezi.com)
 
-An presentation editor and the player powered by impress.js
+And the player powered by impress.js and shower
 
 ### Imper Editor
 
