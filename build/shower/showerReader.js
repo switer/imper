@@ -112,7 +112,8 @@
                     slider.appendChild(panel);
                     DATA[s].panelAttr && panel.setAttribute('style', DATA[s].panelAttr);
                     sliders[s] = slider;
-                    $(slider).addClass('slide');
+                    $(slider)
+                            .addClass('slide')
                     
                     for (var e in elements) {
                         if(elements.hasOwnProperty(e)){
@@ -176,7 +177,9 @@
                     showerContainer.appendChild(slider);
                 }
             }
-            // showerContainer.
+                $(showerContainer).append(
+                    '<p class="badge"><a href="https://github.com/switer/imper">Fork me on Github</a></p>' + 
+                    '<div class="progress"><div></div></div>')
         }
     };
     window.module = module;
