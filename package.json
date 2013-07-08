@@ -1,7 +1,7 @@
 {
-  "name": "slider",
+  "name": "imper",
   "version": "0.1.0",
-  "description": "slider front end website",
+  "description": "impre--a visual editor for create wonderfull presentation",
   "main": "index.html",
   "scripts": {
   },
@@ -11,7 +11,10 @@
   },
   "keywords": [
     "html5",
-    "slider"
+    "slider",
+    "impress",
+    "visual editor",
+    "web editor"
   ],
   "author": "switer",
   "license": "BSD",
