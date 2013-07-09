@@ -7,7 +7,6 @@
         <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="MobileOptimized" content="320"/>
         <meta name="format-detection" content="telephone=no">
-        <link rel="stylesheet" href="./css/impress-demo.css" type="text/css" />
         <link rel="stylesheet" href="./css/base.css" type="text/css" />
         <link rel="stylesheet" href="./css/canvas.css" type="text/css" />
         <link rel="stylesheet" href="./css/toolbar.css" type="text/css" />
@@ -122,7 +121,7 @@
                     <!-- <div class="close-menu" data-title="btn_close"></div> -->
                     <div class="flb-box">
                         <div class="execCommand-item font-family">
-                            <select class="execC-but" onchange="if(this.value!=-1) document.execCommand('fontName',false,this.value);">
+                            <select class="execC-but" onchange="if(this.value!=-1) document.execCommand('fontName',false,this.value);this.value = -1;">
                                 <option value="-1"  data-lang="textbar_fontFamily">选择字体</option>
                                 <option value="宋体" data-lang="textbar_ff_song">宋体</option>
                                 <option value="黑体" data-lang="textbar_ff_blackbody">黑体</option>
@@ -135,7 +134,7 @@
                             </select>
                         </div>
                         <div class="execCommand-item font-size">
-                            <select class="execC-but" onchange="if(this.value!=-1) document.execCommand('fontSize',false,this.value);">
+                            <select class="execC-but" onchange="if(this.value!=-1) document.execCommand('fontSize',false,this.value);this.value = -1;">
                                 <option value="-1" data-lang="textbar_fontSize">字体大小</option>
                                 <option value="1">1(10px)</option>
                                 <option value="2">2(12px)</option>
