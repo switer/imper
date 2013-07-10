@@ -7,7 +7,6 @@
         <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="MobileOptimized" content="320"/>
         <meta name="format-detection" content="telephone=no">
-        <link rel="stylesheet" href="./css/impress-demo.css" type="text/css" />
         <link rel="stylesheet" href="./css/base.css" type="text/css" />
         <link rel="stylesheet" href="./css/canvas.css" type="text/css" />
         <link rel="stylesheet" href="./css/toolbar.css" type="text/css" />
@@ -122,7 +121,7 @@
                     <!-- <div class="close-menu" data-title="btn_close"></div> -->
                     <div class="flb-box">
                         <div class="execCommand-item font-family">
-                            <select class="execC-but" onchange="if(this.value!=-1) document.execCommand('fontName',false,this.value);">
+                            <select class="execC-but" onchange="if(this.value!=-1) document.execCommand('fontName',false,this.value);this.value=-1;">
                                 <option value="-1"  data-lang="textbar_fontFamily">选择字体</option>
                                 <option value="宋体" data-lang="textbar_ff_song">宋体</option>
                                 <option value="黑体" data-lang="textbar_ff_blackbody">黑体</option>
@@ -132,6 +131,8 @@
                                 <option value="微软雅黑" data-lang="textbar_ff_yahei">微软雅黑</option>
                                 <option value="幼圆" >幼圆</option>
                                 <option value="Arial" >Arial</option>
+                                <option value="Open Sans">Open Sans</option>
+                                <option value="sans-serif">sans-serif</option>
                             </select>
                         </div>
                         <div class="execCommand-item font-size">
@@ -153,7 +154,7 @@
                             <a href="javascript:;" class="execC-but"></a>
                         </div>
                         <div class="execCommand-item font-formatblock" data-title="textbar_selParagraph">
-                            <select class="execC-but" onchange="if(this.value!=-1) document.execCommand('formatBlock',false,this.value);">
+                            <select class="execC-but" onchange="if(this.value!=-1) document.execCommand('formatBlock',false,this.value);this.value=-1;">
                                 <option value="-1" data-lang="textbar_paragraph">段落</option>
                                 <option value="h1" data-langPre="textbar_title">1</option>
                                 <option value="h2" data-langPre="textbar_title">2</option>
