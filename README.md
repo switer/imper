@@ -65,6 +65,7 @@ An presentations/slides visual editor website for creating impress.js/normal/sho
 *  English Version `*(Compeleted)`
 *  Impress GUI map drag-drop editing `*(Compeleted)`
 *  Slider frame opertation(copy,paste,change position) `*(Compeleted)`
+*  show element's marking-line
 *  Support multiple element selections while editing
 *  Touchable and support ipad device
 *  Support markdown editor box
