@@ -62,6 +62,8 @@ An presentations/slides visual editor website for creating impress.js/normal/sho
 
 ### TODO List
 
+__I need edit-history manager for going back and need a server to save my presentation!!!!__
+
 *  English Version `*(Compeleted)`
 *  Impress GUI map drag-drop editing `*(Compeleted)`
 *  Slider frame opertation(copy,paste,change position) `*(Compeleted)`
