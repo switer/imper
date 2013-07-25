@@ -136,7 +136,7 @@
                             </select>
                         </div>
                         <div class="execCommand-item font-size">
-                            <select class="execC-but" onchange="if(this.value!=-1) document.execCommand('fontSize',false,this.value);">
+                            <select class="execC-but" onchange="if(this.value!=-1) document.execCommand('fontSize',false,this.value);this.value=-1;">
                                 <option value="-1" data-lang="textbar_fontSize">字体大小</option>
                                 <option value="1">1(10px)</option>
                                 <option value="2">2(12px)</option>
@@ -147,13 +147,13 @@
                                 <option value="7">7(36px)</option>
                             </select>
                         </div>
-                        <div class="execCommand-item font-color" data-title="textbar_fontColor">
+                        <div class="execCommand-item font-color" >
                             <a href="javascript:;" class="execC-but"></a>
                         </div>
-                        <div class="execCommand-item font-background" data-title="textbar_fontBGColor">
+                        <div class="execCommand-item font-background" >
                             <a href="javascript:;" class="execC-but"></a>
                         </div>
-                        <div class="execCommand-item font-formatblock" data-title="textbar_selParagraph">
+                        <div class="execCommand-item font-formatblock" >
                             <select class="execC-but" onchange="if(this.value!=-1) document.execCommand('formatBlock',false,this.value);this.value=-1;">
                                 <option value="-1" data-lang="textbar_paragraph">段落</option>
                                 <option value="h1" data-langPre="textbar_title">1</option>
@@ -166,53 +166,53 @@
                                 <option value="pre" data-lang="textbar_pre">pre</option>
                             </select>
                         </div>
-                        <div class="execCommand-item font-leftAlign" data-title="textbar_justifyLeft">
+                        <div class="execCommand-item font-leftAlign" >
                             <a href="javascript:;" class="execC-but" onclick="document.execCommand('justifyLeft',false);"></a>
                         </div>
-                        <div class="execCommand-item font-centerAlign" data-title="textbar_justifyCenter">
+                        <div class="execCommand-item font-centerAlign" >
                             <a href="javascript:;" class="execC-but"  onclick="document.execCommand('justifyCenter',false);"></a>
                         </div>
-                        <div class="execCommand-item font-rightAlign" data-title="textbar_justifyRight">
+                        <div class="execCommand-item font-rightAlign" >
                             <a href="javascript:;" class="execC-but" onclick="document.execCommand('justifyRight',false);"></a>
                         </div>        
                         
                     </div>
                     <div class="flb-box">
 
-                        <div class="execCommand-item font-italic" data-title="textbar_italic" data-isFeed="true">
+                        <div class="execCommand-item font-italic"  data-isFeed="true">
                             <a href="javascript:;" class="execC-but" data-action="document.execCommand('italic',false);"></a>
                         </div>
-                        <div class="execCommand-item font-bold" data-title="textbar_bold" data-isFeed="true">
+                        <div class="execCommand-item font-bold"  data-isFeed="true">
                             <a href="javascript:;" class="execC-but" data-action="document.execCommand('bold',false);"></a>
                         </div>
-                        <div class="execCommand-item font-underline" data-title="textbar_underline" data-isFeed="true">
+                        <div class="execCommand-item font-underline"  data-isFeed="true">
                             <a href="javascript:;" class="execC-but" data-action="document.execCommand('underline',false);"></a>
                         </div>
-                        <div class="execCommand-item font-strike" data-title="textbar_strikeThrough" data-isFeed="true">
+                        <div class="execCommand-item font-strike"  data-isFeed="true">
                             <a href="javascript:;" class="execC-but" data-action="document.execCommand('strikeThrough',false);"></a>
                         </div>
-                        <div class="execCommand-item font-eraser" data-title="textbar_removeFormat">
+                        <div class="execCommand-item font-eraser" >
                             <a href="javascript:;" class="execC-but" onclick="document.execCommand('removeFormat',false);"></a>
                         </div>
-                        <div class="execCommand-item font-link" data-title="textbar_link">
+                        <div class="execCommand-item font-link" >
                             <a href="javascript:;" class="execC-but" ></a>
                         </div>
-                        <div class="execCommand-item font-undo" data-title="textbar_undo">
+                        <div class="execCommand-item font-undo" >
                             <a href="javascript:;" class="execC-but" onclick="document.execCommand('undo',false);"></a>
                         </div>
-                        <div class="execCommand-item font-redo" data-title="textbar_redo" >
+                        <div class="execCommand-item font-redo"  >
                             <a href="javascript:;" class="execC-but" onclick="document.execCommand('redo',false);"></a>
                         </div> 
-                        <div class="execCommand-item font-list" data-title="textbar_insertOrderedList">
+                        <div class="execCommand-item font-list" >
                             <a href="javascript:;" class="execC-but" onclick="document.execCommand('insertOrderedList',true);"></a>
                         </div> 
-                        <div class="execCommand-item font-unOrderList" data-title="textbar_insertUnorderedList">
+                        <div class="execCommand-item font-unOrderList" >
                             <a href="javascript:;" class="execC-but" onclick="document.execCommand('insertUnorderedList',true);"></a>
                         </div>  
-                        <div class="execCommand-item font-indent" data-title="textbar_indent">
+                        <div class="execCommand-item font-indent" >
                             <a href="javascript:;" class="execC-but" onclick="document.execCommand('indent',false);"></a>
                         </div> 
-                        <div class="execCommand-item font-outdent" data-title="textbar_outdent">
+                        <div class="execCommand-item font-outdent" >
                             <a href="javascript:;" class="execC-but" onclick="document.execCommand('outdent',false);"></a>
                         </div> 
                     </div>
