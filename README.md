@@ -13,9 +13,9 @@ An presentations/slides visual editor website for creating impress.js/normal/sho
 
 [Imper Sframework Demo](http://switer.github.io/live/sframework.html) 
 
-[Imper generate impress Demo](http://switer.github.io/examples/imper.html#/step-1) 
+[Imper generate impress Demo](http://switer.github.io/live/imper.html#/step-1) 
 
-[Imper generate google html5 slides Demo](http://switer.github.io/examples/html5slides.html)
+[Imper generate google html5 slides Demo](http://switer.github.io/live/html5slides.html)
 
 ### Imper Data Format
 ```javascript
